@@ -11,6 +11,15 @@ Historique des modifications
 *******************************************************/  
 
 import java.beans.PropertyChangeListener;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.net.InetSocketAddress;
+import java.net.Socket;
+import java.net.UnknownHostException;
+
 import javax.swing.SwingWorker;
 
 /**
@@ -66,6 +75,27 @@ public class CommBase {
 					Thread.sleep(DELAI);
 					
 					// C'EST DANS CETTE BOUCLE QU'ON COMMUNIQUE AVEC LE SERVEUR
+					
+					InetSocketAddress addr = new InetSocketAddress("localhost", 8080);
+					try (Socket s = new Socket()) {
+						s.connect(addr);
+						BufferedWriter out = new BufferedWriter(new OutputStreamWriter(s.getOutputStream()));
+						BufferedReader in = new BufferedReader(new InputStreamReader(s.getInputStream()));
+						System.out.println(in.readLine());
+						System.out.println("got line");
+						out.write("GET\n");
+						out.flush();
+						System.out.println("Wrote line");
+						System.out.println(in.readLine());
+						out.write("END\n");
+						out.flush();
+					} catch (UnknownHostException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					
  					//La méthode suivante alerte l'observateur 
 					if(listener!=null)
