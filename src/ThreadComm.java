@@ -9,7 +9,7 @@ import java.net.UnknownHostException;
 
 import javax.swing.SwingWorker;
 
-public class ThreadComm extends SwingWorker {
+public class ThreadComm extends SwingWorker<Forme, Object> {
 
 	private final int DELAI = 1000;
 
@@ -22,8 +22,7 @@ public class ThreadComm extends SwingWorker {
 	}
 
 	@Override
-	protected Object doInBackground() throws Exception {
-		System.out.println("Le fils d'execution parallele est lance");
+	protected Forme doInBackground() throws Exception {
 		// C'EST DANS CETTE BOUCLE QU'ON COMMUNIQUE AVEC LE SERVEUR
 		InetSocketAddress addr = new InetSocketAddress(host, port);
 		try (Socket s = new Socket()) {
@@ -31,25 +30,25 @@ public class ThreadComm extends SwingWorker {
 			BufferedWriter out = new BufferedWriter(new OutputStreamWriter(s.getOutputStream()));
 			BufferedReader in = new BufferedReader(new InputStreamReader(s.getInputStream()));
 			while (!this.isCancelled()) {
-				// commande>
-				System.out.println(in.readLine());
+				// Lire prompt ( 'commande>' )
+				in.readLine();
 				out.write("GET\n");
 				out.flush();
-				// Read form
-				String forme = in.readLine();
+				// Lire forme
+				String strForme = in.readLine();
+				Forme forme = FormeFactory.lireString(strForme);
 				firePropertyChange("FORME", null, forme);
 				Thread.sleep(DELAI);
 			}
 			out.write("END\n");
 			out.flush();
 		} catch (UnknownHostException e) {
-			// TODO Auto-generated catch block
+			// TODO Afficher message
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			// TODO Afficher message
 			e.printStackTrace();
 		}
-		System.out.println("Le fils d'execution parallele est terminé");
 		return null;
 	}
 
