@@ -1,3 +1,4 @@
+package lab01;
 /******************************************************
 	Cours:  LOG121
 	Projet: Squelette du laboratoire #1
