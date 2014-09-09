@@ -1,14 +1,15 @@
 package lab01;
+
 /******************************************************
-Cours:  LOG121
-Projet: Squelette du laboratoire #1
-Nom du fichier: CommBase.java
-Date créé: 2013-05-03
+ Cours:  LOG121
+ Projet: Squelette du laboratoire #1
+ Nom du fichier: CommBase.java
+ Date créé: 2013-05-03
  *******************************************************
-Historique des modifications
+ Historique des modifications
  *******************************************************
  *@author Patrice Boucher
-2013-05-03 Version initiale
+ 2013-05-03 Version initiale
  *******************************************************/
 
 import java.beans.PropertyChangeListener;
@@ -66,12 +67,14 @@ public class CommBase {
 	protected void creerCommunication(String host, int port) {
 		// Crée un fil d'exécusion parallèle au fil courant,
 		threadComm = new ThreadComm(host, port);
-		if (listener != null)
-			threadComm.addPropertyChangeListener(listener); // La méthode "propertyChange" de ApplicationFormes sera
-															// donc appelée lorsque le SwinkWorker invoquera la méthode
-															// "firePropertyChanger"
-		threadComm.execute(); // Lance le fil d'exécution parallèle.
-		isActif = true;
+		if (listener != null) {
+			// La méthode "propertyChange" de ApplicationFormes sera
+			// donc appelée lorsque le SwinkWorker invoquera la méthode
+			// "firePropertyChanger"
+			threadComm.addPropertyChangeListener(listener);
+			threadComm.execute(); // Lance le fil d'exécution parallèle.
+			isActif = true;
+		}
 	}
 
 	/**
