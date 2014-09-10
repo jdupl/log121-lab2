@@ -1,4 +1,5 @@
 package lab01;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -36,12 +37,15 @@ public class ThreadComm extends SwingWorker<Forme, Object> {
 			while (!this.isCancelled()) {
 				// Lire prompt ( 'commande>' )
 				in.readLine();
+				// TODO ? regarder si la bonne ligne
 				out.write("GET\n");
 				out.flush();
-				// Lire forme
+				// Lire la forme en tant que String
 				String strForme = in.readLine();
 				Forme forme = FormeFactory.lireString(strForme);
+				// Alerter l'autre classe d'une nouvelle forme
 				firePropertyChange("FORME", null, forme);
+				// Attente avant la prochaine requête au serveur
 				Thread.sleep(DELAI);
 			}
 			out.write("END\n");
