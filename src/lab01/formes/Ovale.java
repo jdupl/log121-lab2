@@ -10,8 +10,8 @@ public class Ovale extends Forme {
 
 	@Override
 	public void dessiner(Graphics g) {
-		// TODO Auto-generated method stub
-
+		g.setColor(getCouleur());
+		g.drawOval(dims[0], dims[1], dims[2], dims[3]);
 	}
 
 }

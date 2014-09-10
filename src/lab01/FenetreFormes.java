@@ -1,19 +1,23 @@
 package lab01;
+
 /******************************************************
-Cours:  LOG121
-Projet: Squelette du laboratoire #1
-Nom du fichier: FenetreFormes.java
-Date créé: 2013-05-03
+ Cours:  LOG121
+ Projet: Squelette du laboratoire #1
+ Nom du fichier: FenetreFormes.java
+ Date créé: 2013-05-03
  *******************************************************
-Historique des modifications
+ Historique des modifications
  *******************************************************
  *@author Patrice Boucher
-2013-05-03 Version initiale
+ 2013-05-03 Version initiale
  *******************************************************/
 
 import java.awt.Dimension;
 import java.awt.Graphics;
+
 import javax.swing.JComponent;
+
+import lab01.formes.Forme;
 
 /**
  * Cette fenêtre gère l'affichage des formes
@@ -28,20 +32,31 @@ public class FenetreFormes extends JComponent {
 	public static final int HEIGHT = 500;
 	public static final Dimension dimension = new Dimension(500, 500);
 
+	private static final int nbFormes = 10;
+
+	FormeListe listeDeFormes = null;
+
 	/**
 	 * Constructeur
 	 */
 	public FenetreFormes() {
-		// ...
+		listeDeFormes = new FormeListe(nbFormes);
 	}
 
-	/*
-	 * Affiche la liste de formes
-	 */
 	@Override
 	public void paintComponent(Graphics g) {
-		// Testing...
-		g.drawOval(45, 45, 355, 355);
+		for (int i = 0; i < listeDeFormes.getListeDeFormes().length; i++) {
+			Forme f = listeDeFormes.getListeDeFormes()[i];
+			if (f != null) {
+				f.dessiner(g);
+			}
+		}
+	}
+
+	public void ajouterForme(Forme forme) {
+		Forme[] tmp = listeDeFormes.ajouter(forme);
+		listeDeFormes.setListeDeFormes(tmp);
+		repaint();
 	}
 
 	/*
