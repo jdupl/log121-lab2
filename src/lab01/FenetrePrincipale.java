@@ -52,10 +52,8 @@ public class FenetrePrincipale extends JFrame implements PropertyChangeListener 
 	public void propertyChange(PropertyChangeEvent arg0) {
 		// properties old value is the one to remove
 		if (arg0.getPropertyName().equals("FORME")) {
-//			fenetreFormes.getGraphics().clearRect(0, 0, getWidth(), getHeight());
 			fenetreFormes.ajouterForme((Forme) arg0.getNewValue());
-			fenetreFormes.paint(getGraphics());
+			fenetreFormes.repaint();
 		}
-		// this.fenetreFormes.paintComponents();
 	}
 }

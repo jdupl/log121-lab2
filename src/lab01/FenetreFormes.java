@@ -43,16 +43,26 @@ public class FenetreFormes extends JComponent {
 		listeDeFormes = new FormeListe(nbFormes);
 	}
 
+	/**
+	 * Redessine toutes les formes non nulles présentes dans la liste
+	 */
 	@Override
-	public void paintComponent(Graphics g) {
+	public void paint(Graphics g) {
 		for (int i = 0; i < listeDeFormes.getListeDeFormes().length; i++) {
 			Forme f = listeDeFormes.getListeDeFormes()[i];
 			if (f != null) {
 				f.dessiner(g);
 			}
 		}
-	}
+	};
 
+	/**
+	 * Ajoute une forme à la liste et libère le plus ancien élément. Va appeler repaint() pour tout redessiner le
+	 * composant.
+	 * 
+	 * @param forme
+	 *            La nouvelle forme à insérer
+	 */
 	public void ajouterForme(Forme forme) {
 		Forme[] tmp = listeDeFormes.ajouter(forme);
 		listeDeFormes.setListeDeFormes(tmp);
