@@ -58,15 +58,14 @@ public class ThreadComm extends SwingWorker<Forme, Object> {
 		} catch (ConnectException e) {
 			firePropertyChange("ERREUR", null,
 					String.format("L'hôte '%s' refuse la connexion sur le port %d.", host, port));
-		} catch (InterruptedIOException e) {
-			firePropertyChange("ERREUR", null, String.format("L'hôte '%s' a fermé la connexion", host));
 		} catch (IOException e) {
-			e.printStackTrace();
 			firePropertyChange("ERREUR", null, String.format("Problème io"));
 		} catch (InterruptedException e) {
 			e.printStackTrace();
+		} catch (NullPointerException e) {
+			// Si le serveur ferme une String null sera traité et l'exception va remonter ici.
+			firePropertyChange("ERREUR", null, String.format("Le serveur '%s' a fermé la connexion.", host));
 		}
-		System.err.println("exit");
 		return null;
 	}
 
