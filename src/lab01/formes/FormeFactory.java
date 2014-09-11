@@ -31,7 +31,7 @@ public class FormeFactory {
 		SousForme sousForme = SousForme.getFromString(typeStr);
 		// Convertir les dimensions de String à un tableau de String
 		String[] dimsStr = dimensionsStr.split(" ");
-		// Convertirle tableau de dimensions de String en int
+		// Convertir le tableau de dimensions de String en int
 		int[] listeDims = new int[4];
 		if (dimsStr.length == 4 || (dimsStr.length == 3 && sousForme == SousForme.CERCLE)) {
 			for (int i = 0; i < dimsStr.length; i++) {
@@ -47,9 +47,11 @@ public class FormeFactory {
 
 		Forme f = null;
 		switch (sousForme) {
+		case LIGNE:
+			f = new Ligne(listeDims, id);
+			break;
 		case CARRE:
 		case RECTANGLE:
-		case LIGNE:
 			f = new Rectangle(sousForme, listeDims, id);
 			break;
 		case CERCLE:
