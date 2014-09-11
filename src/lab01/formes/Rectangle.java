@@ -11,7 +11,9 @@ public class Rectangle extends Forme {
 	@Override
 	public void dessiner(Graphics g) {
 		g.setColor(getCouleur());
-		g.drawRect(dims[0], dims[1], dims[2], dims[3]);
+		int deltaX = dims[2] - dims[0] ;
+		int deltaY = dims[3] - dims[1];
+		g.drawRect(dims[0], dims[1], deltaX, deltaY);
 	}
 
 }
