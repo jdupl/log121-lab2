@@ -44,7 +44,7 @@ public class FenetreFormes extends JComponent {
 	}
 
 	/**
-	 * Redessine toutes les formes non nulles présentes dans la liste
+	 * Redessine le composant soit toutes les formes non nulles présentes dans la liste
 	 */
 	@Override
 	public void paint(Graphics g) {

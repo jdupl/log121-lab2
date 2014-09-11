@@ -4,7 +4,9 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.InterruptedIOException;
 import java.io.OutputStreamWriter;
+import java.net.ConnectException;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
@@ -27,10 +29,11 @@ public class ThreadComm extends SwingWorker<Forme, Object> {
 	}
 
 	@Override
-	protected Forme doInBackground() throws Exception {
+	protected Forme doInBackground() {
 		// C'EST DANS CETTE BOUCLE QU'ON COMMUNIQUE AVEC LE SERVEUR
 		InetSocketAddress addr = new InetSocketAddress(host, port);
 		try (Socket s = new Socket()) {
+			s.setSoTimeout(1000);
 			s.connect(addr);
 			BufferedWriter out = new BufferedWriter(new OutputStreamWriter(s.getOutputStream()));
 			BufferedReader in = new BufferedReader(new InputStreamReader(s.getInputStream()));
@@ -51,12 +54,19 @@ public class ThreadComm extends SwingWorker<Forme, Object> {
 			out.write("END\n");
 			out.flush();
 		} catch (UnknownHostException e) {
-			// TODO Afficher message
-			e.printStackTrace();
+			firePropertyChange("ERREUR", null, String.format("L'hôte '%s' n'est pas trouvé sur le réseau.", host));
+		} catch (ConnectException e) {
+			firePropertyChange("ERREUR", null,
+					String.format("L'hôte '%s' refuse la connexion sur le port %d.", host, port));
+		} catch (InterruptedIOException e) {
+			firePropertyChange("ERREUR", null, String.format("L'hôte '%s' a fermé la connexion", host));
 		} catch (IOException e) {
-			// TODO Afficher message
+			e.printStackTrace();
+			firePropertyChange("ERREUR", null, String.format("Problème io"));
+		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+		System.err.println("exit");
 		return null;
 	}
 

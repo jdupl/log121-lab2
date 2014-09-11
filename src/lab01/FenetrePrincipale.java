@@ -17,6 +17,7 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import lab01.formes.Forme;
 
@@ -50,10 +51,17 @@ public class FenetrePrincipale extends JFrame implements PropertyChangeListener 
 	// Appelé lorsque le sujet lance "firePropertyChanger"
 	@Override
 	public void propertyChange(PropertyChangeEvent arg0) {
-		// properties old value is the one to remove
-		if (arg0.getPropertyName().equals("FORME")) {
+		String propriete = arg0.getPropertyName();
+		switch (propriete) {
+		case "FORME":
 			fenetreFormes.ajouterForme((Forme) arg0.getNewValue());
 			fenetreFormes.repaint();
+			break;
+		case "ERREUR":
+			JOptionPane.showMessageDialog(null, arg0.getNewValue());
+			break;
+		default:
+			break;
 		}
 	}
 }
