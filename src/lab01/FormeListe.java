@@ -4,10 +4,11 @@ import lab01.formes.Forme;
 
 public class FormeListe {
 
-	private int nbFormes = 10;
+	private int nbFormes;
 	private Forme[] listeDeFormes = null;
 
 	public FormeListe(int nbFormes) {
+		this.nbFormes = nbFormes;
 		listeDeFormes = new Forme[nbFormes];
 	}
 
@@ -34,6 +35,5 @@ public class FormeListe {
 	public void setListeDeFormes(Forme[] listeDeFormes) {
 		this.listeDeFormes = listeDeFormes;
 	}
-	
-	
+
 }

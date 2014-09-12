@@ -1,7 +1,6 @@
 package lab01.formes;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import lab01.Decortiqueur;
 
 public class FormeFactory {
 
@@ -15,48 +14,27 @@ public class FormeFactory {
 	 *             Exception lancée si la ligne reçue n'est pas conforme avec les formes disponibles.
 	 */
 	public static Forme lireString(String string) throws IllegalArgumentException {
-		// Regex pour trouver les informations relatives à la forme
-		Pattern p = Pattern.compile("^([0-9]+)\\s+<([A-Z]+)>\\s*(([0-9]+\\s*){3,4})</[A-Z]+>$");
-		Matcher m = p.matcher(string);
-		if (!m.find()) {
-			throw new IllegalArgumentException("La ligne n'est pas reconnue comme étant une forme.");
-		}
-		String idStr = m.group(1);
-		String typeStr = m.group(2);
-		String dimensionsStr = m.group(3);
-
-		// Convertir les arguements de String en leur bon types
-		Long id = Long.parseLong(idStr);
-		// retrouver la sous-forme en tant qu'enum1
-		SousForme sousForme = SousForme.getFromString(typeStr);
-		// Convertir les dimensions de String à un tableau de String
-		String[] dimsStr = dimensionsStr.split(" ");
-		// Convertir le tableau de dimensions de String en int
-		int[] listeDims = new int[4];
-		if (dimsStr.length == 4 || (dimsStr.length == 3 && sousForme == SousForme.CERCLE)) {
-			for (int i = 0; i < dimsStr.length; i++) {
-				listeDims[i] = Integer.parseInt(dimsStr[i]);
-			}
-			// Les deux rayons sont égaux pour un cercle
-			if (sousForme == SousForme.CERCLE) {
-				listeDims[3] = listeDims[2];
-			}
-		} else {
-			throw new IllegalArgumentException("Les dimensions de la forme ne font pas de sens.");
-		}
-
+		Decortiqueur decortiqueur = new Decortiqueur(string);
 		Forme f = null;
-		switch (sousForme) {
+		switch (decortiqueur.getForme()) {
 		case LIGNE:
-			f = new Ligne(listeDims, id);
+			f = new Ligne(decortiqueur.getDimensions(), decortiqueur.getNoSeq());
 			break;
 		case CARRE:
 		case RECTANGLE:
-			f = new Rectangle(sousForme, listeDims, id);
+			f = new Rectangle(decortiqueur.getForme(), decortiqueur.getDimensions(), decortiqueur.getNoSeq());
 			break;
 		case CERCLE:
+			// Logique qui permet d'attribuer le rayon d'un cercle aux rayons d'un ovale
+			int[] fix = new int[4];
+			for (int i = 0; i < decortiqueur.getDimensions().length; i++) {
+				fix[i] = decortiqueur.getDimensions()[i];
+			}
+			fix[3] = fix[2];
+			f = new Ovale(decortiqueur.getForme(), fix, decortiqueur.getNoSeq());
+			break;
 		case OVALE:
-			f = new Ovale(sousForme, listeDims, id);
+			f = new Ovale(decortiqueur.getForme(), decortiqueur.getDimensions(), decortiqueur.getNoSeq());
 			break;
 		default:
 			break;

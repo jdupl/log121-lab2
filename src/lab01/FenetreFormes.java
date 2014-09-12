@@ -31,8 +31,7 @@ public class FenetreFormes extends JComponent {
 	public static final int WIDTH = 500;
 	public static final int HEIGHT = 500;
 	public static final Dimension dimension = new Dimension(500, 500);
-
-	private static final int nbFormes = 10;
+	private static final int NB_FORMES = 10;
 
 	FormeListe listeDeFormes = null;
 
@@ -40,7 +39,7 @@ public class FenetreFormes extends JComponent {
 	 * Constructeur
 	 */
 	public FenetreFormes() {
-		listeDeFormes = new FormeListe(nbFormes);
+		listeDeFormes = new FormeListe(NB_FORMES);
 	}
 
 	/**
