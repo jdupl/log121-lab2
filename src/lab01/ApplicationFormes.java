@@ -38,7 +38,7 @@ public class ApplicationFormes {
 	public ApplicationFormes() {
 		final CommBase comm = new CommBase("localhost", 10000);
 		FenetrePrincipale fenetre = new FenetrePrincipale(comm);
-		// Implémenter une listener qui va toujouts fermer la communication lorsque la fenêtre principale ferme.
+		// Implémente un listener qui va toujours fermer la communication lorsque la fenêtre principale ferme.
 		fenetre.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
