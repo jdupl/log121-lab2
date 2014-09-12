@@ -1,19 +1,22 @@
 package lab01;
+
 /******************************************************
-Cours:  LOG121
-Projet: Squelette du laboratoire #1
-Nom du fichier: MenuFenetre.java
-Date créé: 2013-05-03
+ Cours:  LOG121
+ Projet: Squelette du laboratoire #1
+ Nom du fichier: MenuFenetre.java
+ Date créé: 2013-05-03
  *******************************************************
-Historique des modifications
+ Historique des modifications
  *******************************************************
  *@author Patrice Boucher
-2013-05-03 Version initiale
+ 2013-05-03 Version initiale
  *******************************************************/
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.net.InetSocketAddress;
+
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -62,7 +65,14 @@ public class MenuFenetre extends JMenuBar {
 		demarrerMenuItem = menu.getItem(0);
 		demarrerMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				comm.start();
+				String entreeUtilisateur = JOptionPane.showInputDialog(
+						"Quel est le nom d'hôte et le port du serveur de formes.", "localhost:10000");
+				try {
+					InetSocketAddress adresse = DecortiqueurAdresse.decortiquerAdresseReseau(entreeUtilisateur);
+					comm.start(adresse);
+				} catch (IllegalArgumentException e) {
+					JOptionPane.showMessageDialog(null, e.getMessage(), "Adresse invalide", JOptionPane.ERROR_MESSAGE);
+				}
 				rafraichirMenus();
 			}
 		});

@@ -13,6 +13,7 @@ package lab01;
  *******************************************************/
 
 import java.beans.PropertyChangeListener;
+import java.net.InetSocketAddress;
 
 import javax.swing.SwingWorker;
 
@@ -24,15 +25,11 @@ public class CommBase {
 	private SwingWorker threadComm = null;
 	private PropertyChangeListener listener = null;
 	private boolean isActif = false;
-	private String host;
-	private int port;
 
 	/**
 	 * Constructeur
 	 */
-	public CommBase(String host, int port) {
-		this.host = host;
-		this.port = port;
+	public CommBase() {
 	}
 
 	/**
@@ -47,10 +44,12 @@ public class CommBase {
 
 	/**
 	 * Démarre la communication
+	 * 
+	 * @param adresse
 	 */
-	public void start() {
+	public void start(InetSocketAddress adresse) {
 		isActif = true;
-		creerCommunication(host, port);
+		creerCommunication(adresse);
 	}
 
 	/**
@@ -58,7 +57,6 @@ public class CommBase {
 	 */
 	public void stop() {
 		if (threadComm != null) {
-			System.out.println("tryiung");
 			threadComm.cancel(true);
 		}
 		isActif = false;
@@ -67,9 +65,9 @@ public class CommBase {
 	/**
 	 * Créer le nécessaire pour la communication avec le serveur
 	 */
-	protected void creerCommunication(String host, int port) {
+	protected void creerCommunication(InetSocketAddress adresse) {
 		// Crée un fil d'exécusion parallèle au fil courant,
-		threadComm = new ThreadComm(host, port);
+		threadComm = new ThreadComm(adresse);
 		isActif = true;
 		if (listener != null) {
 			// La méthode "propertyChange" de ApplicationFormes sera

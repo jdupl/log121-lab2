@@ -13,9 +13,6 @@ package lab01;
  *******************************************************/
 
 import java.awt.BorderLayout;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
@@ -33,7 +30,6 @@ import lab01.formes.Forme;
 public class FenetrePrincipale extends JFrame implements PropertyChangeListener {
 
 	private static final long serialVersionUID = -1210804336046370508L;
-
 	private final static FenetreFormes fenetreFormes = new FenetreFormes();
 
 	/**
@@ -57,7 +53,6 @@ public class FenetrePrincipale extends JFrame implements PropertyChangeListener 
 		switch (propriete) {
 		case "FORME":
 			fenetreFormes.ajouterForme((Forme) event.getNewValue());
-			fenetreFormes.repaint();
 			break;
 		case "ERREUR":
 			JOptionPane.showMessageDialog(null, event.getNewValue());

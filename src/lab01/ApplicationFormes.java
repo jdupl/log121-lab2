@@ -36,7 +36,7 @@ public class ApplicationFormes {
 	 * Constructeur
 	 */
 	public ApplicationFormes() {
-		final CommBase comm = new CommBase("localhost", 10000);
+		final CommBase comm = new CommBase();
 		FenetrePrincipale fenetre = new FenetrePrincipale(comm);
 		// Implémente un listener qui va toujours fermer la communication lorsque la fenêtre principale ferme.
 		fenetre.addWindowListener(new WindowAdapter() {
