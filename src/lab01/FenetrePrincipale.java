@@ -13,6 +13,9 @@ package lab01;
  *******************************************************/
 
 import java.awt.BorderLayout;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
@@ -45,20 +48,19 @@ public class FenetrePrincipale extends JFrame implements PropertyChangeListener 
 		this.pack(); // Ajuste la dimension de la fenêtre principale selon celle de ses composants
 		this.setVisible(true); // Rend la fenêtre principale visible.
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // à réviser selon le comportement que vous désirez TODO
-
 	}
 
 	// Appelé lorsque le sujet lance "firePropertyChanger"
 	@Override
-	public void propertyChange(PropertyChangeEvent arg0) {
-		String propriete = arg0.getPropertyName();
+	public void propertyChange(PropertyChangeEvent event) {
+		String propriete = event.getPropertyName();
 		switch (propriete) {
 		case "FORME":
-			fenetreFormes.ajouterForme((Forme) arg0.getNewValue());
+			fenetreFormes.ajouterForme((Forme) event.getNewValue());
 			fenetreFormes.repaint();
 			break;
 		case "ERREUR":
-			JOptionPane.showMessageDialog(null, arg0.getNewValue());
+			JOptionPane.showMessageDialog(null, event.getNewValue());
 			break;
 		default:
 			break;

@@ -28,7 +28,6 @@ public class ThreadComm extends SwingWorker<Forme, Object> {
 
 	@Override
 	protected Forme doInBackground() {
-		// C'EST DANS CETTE BOUCLE QU'ON COMMUNIQUE AVEC LE SERVEUR
 		InetSocketAddress addr = new InetSocketAddress(host, port);
 		try (Socket s = new Socket()) {
 			s.setSoTimeout(1000);
@@ -36,21 +35,25 @@ public class ThreadComm extends SwingWorker<Forme, Object> {
 			BufferedWriter out = new BufferedWriter(new OutputStreamWriter(s.getOutputStream()));
 			BufferedReader in = new BufferedReader(new InputStreamReader(s.getInputStream()));
 			while (!this.isCancelled()) {
-				// Lire prompt ( 'commande>' )
-				in.readLine();
-				// TODO ? regarder si la bonne ligne
-				out.write("GET\n");
-				out.flush();
-				// Lire la forme en tant que String
-				String strForme = in.readLine();
-				Forme forme = FormeFactory.lireString(strForme);
-				// Alerter l'autre classe d'une nouvelle forme
-				firePropertyChange("FORME", null, forme);
-				// Attente avant la prochaine requête au serveur
-				Thread.sleep(DELAI);
+				try {
+					// Lire prompt ( 'commande>' )
+					in.readLine();
+					// TODO ? regarder si la bonne ligne
+					out.write("GET\n");
+					out.flush();
+					// Lire la forme en tant que String
+					String strForme = in.readLine();
+					Forme forme = FormeFactory.lireString(strForme);
+					// Alerter l'autre classe d'une nouvelle forme
+					firePropertyChange("FORME", null, forme);
+					// Attente avant la prochaine requête au serveur
+					Thread.sleep(DELAI);
+				} catch (InterruptedException e) {
+					// Gérer l'interrpution du listener de l'arrêt
+					out.write("END\n");
+					out.flush();
+				}
 			}
-			out.write("END\n");
-			out.flush();
 		} catch (UnknownHostException e) {
 			firePropertyChange("ERREUR", null, String.format("L'hôte '%s' n'est pas trouvé sur le réseau.", host));
 		} catch (ConnectException e) {
@@ -58,8 +61,6 @@ public class ThreadComm extends SwingWorker<Forme, Object> {
 					String.format("L'hôte '%s' refuse la connexion sur le port %d.", host, port));
 		} catch (IOException e) {
 			firePropertyChange("ERREUR", null, String.format("Problème io"));
-		} catch (InterruptedException e) {
-			e.printStackTrace();
 		} catch (NullPointerException e) {
 			// Si le serveur ferme une String null sera traité et l'exception va remonter ici.
 			firePropertyChange("ERREUR", null, String.format("Le serveur '%s' a fermé la connexion.", host));

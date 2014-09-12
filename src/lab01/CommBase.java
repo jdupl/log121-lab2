@@ -49,6 +49,7 @@ public class CommBase {
 	 * Démarre la communication
 	 */
 	public void start() {
+		isActif = true;
 		creerCommunication(host, port);
 	}
 
@@ -56,8 +57,10 @@ public class CommBase {
 	 * Arrête la communication
 	 */
 	public void stop() {
-		if (threadComm != null)
-			threadComm.cancel(false);
+		if (threadComm != null) {
+			System.out.println("tryiung");
+			threadComm.cancel(true);
+		}
 		isActif = false;
 	}
 
@@ -67,13 +70,13 @@ public class CommBase {
 	protected void creerCommunication(String host, int port) {
 		// Crée un fil d'exécusion parallèle au fil courant,
 		threadComm = new ThreadComm(host, port);
+		isActif = true;
 		if (listener != null) {
 			// La méthode "propertyChange" de ApplicationFormes sera
 			// donc appelée lorsque le SwinkWorker invoquera la méthode
 			// "firePropertyChanger"
 			threadComm.addPropertyChangeListener(listener);
 			threadComm.execute(); // Lance le fil d'exécution parallèle.
-			isActif = true;
 		}
 	}
 

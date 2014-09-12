@@ -1,14 +1,18 @@
 package lab01;
+
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
 /******************************************************
-	Cours:  LOG121
-	Projet: Squelette du laboratoire #1
-	Nom du fichier: ApplicationFormes.java
-	Date créé: 2013-05-03
+ Cours:  LOG121
+ Projet: Squelette du laboratoire #1
+ Nom du fichier: ApplicationFormes.java
+ Date créé: 2013-05-03
  *******************************************************
-	Historique des modifications
+ Historique des modifications
  *******************************************************
  *@author Patrice Boucher
-	2013-05-03 Version initiale
+ 2013-05-03 Version initiale
  *******************************************************/
 
 /**
@@ -32,8 +36,17 @@ public class ApplicationFormes {
 	 * Constructeur
 	 */
 	public ApplicationFormes() {
-		CommBase comm = new CommBase("localhost", 10000);
+		final CommBase comm = new CommBase("localhost", 10000);
 		FenetrePrincipale fenetre = new FenetrePrincipale(comm);
+		// Implémenter une listener qui va toujouts fermer la communication lorsque la fenêtre principale ferme.
+		fenetre.addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				if (comm.isActif()) {
+					comm.stop();
+				}
+			}
+		});
 		comm.setPropertyChangeListener(fenetre);
 	}
 }
