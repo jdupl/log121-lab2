@@ -3,7 +3,6 @@ package lab01;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import lab01.formes.FormeFactory;
 import lab01.formes.SousForme;
 
 public class Decortiqueur {

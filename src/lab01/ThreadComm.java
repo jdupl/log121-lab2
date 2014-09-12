@@ -13,7 +13,6 @@ import java.net.UnknownHostException;
 import javax.swing.SwingWorker;
 
 import lab01.formes.Forme;
-import lab01.formes.FormeFactory;
 
 public class ThreadComm extends SwingWorker<Forme, Object> {
 

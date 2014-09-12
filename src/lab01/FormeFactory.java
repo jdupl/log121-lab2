@@ -1,6 +1,9 @@
-package lab01.formes;
+package lab01;
 
-import lab01.Decortiqueur;
+import lab01.formes.Forme;
+import lab01.formes.Ligne;
+import lab01.formes.Ovale;
+import lab01.formes.Rectangle;
 
 public class FormeFactory {
 
