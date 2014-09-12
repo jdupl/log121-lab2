@@ -3,6 +3,7 @@ package lab01;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import lab01.formes.FormeFactory;
 import lab01.formes.SousForme;
 
 public class Decortiqueur {
@@ -16,7 +17,7 @@ public class Decortiqueur {
 		Pattern p = Pattern.compile("^([0-9]+)\\s+<([A-Z]+)>\\s*(([0-9]+\\s*){3,4})</[A-Z]+>$");
 		Matcher m = p.matcher(string);
 		if (!m.find()) {
-			throw new IllegalArgumentException("La ligne n'est pas reconnue comme étant une forme.");
+			throw new IllegalArgumentException(FormeFactory.ERREUR_FORME);
 		}
 		String noStr = m.group(1);
 		String typeStr = m.group(2);
