@@ -11,7 +11,7 @@ public class Ovale extends Forme {
 	@Override
 	public void dessiner(Graphics g) {
 		g.setColor(getCouleur());
-		g.drawOval(dims[0], dims[1], dims[2], dims[3]);
+		g.fillOval(dims[0], dims[1], dims[2], dims[3]);
 	}
 
 }

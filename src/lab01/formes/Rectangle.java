@@ -13,7 +13,7 @@ public class Rectangle extends Forme {
 		g.setColor(getCouleur());
 		int deltaX = dims[2] - dims[0] ;
 		int deltaY = dims[3] - dims[1];
-		g.drawRect(dims[0], dims[1], deltaX, deltaY);
+		g.fillRect(dims[0], dims[1], deltaX, deltaY);
 	}
 
 }
