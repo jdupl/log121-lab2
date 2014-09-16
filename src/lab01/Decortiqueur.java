@@ -7,7 +7,7 @@ import lab01.formes.SousForme;
 
 public class Decortiqueur {
 
-	private long noSeq;
+	private int noSeq;
 	private SousForme forme;
 	private int[] dimensions;
 
@@ -23,7 +23,7 @@ public class Decortiqueur {
 		String dimensionsStr = m.group(3);
 
 		// Convertir les arguements de String en leur bon types
-		noSeq = Long.parseLong(noStr);
+		noSeq = Integer.parseInt(noStr);
 		// Retrouver la sous-forme en tant qu'enum
 		forme = SousForme.getFromString(typeStr);
 		// Convertir les dimensions de String à un tableau de String
@@ -35,7 +35,7 @@ public class Decortiqueur {
 		}
 	}
 
-	public long getNoSeq() {
+	public int getNoSeq() {
 		return noSeq;
 	}
 

@@ -4,7 +4,7 @@ import java.awt.Graphics;
 
 public class Rectangle extends Forme {
 
-	public Rectangle(SousForme sousForme, int[] dims, long id) {
+	public Rectangle(SousForme sousForme, int[] dims, int id) {
 		super(sousForme, dims, id);
 	}
 

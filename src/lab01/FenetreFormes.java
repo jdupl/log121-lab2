@@ -19,6 +19,8 @@ import javax.swing.JComponent;
 
 import lab01.formes.Forme;
 
+import ca.etsmtl.log.util.IDLogger;
+
 /**
  * Cette fenêtre gère l'affichage des formes
  * 
@@ -32,6 +34,8 @@ public class FenetreFormes extends JComponent {
 	public static final int HEIGHT = 500;
 	public static final Dimension dimension = new Dimension(500, 500);
 	private static final int NB_FORMES = 10;
+
+	IDLogger logger = IDLogger.getInstance(); // Méthode statique
 
 	FormeListe listeDeFormes = null;
 
@@ -66,6 +70,7 @@ public class FenetreFormes extends JComponent {
 		Forme[] tmp = listeDeFormes.ajouter(forme);
 		listeDeFormes.setListeDeFormes(tmp);
 		repaint();
+		logger.logID(forme.getId());
 	}
 
 	/*

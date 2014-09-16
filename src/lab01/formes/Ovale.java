@@ -4,7 +4,7 @@ import java.awt.Graphics;
 
 public class Ovale extends Forme {
 
-	public Ovale(SousForme sousForme, int[] dims, long id) {
+	public Ovale(SousForme sousForme, int[] dims, int id) {
 		super(sousForme, dims, id);
 	}
 

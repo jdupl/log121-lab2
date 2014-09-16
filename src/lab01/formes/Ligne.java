@@ -4,7 +4,7 @@ import java.awt.Graphics;
 
 public class Ligne extends Forme {
 
-	public Ligne(int[] dims, long id) {
+	public Ligne(int[] dims, int id) {
 		super(SousForme.LIGNE, dims, id);
 	}
 

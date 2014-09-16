@@ -6,11 +6,11 @@ import java.util.Arrays;
 
 public abstract class Forme {
 
-	protected long id;
+	protected int id;
 	protected SousForme sousForme;
 	protected int[] dims;
 
-	public Forme(SousForme sousForme, int[] dims, long id) {
+	public Forme(SousForme sousForme, int[] dims, int id) {
 		this.sousForme = sousForme;
 		this.dims = dims;
 		this.id = id;
@@ -20,6 +20,10 @@ public abstract class Forme {
 
 	protected Color getCouleur() {
 		return sousForme.couleur;
+	}
+
+	public int getId() {
+		return id;
 	}
 
 	@Override
