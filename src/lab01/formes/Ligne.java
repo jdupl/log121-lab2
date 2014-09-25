@@ -9,8 +9,7 @@ public class Ligne extends Forme {
 	}
 
 	@Override
-	public void dessiner(Graphics g) {
-		g.setColor(getCouleur());
+	public void dessinerForme(Graphics g) {
 		g.drawLine(dims[0], dims[1], dims[2], dims[3]);
 	}
 

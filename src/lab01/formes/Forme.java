@@ -16,7 +16,12 @@ public abstract class Forme {
 		this.id = id;
 	}
 
-	public abstract void dessiner(Graphics g);
+	public void dessiner(Graphics g) {
+		g.setColor(getCouleur());
+		dessinerForme(g);
+	}
+
+	protected abstract void dessinerForme(Graphics g);
 
 	protected Color getCouleur() {
 		return sousForme.couleur;
