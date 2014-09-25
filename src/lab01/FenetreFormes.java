@@ -2,7 +2,7 @@ package lab01;
 
 /******************************************************
  Cours:  LOG121
- Projet: Squelette du laboratoire #1
+ Projet: Lab01
  Nom du fichier: FenetreFormes.java
  Date créé: 2013-05-03
  *******************************************************
@@ -10,6 +10,8 @@ package lab01;
  *******************************************************
  *@author Patrice Boucher
  2013-05-03 Version initiale
+ *@author Justin Duplessis
+ 2014-09-09 Implémentation
  *******************************************************/
 
 import java.awt.Dimension;
@@ -24,8 +26,6 @@ import ca.etsmtl.log.util.IDLogger;
 /**
  * Cette fenêtre gère l'affichage des formes
  * 
- * @author Patrice Boucher
- * @date 2013/05/04
  */
 public class FenetreFormes extends JComponent {
 
@@ -35,8 +35,13 @@ public class FenetreFormes extends JComponent {
 	public static final Dimension dimension = new Dimension(500, 500);
 	private static final int NB_FORMES = 10;
 
-	IDLogger logger = IDLogger.getInstance(); // Méthode statique
-
+	/**
+	 * Instance du logger qui permet de conserver les numéros de séquences dans un fichier.
+	 */
+	IDLogger logger = IDLogger.getInstance();
+	/**
+	 * Liste des formes à afficher
+	 */
 	FormeListe listeDeFormes = null;
 
 	/**
@@ -61,19 +66,18 @@ public class FenetreFormes extends JComponent {
 
 	/**
 	 * Ajoute une forme à la liste et libère le plus ancien élément. Va appeler repaint() pour tout redessiner le
-	 * composant.
+	 * composant. S'occupe aussi d'envoyer le numéro de séquence à la classe de logging.
 	 * 
 	 * @param forme
 	 *            La nouvelle forme à insérer
 	 */
 	public void ajouterForme(Forme forme) {
-		Forme[] tmp = listeDeFormes.ajouter(forme);
-		listeDeFormes.setListeDeFormes(tmp);
-		repaint();
+		listeDeFormes.ajouter(forme);
 		logger.logID(forme.getId());
+		repaint();
 	}
 
-	/*
+	/**
 	 * Le Layout qui utilise (contient) FenetreFormes doit réserver l'espace nécessaire à son affichage
 	 */
 	@Override

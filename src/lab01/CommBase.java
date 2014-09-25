@@ -2,7 +2,7 @@ package lab01;
 
 /******************************************************
  Cours:  LOG121
- Projet: Squelette du laboratoire #1
+ Projet: Lab01
  Nom du fichier: CommBase.java
  Date créé: 2013-05-03
  *******************************************************
@@ -10,6 +10,8 @@ package lab01;
  *******************************************************
  *@author Patrice Boucher
  2013-05-03 Version initiale
+ *@author Justin Duplessis
+ 2014-09-09 Déplacer le SwingWorker à l'extérieur de cette classe
  *******************************************************/
 
 import java.beans.PropertyChangeListener;

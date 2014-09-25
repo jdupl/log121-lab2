@@ -5,7 +5,7 @@ import java.awt.event.WindowEvent;
 
 /******************************************************
  Cours:  LOG121
- Projet: Squelette du laboratoire #1
+ Projet: Lab01
  Nom du fichier: ApplicationFormes.java
  Date créé: 2013-05-03
  *******************************************************
@@ -13,6 +13,8 @@ import java.awt.event.WindowEvent;
  *******************************************************
  *@author Patrice Boucher
  2013-05-03 Version initiale
+ *@author Justin Duplessis
+ 2014-09-09 Implémentation de la fermeture du worker avant de quitter
  *******************************************************/
 
 /**

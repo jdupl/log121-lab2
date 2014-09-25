@@ -1,20 +1,42 @@
 package lab01;
 
+/******************************************************
+ Cours:  LOG121
+ Projet: Lab01
+ Nom du fichier: FormeFactory.java
+ Date créé: 2014-09-09
+ *******************************************************
+ Historique des modifications
+ *******************************************************
+ *@author Justin Duplessis
+ 2014-09-09 Version initiale
+ *******************************************************/
+
 import lab01.formes.Forme;
 import lab01.formes.Ligne;
 import lab01.formes.Ovale;
 import lab01.formes.Rectangle;
 
+/**
+ * Instancie une forme selon une chaîne de caractères en appelant la classe Decortiqueur.
+ * 
+ * @author Justin Duplessis
+ *
+ */
 public class FormeFactory {
 
 	public final static String ERREUR_FORME = "La ligne n'est pas reconnue comme étant une forme.";
 
 	/**
-	 * Instancie une forme selon une chaîne de caractères en appelant la classe Decortiqueur.
-	 * 
-	 * @param formeStr
-	 *            La chaîne de caractères du serveur
-	 * @return La forme instanciée
+	 * Crée une nouvelle forme. Cette méthode reçoit la chaîne de caractères provenant du serveur de formes, elle
+	 * détermine de quelle forme il s'agit et applique l'opérateur new sur le constructeur de la forme désirée.
+	 *
+	 * @param chaineForme
+	 *            un objet String contenant la chaîne de caractères qui décrit une forme et provenant du serveur de
+	 *            formes.
+	 *
+	 * @return une instance d'une des sous-classes de la classe abstraite Forme avec les paramètres passés par la chaîne
+	 *         d'entrée.
 	 * @throws IllegalArgumentException
 	 *             Exception lancée si la ligne reçue n'est pas conforme avec les formes disponibles.
 	 */

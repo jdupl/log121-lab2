@@ -2,7 +2,7 @@ package lab01;
 
 /******************************************************
  Cours:  LOG121
- Projet: Squelette du laboratoire #1
+ Projet: Lab01
  Nom du fichier: MenuFenetre.java
  Date créé: 2013-05-03
  *******************************************************
@@ -10,6 +10,8 @@ package lab01;
  *******************************************************
  *@author Patrice Boucher
  2013-05-03 Version initiale
+ *@author Justin Duplessis
+ 2014-09-09 Ajout fenêtre connection
  *******************************************************/
 
 import java.awt.event.ActionEvent;
@@ -44,6 +46,8 @@ public class MenuFenetre extends JMenuBar {
 	private JMenuItem arreterMenuItem, demarrerMenuItem;
 	private static final int DELAI_QUITTER_MSEC = 200;
 
+	private static final String MESSAGE_CONNECTION = "Quel est le nom d'hôte et le port du serveur de formes.";
+
 	CommBase comm; // Pour activer/désactiver la communication avec le serveur
 
 	/**
@@ -65,8 +69,7 @@ public class MenuFenetre extends JMenuBar {
 		demarrerMenuItem = menu.getItem(0);
 		demarrerMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				String entreeUtilisateur = JOptionPane.showInputDialog(
-						"Quel est le nom d'hôte et le port du serveur de formes.", "localhost:10000");
+				String entreeUtilisateur = JOptionPane.showInputDialog(MESSAGE_CONNECTION, "localhost:10000");
 				try {
 					InetSocketAddress adresse = DecortiqueurAdresse.decortiquerAdresseReseau(entreeUtilisateur);
 					comm.start(adresse);
