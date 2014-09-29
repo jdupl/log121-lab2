@@ -16,8 +16,8 @@
     </javac>
   </target>
   <target name="dist" depends="compile" description="generate the distribution" >
-    <mkdir dir="${dist}/lib"/>
-    <jar jarfile="${dist}/lib/log121-lab1-justin-duplessis.jar" basedir="${build}">
+    <mkdir dir="${dist}"/>
+    <jar jarfile="${dist}/log121-lab1-justin-duplessis.jar" basedir="${build}">
     <manifest>
         <attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader"/>
         <attribute name="Rsrc-Main-Class" value="lab01.ApplicationFormes"/>
