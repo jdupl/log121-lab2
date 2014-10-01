@@ -1,4 +1,4 @@
-package lab01;
+package main.lab01;
 
 /******************************************************
  Cours:  LOG121
@@ -21,7 +21,7 @@ import java.beans.PropertyChangeListener;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import lab01.formes.Forme;
+import main.lab01.formes.Forme;
 
 /**
  * Cette classe représente la fenêtre principale de l'application

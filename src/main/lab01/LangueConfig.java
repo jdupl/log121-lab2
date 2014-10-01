@@ -1,4 +1,4 @@
-package lab01;
+package main.lab01;
 /******************************************************
 Cours:  LOG121
 Projet: Squelette du laboratoire #1

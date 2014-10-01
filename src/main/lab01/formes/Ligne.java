@@ -1,9 +1,9 @@
-package lab01.formes;
+package main.lab01.formes;
 
 /******************************************************
  Cours:  LOG121
  Projet: Lab01
- Nom du fichier: Rectangle.java
+ Nom du fichier: Ligne.java
  Date créé: 2014-09-09
  *******************************************************
  Historique des modifications
@@ -14,12 +14,12 @@ package lab01.formes;
 import java.awt.Graphics;
 
 /**
- * Classe qui étend Forme afin de dessiner un rectangle ou un carré.
+ * Classe qui étend Forme afin de dessiner une ligne.
  * 
  * @author Justin Duplessis
  *
  */
-public class Rectangle extends Forme {
+public class Ligne extends Forme {
 
 	/**
 	 * Constructeur
@@ -31,17 +31,13 @@ public class Rectangle extends Forme {
 	 * @param id
 	 *            le numéro de séquence
 	 */
-	public Rectangle(SousForme sousForme, int[] dims, int id) {
-		super(sousForme, dims, id);
+	public Ligne(int[] dims, int id) {
+		super(SousForme.LIGNE, dims, id);
 	}
 
 	@Override
 	public void dessinerForme(Graphics g) {
-		// distance en x
-		int deltaX = dims[2] - dims[0];
-		// distance en Y
-		int deltaY = dims[3] - dims[1];
-		g.fillRect(dims[0], dims[1], deltaX, deltaY);
+		g.drawLine(dims[0], dims[1], dims[2], dims[3]);
 	}
 
 }

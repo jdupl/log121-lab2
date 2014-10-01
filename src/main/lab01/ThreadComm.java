@@ -1,4 +1,4 @@
-package lab01;
+package main.lab01;
 
 /******************************************************
  Cours:  LOG121
@@ -24,7 +24,7 @@ import java.net.UnknownHostException;
 
 import javax.swing.SwingWorker;
 
-import lab01.formes.Forme;
+import main.lab01.formes.Forme;
 
 /**
  * SwingWorker qui demande au serveur de formes de nouvelles formes.
