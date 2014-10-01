@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <project default="dist" name="Create Runnable Jar for Project LOG121-lab1">
     <target name="dist">
+        <mkdir dir="dist"/>
         <jar destfile="dist/lab01.jar" filesetmanifest="mergewithoutmain">
             <manifest>
                 <attribute name="Main-Class" value="lab01.ApplicationFormes"/>
