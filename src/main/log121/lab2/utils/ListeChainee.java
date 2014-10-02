@@ -9,14 +9,8 @@ public class ListeChainee<T> implements Liste<T> {
 	private int taille;
 
 	@Override
-	public boolean ajouter(int indice, T element) {
-		// TODO
-		return false;
-	}
-
-	@Override
 	public boolean ajouterDebut(T element) {
-		// TODO 
+		// TODO
 		return false;
 	}
 
@@ -47,7 +41,7 @@ public class ListeChainee<T> implements Liste<T> {
 
 	@Override
 	public boolean estVide() {
-		return false;
+		return debut == null;
 	}
 
 	@Override
