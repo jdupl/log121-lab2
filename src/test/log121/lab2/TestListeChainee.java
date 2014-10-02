@@ -22,4 +22,17 @@ public class TestListeChainee {
 		Assert.assertNull(liste.obtenirElement(10));
 		Assert.assertNull(liste.obtenirElement(-1));
 	}
+
+	@Test
+	public void testObtenirIndex() {
+		ListeChainee<String> liste = new ListeChainee<>();
+		liste.ajouterFin("0");
+		liste.ajouterFin("1");
+		liste.ajouterFin("2");
+		liste.ajouterFin("3");
+
+		Assert.assertEquals(0, liste.obtenirIndex("0"));
+		Assert.assertEquals(3, liste.obtenirIndex("3"));
+		Assert.assertEquals(-1, liste.obtenirIndex("bob"));
+	}
 }
