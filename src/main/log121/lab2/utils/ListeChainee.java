@@ -52,15 +52,10 @@ public class ListeChainee<T> implements Liste<T> {
 	@Override
 	public Iterator<T> iterator() {
 		Iterator<T> it = new Iterator<T>() {
-
 			/**
 			 * Le dernier élément visité
 			 */
 			private Element<T> position;
-			/**
-			 * L'avant dernier élément visité
-			 */
-			private Element<T> precedent;
 
 			@Override
 			public boolean hasNext() {
@@ -75,14 +70,17 @@ public class ListeChainee<T> implements Liste<T> {
 
 			@Override
 			public T next() {
-				// TODO
-				return null;
+				if (this.position == null) {
+					this.position = ListeChainee.this.debut;
+				} else {
+					this.position = this.position.getSuivant();
+				}
+				return this.position.getCourant();
 			}
 
 			@Override
 			public void remove() {
-				// TODO
-
+				throw new UnsupportedOperationException("Cette fonctionnalité n'est pas implémentée.");
 			}
 		};
 		return it;

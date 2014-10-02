@@ -19,4 +19,18 @@ public class TestListeChaineeIterateur {
 		Iterator<Integer> it = liste.iterator();
 		assertTrue(it.hasNext());
 	}
+
+	@Test
+	public void testNext() {
+		ListeChainee<Integer> liste = new ListeChainee<>();
+		liste.ajouterFin(1);
+		liste.ajouterFin(2);
+		liste.ajouterFin(3);
+		Iterator<Integer> it = liste.iterator();
+		assertTrue(it.next() == 1);
+		assertTrue(it.next() == 2);
+		assertTrue(it.next() == 3);
+		assertFalse(it.hasNext());
+		it = liste.iterator();
+	}
 }
