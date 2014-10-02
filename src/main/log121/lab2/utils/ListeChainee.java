@@ -88,8 +88,17 @@ public class ListeChainee<T> implements Liste<T> {
 
 	@Override
 	public T obtenirElement(int index) {
-		// TODO
-		return null;
+		T obj = null;
+		if (this.debut != null && index < this.getTaille() && index > -1) {
+			boolean trouve = false;
+			int i = 0;
+			Iterator<T> it = this.iterator();
+			while (!trouve && it.hasNext()) {
+				obj = it.next();
+				trouve = index == i++;
+			}
+		}
+		return obj;
 	}
 
 	@Override
