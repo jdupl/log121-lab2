@@ -87,9 +87,9 @@ public class ListeChainee<T> implements Liste<T> {
 	}
 
 	@Override
-	public int obtenirElement(int index) {
+	public T obtenirElement(int index) {
 		// TODO
-		return 0;
+		return null;
 	}
 
 	@Override

@@ -14,7 +14,7 @@ public interface Liste<T> extends Iterable<T> {
 
 	public int getTaille();
 
-	public int obtenirElement(int index);
+	public T obtenirElement(int index);
 
 	public int obtenirIndex(T element);
 
