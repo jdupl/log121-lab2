@@ -1,4 +1,4 @@
-package main.lab01.formes;
+package main.log121.lab2.formes;
 
 /******************************************************
  Cours:  LOG121

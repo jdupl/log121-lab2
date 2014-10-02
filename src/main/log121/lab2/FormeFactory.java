@@ -1,4 +1,4 @@
-package main.lab01;
+package main.log121.lab2;
 
 /******************************************************
  Cours:  LOG121
@@ -12,10 +12,10 @@ package main.lab01;
  2014-09-09 Version initiale
  *******************************************************/
 
-import main.lab01.formes.Forme;
-import main.lab01.formes.Ligne;
-import main.lab01.formes.Ovale;
-import main.lab01.formes.Rectangle;
+import main.log121.lab2.formes.Forme;
+import main.log121.lab2.formes.Ligne;
+import main.log121.lab2.formes.Ovale;
+import main.log121.lab2.formes.Rectangle;
 
 /**
  * Instancie une forme selon une chaîne de caractères en appelant la classe Decortiqueur.

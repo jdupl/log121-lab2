@@ -1,4 +1,4 @@
-package main.lab01;
+package main.log121.lab2;
 
 /******************************************************
  Cours:  LOG121
@@ -19,7 +19,7 @@ import java.awt.Graphics;
 
 import javax.swing.JComponent;
 
-import main.lab01.formes.Forme;
+import main.log121.lab2.formes.Forme;
 import ca.etsmtl.log.util.IDLogger;
 
 /**

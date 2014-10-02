@@ -1,4 +1,4 @@
-package main.lab01;
+package main.log121.lab2;
 
 /******************************************************
  Cours:  LOG121
@@ -12,7 +12,7 @@ package main.lab01;
  2014-09-09 Version initiale
  *******************************************************/
 
-import main.lab01.formes.Forme;
+import main.log121.lab2.formes.Forme;
 
 /**
  * Classe qui contient les formes à conserver en mémoire. Imite le comportement d'une CircularFifoQueue de manière très

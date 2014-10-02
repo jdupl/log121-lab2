@@ -1,4 +1,4 @@
-package main.lab01;
+package main.log121.lab2;
 
 /******************************************************
  Cours:  LOG121
@@ -15,7 +15,7 @@ package main.lab01;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import main.lab01.formes.SousForme;
+import main.log121.lab2.formes.SousForme;
 
 /**
  * Permet de décorquiter avec une expression régulière les champs de bases des formes reçues du serveur.

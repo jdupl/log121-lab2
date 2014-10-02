@@ -1,4 +1,4 @@
-package main.lab01.utils;
+package main.log121.lab2.utils;
 
 public class Element<T> {
 

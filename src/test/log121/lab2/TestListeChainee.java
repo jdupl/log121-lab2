@@ -1,7 +1,7 @@
-package test;
+package test.log121.lab2;
 
 import static org.junit.Assert.*;
-import main.lab01.utils.ListeChainee;
+import main.log121.lab2.utils.ListeChainee;
 
 import org.junit.Test;
 
