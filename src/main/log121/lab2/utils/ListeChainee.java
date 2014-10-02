@@ -51,8 +51,41 @@ public class ListeChainee<T> implements Liste<T> {
 
 	@Override
 	public Iterator<T> iterator() {
-		// TODO
-		return null;
+		Iterator<T> it = new Iterator<T>() {
+
+			/**
+			 * Le dernier élément visité
+			 */
+			private Element<T> position;
+			/**
+			 * L'avant dernier élément visité
+			 */
+			private Element<T> precedent;
+
+			@Override
+			public boolean hasNext() {
+				boolean prochain = false;
+				if (this.position == null) {
+					prochain = ListeChainee.this.debut != null;
+				} else {
+					prochain = this.position.getSuivant() != null;
+				}
+				return prochain;
+			}
+
+			@Override
+			public T next() {
+				// TODO
+				return null;
+			}
+
+			@Override
+			public void remove() {
+				// TODO
+
+			}
+		};
+		return it;
 	}
 
 	@Override
