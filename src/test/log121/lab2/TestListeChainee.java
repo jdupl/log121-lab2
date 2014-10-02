@@ -10,8 +10,8 @@ public class TestListeChainee {
 	@Test
 	public void test() {
 		ListeChainee<Integer> liste = new ListeChainee<>();
-		liste.ajouter(1);
-		liste.ajouter(2);
-		liste.ajouter(3);
+		liste.ajouterFin(1);
+		liste.ajouterFin(2);
+		liste.ajouterFin(3);
 	}
 }

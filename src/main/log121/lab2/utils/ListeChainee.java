@@ -1,5 +1,7 @@
 package main.log121.lab2.utils;
 
+import java.util.Iterator;
+
 public class ListeChainee<T> implements Liste<T> {
 
 	private Element<T> debut;
@@ -7,18 +9,19 @@ public class ListeChainee<T> implements Liste<T> {
 	private int taille;
 
 	@Override
-	public boolean estVide() {
-		// TODO Auto-generated method stub
+	public boolean ajouter(int indice, T element) {
+		// TODO
 		return false;
 	}
 
 	@Override
-	public int getTaille() {
-		return this.taille;
+	public boolean ajouterDebut(T element) {
+		// TODO 
+		return false;
 	}
 
 	@Override
-	public boolean ajouter(T element) {
+	public boolean ajouterFin(T element) {
 		Element<T> e = new Element<T>(element);
 		if (debut != null) {
 			fin.setSuivant(e);
@@ -31,8 +34,48 @@ public class ListeChainee<T> implements Liste<T> {
 	}
 
 	@Override
-	public boolean ajouter(int indice, T element) {
-		// TODO Auto-generated method stub
+	public boolean echanger(int indexElement1, int indexElement2) {
+		// TODO
+		return false;
+	}
+
+	@Override
+	public boolean echanger(T element1, T element2) {
+		// TODO
+		return false;
+	}
+
+	@Override
+	public boolean estVide() {
+		return false;
+	}
+
+	@Override
+	public int getTaille() {
+		return this.taille;
+	}
+
+	@Override
+	public Iterator<T> iterator() {
+		// TODO
+		return null;
+	}
+
+	@Override
+	public int obtenirElement(int index) {
+		// TODO
+		return 0;
+	}
+
+	@Override
+	public int obtenirIndex(T element) {
+		// TODO
+		return 0;
+	}
+
+	@Override
+	public boolean remplacer(int index, T nouvelElement) {
+		// TODO
 		return false;
 	}
 
