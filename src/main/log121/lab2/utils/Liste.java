@@ -2,7 +2,7 @@ package main.log121.lab2.utils;
 
 public interface Liste<T> extends Iterable<T> {
 
-	public boolean ajouterFin(T element);
+	public boolean ajouter(T element);
 
 	public boolean echanger(int indexElement1, int indexElement2);
 

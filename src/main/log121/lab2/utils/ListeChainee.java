@@ -8,12 +8,8 @@ public class ListeChainee<T> implements Liste<T> {
 	private Element<T> fin;
 	private int taille;
 
-	private boolean indexValide(int index) {
-		return index < this.getTaille() && index > -1;
-	}
-
 	@Override
-	public boolean ajouterFin(T element) {
+	public boolean ajouter(T element) {
 		Element<T> e = new Element<T>(element);
 		if (debut != null) {
 			fin.setSuivant(e);
@@ -56,43 +52,6 @@ public class ListeChainee<T> implements Liste<T> {
 	@Override
 	public int getTaille() {
 		return this.taille;
-	}
-
-	@Override
-	public Iterator<T> iterator() {
-		Iterator<T> it = new Iterator<T>() {
-			/**
-			 * Le dernier élément visité
-			 */
-			private Element<T> position;
-
-			@Override
-			public boolean hasNext() {
-				boolean prochain = false;
-				if (this.position == null) {
-					prochain = ListeChainee.this.debut != null;
-				} else {
-					prochain = this.position.getSuivant() != null;
-				}
-				return prochain;
-			}
-
-			@Override
-			public T next() {
-				if (this.position == null) {
-					this.position = ListeChainee.this.debut;
-				} else {
-					this.position = this.position.getSuivant();
-				}
-				return this.position.getCourant();
-			}
-
-			@Override
-			public void remove() {
-				throw new UnsupportedOperationException("Cette fonctionnalité n'est pas implémentée.");
-			}
-		};
-		return it;
 	}
 
 	@Override
@@ -141,6 +100,47 @@ public class ListeChainee<T> implements Liste<T> {
 			}
 		}
 		return trouve;
+	}
+
+	@Override
+	public Iterator<T> iterator() {
+		Iterator<T> it = new Iterator<T>() {
+			/**
+			 * Le dernier élément visité
+			 */
+			private Element<T> position;
+
+			@Override
+			public boolean hasNext() {
+				boolean prochain = false;
+				if (this.position == null) {
+					prochain = ListeChainee.this.debut != null;
+				} else {
+					prochain = this.position.getSuivant() != null;
+				}
+				return prochain;
+			}
+
+			@Override
+			public T next() {
+				if (this.position == null) {
+					this.position = ListeChainee.this.debut;
+				} else {
+					this.position = this.position.getSuivant();
+				}
+				return this.position.getCourant();
+			}
+
+			@Override
+			public void remove() {
+				throw new UnsupportedOperationException("Cette fonctionnalité n'est pas implémentée.");
+			}
+		};
+		return it;
+	}
+
+	private boolean indexValide(int index) {
+		return index < this.getTaille() && index > -1;
 	}
 
 }

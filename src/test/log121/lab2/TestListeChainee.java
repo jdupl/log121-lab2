@@ -10,10 +10,10 @@ public class TestListeChainee {
 	@Test
 	public void testObtenirElement() {
 		ListeChainee<String> liste = new ListeChainee<>();
-		liste.ajouterFin("0");
-		liste.ajouterFin("1");
-		liste.ajouterFin("2");
-		liste.ajouterFin("3");
+		liste.ajouter("0");
+		liste.ajouter("1");
+		liste.ajouter("2");
+		liste.ajouter("3");
 
 		Assert.assertEquals("0", liste.obtenirElement(0));
 		Assert.assertEquals("1", liste.obtenirElement(1));
@@ -26,10 +26,10 @@ public class TestListeChainee {
 	@Test
 	public void testObtenirIndex() {
 		ListeChainee<String> liste = new ListeChainee<>();
-		liste.ajouterFin("0");
-		liste.ajouterFin("1");
-		liste.ajouterFin("2");
-		liste.ajouterFin("3");
+		liste.ajouter("0");
+		liste.ajouter("1");
+		liste.ajouter("2");
+		liste.ajouter("3");
 
 		Assert.assertEquals(0, liste.obtenirIndex("0"));
 		Assert.assertEquals(3, liste.obtenirIndex("3"));
@@ -39,10 +39,10 @@ public class TestListeChainee {
 	@Test
 	public void testRemplacerParIndex() {
 		ListeChainee<String> liste = new ListeChainee<>();
-		liste.ajouterFin("0");
-		liste.ajouterFin("1");
-		liste.ajouterFin("2");
-		liste.ajouterFin("3");
+		liste.ajouter("0");
+		liste.ajouter("1");
+		liste.ajouter("2");
+		liste.ajouter("3");
 
 		Assert.assertTrue(liste.remplacer(0, "00"));
 		Assert.assertEquals(0, liste.obtenirIndex("00"));
@@ -56,10 +56,10 @@ public class TestListeChainee {
 	@Test
 	public void testEchangerParIndex() {
 		ListeChainee<String> liste = new ListeChainee<>();
-		liste.ajouterFin("0");
-		liste.ajouterFin("1");
-		liste.ajouterFin("2");
-		liste.ajouterFin("3");
+		liste.ajouter("0");
+		liste.ajouter("1");
+		liste.ajouter("2");
+		liste.ajouter("3");
 
 		Assert.assertTrue(liste.echanger(0, 1));
 		Assert.assertEquals(1, liste.obtenirIndex("0"));
@@ -79,10 +79,10 @@ public class TestListeChainee {
 	@Test
 	public void testEchangerParObjet() {
 		ListeChainee<String> liste = new ListeChainee<>();
-		liste.ajouterFin("0");
-		liste.ajouterFin("1");
-		liste.ajouterFin("2");
-		liste.ajouterFin("3");
+		liste.ajouter("0");
+		liste.ajouter("1");
+		liste.ajouter("2");
+		liste.ajouter("3");
 
 		Assert.assertTrue(liste.echanger("0", "1"));
 		Assert.assertEquals(1, liste.obtenirIndex("0"));
