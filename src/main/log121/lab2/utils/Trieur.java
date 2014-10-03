@@ -1,4 +1,4 @@
-package main.log121.lab2;
+package main.log121.lab2.utils;
 
 public class Trieur {
 
