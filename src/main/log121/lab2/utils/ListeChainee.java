@@ -34,12 +34,9 @@ public class ListeChainee<T> implements Liste<T> {
 	@Override
 	public boolean echanger(int indexElement1, int indexElement2) {
 		boolean success = false;
-		if (indexValide(indexElement1) && indexValide(indexElement2)) {
-			T element1 = this.obtenirElement(indexElement1);
-			T element2 = this.obtenirElement(indexElement2);
-			if (element1 != null && element2 != null) {
-				success = remplacer(indexElement1, element2) && remplacer(indexElement2, element1);
-			}
+		if (indexValide(indexElement1) && indexValide(indexElement2)) { // Validation pour la performance si invalide
+			success = echanger(this.obtenirElement(indexElement1), indexElement1, this.obtenirElement(indexElement2),
+					indexElement2);
 		}
 		return success;
 	}
@@ -48,6 +45,10 @@ public class ListeChainee<T> implements Liste<T> {
 	public boolean echanger(T element1, T element2) {
 		// TODO
 		return false;
+	}
+
+	private boolean echanger(T element1, int indexElement1, T element2, int indexElement2) {
+		return remplacer(indexElement1, element2) && remplacer(indexElement2, element1);
 	}
 
 	@Override
@@ -100,7 +101,7 @@ public class ListeChainee<T> implements Liste<T> {
 	@Override
 	public T obtenirElement(int index) {
 		T obj = null;
-		if (this.debut != null && index < this.getTaille() && index > -1) {
+		if (this.debut != null && indexValide(index)) {
 			boolean trouve = false;
 			int i = 0;
 			Iterator<T> it = this.iterator();
@@ -130,7 +131,7 @@ public class ListeChainee<T> implements Liste<T> {
 	@Override
 	public boolean remplacer(int index, T nouvelElement) {
 		boolean trouve = false;
-		if (this.debut != null && index < this.getTaille() && index > -1) {
+		if (this.debut != null && indexValide(index)) {
 			int i = 0;
 			Element<T> elementCourant = debut;
 			while (!trouve && elementCourant != null) {
