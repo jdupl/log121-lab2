@@ -8,6 +8,10 @@ public class ListeChainee<T> implements Liste<T> {
 	private Element<T> fin;
 	private int taille;
 
+	private boolean indexValide(int index) {
+		return index < this.getTaille() && index > -1;
+	}
+
 	@Override
 	public boolean ajouterDebut(T element) {
 		// TODO
@@ -29,8 +33,15 @@ public class ListeChainee<T> implements Liste<T> {
 
 	@Override
 	public boolean echanger(int indexElement1, int indexElement2) {
-		// TODO
-		return false;
+		boolean success = false;
+		if (indexValide(indexElement1) && indexValide(indexElement2)) {
+			T element1 = this.obtenirElement(indexElement1);
+			T element2 = this.obtenirElement(indexElement2);
+			if (element1 != null && element2 != null) {
+				success = remplacer(indexElement1, element2) && remplacer(indexElement2, element1);
+			}
+		}
+		return success;
 	}
 
 	@Override
@@ -119,7 +130,6 @@ public class ListeChainee<T> implements Liste<T> {
 	@Override
 	public boolean remplacer(int index, T nouvelElement) {
 		boolean trouve = false;
-
 		if (this.debut != null && index < this.getTaille() && index > -1) {
 			int i = 0;
 			Element<T> elementCourant = debut;
@@ -134,4 +144,5 @@ public class ListeChainee<T> implements Liste<T> {
 		}
 		return trouve;
 	}
+
 }
