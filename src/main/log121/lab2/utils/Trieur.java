@@ -13,11 +13,44 @@ public class Trieur {
 	}
 	
 	public int[] Sort(int[] liste, int ordre) {
-		if(ordre == ORDRE_CROISSANT)
-			QuicksortC(liste, 0, liste.length);
-		else if(ordre == ORDRE_DECROISSANT)
-			QuicksortD(liste, 0, liste.length);
+		Quicksort(liste, 0, liste.length, ordre);
 		return liste;
+	}
+	
+	private int[] Quicksort(int[] liste, int bas, int haut, int ordre) {
+		if(bas < haut) {
+			int pivotLocation = Partition(liste, bas, haut, ordre);
+			Quicksort(liste, bas, pivotLocation, ordre);
+			Quicksort(liste, pivotLocation + 1, haut, ordre);
+		}
+		return liste.clone();
+	}
+	
+	private int Partition(int[] liste, int bas, int haut, int ordre) {
+		int pivot = liste[bas];
+		int murGauche = bas;
+		
+		for(int i = bas + 1; i < haut; i++) {
+			//TODO Ameliorer les IF
+			if(liste[i] < pivot && ordre == ORDRE_CROISSANT) {
+				murGauche++;
+				swap(liste, i, murGauche);
+			}
+			if(liste[i] > pivot && ordre == ORDRE_DECROISSANT) {
+				murGauche++;
+				swap(liste, i, murGauche);
+			}
+		}
+		
+		swap(liste, bas, murGauche);
+		
+		return murGauche;
+	}
+	
+	private void swap(int[] array, int a, int b) {
+		int tmp = array[a];
+		array[a] = array[b];
+		array[b] = tmp;
 	}
 	
 	//https://www.cs.duke.edu/~reif/courses/alglectures/skiena.lectures/lecture5.pdf page:5
@@ -39,16 +72,16 @@ public class Trieur {
 	//    swap(A[low],A[leftwall])
 	//
 	//    return (leftwall)
-	private int[] QuicksortC(int[] liste, int bas, int haut) {
+	/*private int[] Quicksort(int[] liste, int bas, int haut) {
 		if(bas < haut) {
 			int pivotLocation = PartitionC(liste, bas, haut);
-			QuicksortC(liste, bas, pivotLocation);
-			QuicksortC(liste, pivotLocation + 1, haut);
+			Quicksort(liste, bas, pivotLocation);
+			Quicksort(liste, pivotLocation + 1, haut);
 		}
 		return liste.clone();
 	}
 	
-	private int PartitionC(int[] liste, int bas, int haut) {
+	private int Partition(int[] liste, int bas, int haut) {
 		int pivot = liste[bas];
 		int murGauche = bas;
 		
@@ -62,45 +95,6 @@ public class Trieur {
 		swap(liste, bas, murGauche);
 		
 		return murGauche;
-	}
-	
-	private int[] QuicksortD(int[] liste, int bas, int haut) {
-		if(bas < haut) {
-			int pivotLocation = PartitionD(liste, bas, haut);
-			QuicksortD(liste, bas, pivotLocation);
-			QuicksortD(liste, pivotLocation + 1, haut);
-		}
-		return liste.clone();
-	}
-	
-	private int PartitionD(int[] liste, int bas, int haut) {
-		int pivot = liste[bas];
-		int murGauche = bas;
-		
-		for(int i = bas + 1; i < haut; i++) {
-			if(liste[i] > pivot) {
-				murGauche++;
-				swap(liste, i, murGauche);
-			}
-		}
-		
-		swap(liste, bas, murGauche);
-		
-		return murGauche;
-	}
-	
-	
-	private void swap(int[] array, int a, int b) {
-		int tmp = array[a];
-		array[a] = array[b];
-		array[b] = tmp;
-	}
-	
-	/*public void print(int[] array){
-		for (int i = 0; i < array.length; i++) {
-			System.out.print(array[i]+",");
-		}
-		System.out.println();
 	}*/
 
 }
