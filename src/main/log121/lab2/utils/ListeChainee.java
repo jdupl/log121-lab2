@@ -13,12 +13,6 @@ public class ListeChainee<T> implements Liste<T> {
 	}
 
 	@Override
-	public boolean ajouterDebut(T element) {
-		// TODO
-		return false;
-	}
-
-	@Override
 	public boolean ajouterFin(T element) {
 		Element<T> e = new Element<T>(element);
 		if (debut != null) {
