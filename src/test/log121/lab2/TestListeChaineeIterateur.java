@@ -31,6 +31,5 @@ public class TestListeChaineeIterateur {
 		assertTrue(it.next() == 2);
 		assertTrue(it.next() == 3);
 		assertFalse(it.hasNext());
-		it = liste.iterator();
 	}
 }
