@@ -2,11 +2,11 @@ package main.log121.lab2.utils;
 
 public class Trieur {
 
+	/**
+	 * Constructeur
+	 */
 	public Trieur(){
-		int[] test = {0,6,2,8,2,0,10,9,0,0};
-		print(test);
-		Quicksort(test, 0, 9);
-		print(test);
+		
 	}
 	
 	//https://www.cs.duke.edu/~reif/courses/alglectures/skiena.lectures/lecture5.pdf page:5
@@ -28,12 +28,13 @@ public class Trieur {
 	//    swap(A[low],A[leftwall])
 	//
 	//    return (leftwall)
-	public void Quicksort(int[] array, int low, int high) {
+	public int[] Quicksort(int[] array, int low, int high) {
 		if(low < high){
 			int pivotLocation = Partition(array, low, high);
 			Quicksort(array, low, pivotLocation - 1);
 			Quicksort(array, pivotLocation + 1, high);
 		}
+		return array.clone();
 	}
 	
 	public int Partition(int[] array, int low, int high) {
@@ -58,11 +59,11 @@ public class Trieur {
 		array[b] = tmp;
 	}
 	
-	public void print(int[] array){
+	/*public void print(int[] array){
 		for (int i = 0; i < array.length; i++) {
 			System.out.print(array[i]+",");
 		}
 		System.out.println();
-	}
+	}*/
 
 }
