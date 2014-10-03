@@ -118,8 +118,20 @@ public class ListeChainee<T> implements Liste<T> {
 
 	@Override
 	public boolean remplacer(int index, T nouvelElement) {
-		// TODO
-		return false;
-	}
+		boolean trouve = false;
 
+		if (this.debut != null && index < this.getTaille() && index > -1) {
+			int i = 0;
+			Element<T> elementCourant = debut;
+			while (!trouve && elementCourant != null) {
+				trouve = index == i++;
+				if (trouve) {
+					elementCourant.setCourant(nouvelElement);
+				} else {
+					elementCourant = elementCourant.getSuivant();
+				}
+			}
+		}
+		return trouve;
+	}
 }

@@ -35,4 +35,21 @@ public class TestListeChainee {
 		Assert.assertEquals(3, liste.obtenirIndex("3"));
 		Assert.assertEquals(-1, liste.obtenirIndex("bob"));
 	}
+
+	@Test
+	public void testRemplacerParIndex() {
+		ListeChainee<String> liste = new ListeChainee<>();
+		liste.ajouterFin("0");
+		liste.ajouterFin("1");
+		liste.ajouterFin("2");
+		liste.ajouterFin("3");
+
+		Assert.assertTrue(liste.remplacer(0, "00"));
+		Assert.assertEquals(0, liste.obtenirIndex("00"));
+
+		Assert.assertTrue(liste.remplacer(2, "22"));
+		Assert.assertEquals(2, liste.obtenirIndex("22"));
+
+		Assert.assertFalse(liste.remplacer(-1, ""));
+	}
 }
