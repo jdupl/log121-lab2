@@ -45,8 +45,9 @@ public class ListeChainee<T> implements Liste<T> {
 
 	@Override
 	public boolean echanger(T element1, T element2) {
-		// TODO
-		return false;
+		int indexElement1 = this.obtenirIndex(element1);
+		int indexElement2 = this.obtenirIndex(element2);
+		return echanger(element1, indexElement1, element2, indexElement2);
 	}
 
 	private boolean echanger(T element1, int indexElement1, T element2, int indexElement2) {

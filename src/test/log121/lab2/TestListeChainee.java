@@ -75,4 +75,27 @@ public class TestListeChainee {
 
 		Assert.assertFalse(liste.echanger(-1, 3));
 	}
+
+	@Test
+	public void testEchangerParObjet() {
+		ListeChainee<String> liste = new ListeChainee<>();
+		liste.ajouterFin("0");
+		liste.ajouterFin("1");
+		liste.ajouterFin("2");
+		liste.ajouterFin("3");
+
+		Assert.assertTrue(liste.echanger("0", "1"));
+		Assert.assertEquals(1, liste.obtenirIndex("0"));
+		Assert.assertEquals(0, liste.obtenirIndex("1"));
+
+		Assert.assertTrue(liste.echanger("0", "1"));
+		Assert.assertEquals(0, liste.obtenirIndex("0"));
+		Assert.assertEquals(1, liste.obtenirIndex("1"));
+
+		Assert.assertTrue(liste.echanger("1", "3"));
+		Assert.assertEquals(1, liste.obtenirIndex("3"));
+		Assert.assertEquals(3, liste.obtenirIndex("1"));
+
+		Assert.assertFalse(liste.echanger("-1", "3"));
+	}
 }
