@@ -34,9 +34,11 @@ public class ListeChainee<T> implements Liste<T> {
 	@Override
 	public boolean echanger(int indexElement1, int indexElement2) {
 		boolean success = false;
-		if (indexValide(indexElement1) && indexValide(indexElement2)) { // Validation pour la performance si invalide
-			success = echanger(this.obtenirElement(indexElement1), indexElement1, this.obtenirElement(indexElement2),
-					indexElement2);
+		// Validation des index pour la performance si invalide
+		if (indexValide(indexElement1) && indexValide(indexElement2)) {
+			T element1 = this.obtenirElement(indexElement1);
+			T element2 = this.obtenirElement(indexElement2);
+			success = echanger(element1, indexElement1, element2, indexElement2);
 		}
 		return success;
 	}
