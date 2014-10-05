@@ -33,13 +33,15 @@ public class Rectangle extends Forme {
 	 */
 	public Rectangle(SousForme sousForme, int[] dims, int id) {
 		super(sousForme, dims, id);
-		super.largeur = dims[2] - dims[0];
-		super.hauteur = dims[3] - dims[1];
+		largeur = dims[2] - dims[0];
+		hauteur = dims[3] - dims[1];
+		coinX = dims[0];
+		coinY = dims[1];
 	}
 
 	@Override
 	public void dessinerForme(Graphics g) {
-		g.fillRect(dims[0], dims[1], super.largeur, super.hauteur);
+		g.fillRect(coinX, coinY, largeur, hauteur);
 	}
 
 }

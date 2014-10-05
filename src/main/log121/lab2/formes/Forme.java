@@ -11,8 +11,11 @@ package main.log121.lab2.formes;
  *@author Justin Duplessis
  2014-09-09 Version initiale
  *******************************************************/
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 
 /**
  * Représentation abstraite d'une forme. La forme peut être dessinée.
@@ -34,6 +37,14 @@ public abstract class Forme {
 	 * La dimensions et/ou coordonées de la forme
 	 */
 	protected int[] dims;
+	/**
+	 * Le coin superieur gauche X
+	 */
+	protected int coinX;
+	/**
+	 * Le coin superieur gauche Y
+	 */
+	protected int coinY;
 	/**
 	 * La largeur de la forme
 	 */
@@ -65,9 +76,14 @@ public abstract class Forme {
 	 * @param g
 	 *            Le composant sur lequel dessiner
 	 */
-	public void dessiner(Graphics g) {
+	public void dessiner(Graphics2D g) {
 		g.setColor(getCouleur());
-		dessinerForme(g);
+		g.setStroke(new BasicStroke());
+		dessinerForme((Graphics) g);
+		
+		g.setColor(Color.GRAY);
+		g.setStroke(new BasicStroke(1f, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_MITER, 1f, new float[] {2f}, 0f));
+		g.drawRect(coinX, coinY, largeur, hauteur);
 	}
 
 	/**

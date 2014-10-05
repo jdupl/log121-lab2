@@ -33,8 +33,10 @@ public class Ligne extends Forme {
 	 */
 	public Ligne(int[] dims, int id) {
 		super(SousForme.LIGNE, dims, id);
-		super.largeur = dims[2] - dims[0];
-		super.hauteur = dims[3] - dims[1];
+		super.largeur = Math.abs(dims[2] - dims[0]);
+		super.hauteur = Math.abs(dims[3] - dims[1]);
+		super.coinX = Math.min(dims[0], dims[2]);
+		super.coinY = Math.min(dims[1], dims[3]);
 	}
 
 	@Override

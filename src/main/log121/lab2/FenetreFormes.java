@@ -16,6 +16,7 @@ package main.log121.lab2;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 import javax.swing.JComponent;
 
@@ -58,7 +59,7 @@ public class FenetreFormes extends JComponent {
 		for (int i = 0; i < listeDeFormes.getListeDeFormes().length; i++) {
 			Forme f = listeDeFormes.getListeDeFormes()[i];
 			if (f != null) {
-				f.dessiner(g);
+				f.dessiner((Graphics2D) g);
 			}
 		}
 	};

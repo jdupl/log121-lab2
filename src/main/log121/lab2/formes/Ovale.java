@@ -33,17 +33,15 @@ public class Ovale extends Forme {
 	 */
 	public Ovale(SousForme sousForme, int[] dims, int id) {
 		super(sousForme, dims, id);
-		super.largeur = dims[2] * 2;
-		super.hauteur = dims[3] * 2;
+		largeur = dims[2] * 2;
+		hauteur = dims[3] * 2;
+		coinX = dims[0] - dims[2];
+		coinY = dims[1] - dims[3];
 	}
 
 	@Override
 	public void dessinerForme(Graphics g) {
-		//Coin X gauche superieur
-		int coinX = dims[0] - dims[2];
-		//Coin Y gauche superieur
-		int coinY = dims[1] - dims[3];
-		g.fillOval(coinX, coinY, super.largeur, super.hauteur);
+		g.fillOval(coinX, coinY, largeur, hauteur);
 	}
 	
 }
