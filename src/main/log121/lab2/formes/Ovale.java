@@ -27,17 +27,23 @@ public class Ovale extends Forme {
 	 * @param sousForme
 	 *            Le type de forme
 	 * @param dims
-	 *            Les dimensions de la forme entreX centreY rayonH rayonV
+	 *            Les dimensions de la forme centreX centreY rayonH rayonV
 	 * @param id
 	 *            le numéro de séquence
 	 */
 	public Ovale(SousForme sousForme, int[] dims, int id) {
 		super(sousForme, dims, id);
+		super.largeur = dims[2] * 2;
+		super.hauteur = dims[3] * 2;
 	}
 
 	@Override
 	public void dessinerForme(Graphics g) {
-		g.fillOval(dims[0], dims[1], dims[2], dims[3]);
+		//Coin X gauche superieur
+		int coinX = dims[0] - dims[2];
+		//Coin Y gauche superieur
+		int coinY = dims[1] - dims[3];
+		g.fillOval(coinX, coinY, super.largeur, super.hauteur);
 	}
-
+	
 }

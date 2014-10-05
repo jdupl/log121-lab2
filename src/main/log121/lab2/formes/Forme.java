@@ -31,10 +31,18 @@ public abstract class Forme {
 	 */
 	protected SousForme sousForme;
 	/**
-	 * Le dimensions et/ou coordonées de la forme
+	 * La dimensions et/ou coordonées de la forme
 	 */
 	protected int[] dims;
-
+	/**
+	 * La largeur de la forme
+	 */
+	protected int largeur;
+	/**
+	 * La hauteur de la forme
+	 */
+	protected int hauteur;
+	
 	/**
 	 * Constructeur
 	 * 
@@ -87,4 +95,23 @@ public abstract class Forme {
 	public int getId() {
 		return id;
 	}
+	
+	/**
+	 * Accesseur qui permet d'obtenir la largeur de la forme.
+	 * 
+	 * @return La largeur
+	 */
+	public int getLargeur(){
+		return largeur;
+	}
+	
+	/**
+	 * Accesseur qui permet d'obtenir la hauteur de la forme.
+	 * 
+	 * @return La hauteur
+	 */
+	public int getHauteur(){
+		return hauteur;
+	}
+	
 }

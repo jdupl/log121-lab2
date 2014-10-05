@@ -33,15 +33,13 @@ public class Rectangle extends Forme {
 	 */
 	public Rectangle(SousForme sousForme, int[] dims, int id) {
 		super(sousForme, dims, id);
+		super.largeur = dims[2] - dims[0];
+		super.hauteur = dims[3] - dims[1];
 	}
 
 	@Override
 	public void dessinerForme(Graphics g) {
-		// distance en x
-		int deltaX = dims[2] - dims[0];
-		// distance en Y
-		int deltaY = dims[3] - dims[1];
-		g.fillRect(dims[0], dims[1], deltaX, deltaY);
+		g.fillRect(dims[0], dims[1], super.largeur, super.hauteur);
 	}
 
 }
