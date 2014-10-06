@@ -44,4 +44,8 @@ public class Ligne extends Forme {
 		g.drawLine(dims[0], dims[1], dims[2], dims[3]);
 	}
 
+	public double getAire(){
+		return 0;
+	}
+
 }

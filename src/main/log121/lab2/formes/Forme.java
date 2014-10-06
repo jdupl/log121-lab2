@@ -136,11 +136,18 @@ public abstract class Forme {
 
 	/**
 	 * Accesseur qui permet d'obtenir la position d'arrivée de la forme.
-	 * 
+	 *
 	 * @return Le position (à partir de 0)
 	 */
 	public int getOrdreArrivee() {
 		return ordreArrivee;
 	}
+
+	/**
+	 * Accesseur qui permet d'obtenir l'aire de la forme.
+	 *
+	 * @return L'aire
+	 */
+	protected abstract double getAire();
 
 }
