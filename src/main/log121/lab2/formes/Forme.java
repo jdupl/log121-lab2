@@ -13,7 +13,6 @@ package main.log121.lab2.formes;
  *******************************************************/
 import java.awt.BasicStroke;
 import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 /**
@@ -84,7 +83,7 @@ public abstract class Forme {
 	public void dessiner(Graphics2D g) {
 		g.setColor(getCouleur());
 		g.setStroke(new BasicStroke());
-		dessinerForme((Graphics) g);
+		dessinerForme(g);
 
 		g.setColor(Color.GRAY);
 		g.setStroke(new BasicStroke(1f, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_MITER, 1f, new float[] { 2f }, 0f));
@@ -97,7 +96,7 @@ public abstract class Forme {
 	 * @param g
 	 *            Le composant sur lequel dessiner
 	 */
-	protected abstract void dessinerForme(Graphics g);
+	protected abstract void dessinerForme(Graphics2D g);
 
 	/**
 	 * Accesseur qui permet d'obtenir la couleur de la sous forme associée à la forme.

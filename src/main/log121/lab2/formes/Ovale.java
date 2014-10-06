@@ -11,7 +11,7 @@ package main.log121.lab2.formes;
  *@author Justin Duplessis
  2014-09-09 Version initiale
  *******************************************************/
-import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 /**
  * Classe qui étend Forme afin de dessiner un ovale ou un rond
@@ -40,7 +40,7 @@ public class Ovale extends Forme {
 	}
 
 	@Override
-	public void dessinerForme(Graphics g) {
+	public void dessinerForme(Graphics2D g) {
 		g.fillOval(coinX, coinY, largeur, hauteur);
 	}
 
