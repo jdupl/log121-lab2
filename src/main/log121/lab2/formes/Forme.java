@@ -106,6 +106,15 @@ public abstract class Forme {
 	protected Color getCouleur() {
 		return sousForme.couleur;
 	}
+	
+	/**
+	 * Accesseur qui permet d'obtenir l'importance de la sous forme pour le tri.
+	 *
+	 * @return La couleur
+	 */
+	public int getImportance() {
+		return sousForme.importance;
+	}
 
 	/**
 	 * Accesseur qui permet d'obtenir le numéro de séquence de la forme.
