@@ -15,7 +15,7 @@ import java.awt.Graphics;
 
 /**
  * Classe qui étend Forme afin de dessiner une ligne.
- * 
+ *
  * @author Justin Duplessis
  *
  */
@@ -23,7 +23,7 @@ public class Ligne extends Forme {
 
 	/**
 	 * Constructeur
-	 * 
+	 *
 	 * @param sousForme
 	 *            Le type de forme
 	 * @param dims
@@ -31,8 +31,8 @@ public class Ligne extends Forme {
 	 * @param id
 	 *            le numéro de séquence
 	 */
-	public Ligne(int[] dims, int id) {
-		super(SousForme.LIGNE, dims, id);
+	public Ligne(int[] dims, int id, int ordreArrivee) {
+		super(SousForme.LIGNE, dims, id, ordreArrivee);
 		super.largeur = Math.abs(dims[2] - dims[0]);
 		super.hauteur = Math.abs(dims[3] - dims[1]);
 		super.coinX = Math.min(dims[0], dims[2]);

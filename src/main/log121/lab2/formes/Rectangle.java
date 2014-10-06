@@ -15,7 +15,7 @@ import java.awt.Graphics;
 
 /**
  * Classe qui étend Forme afin de dessiner un rectangle ou un carré.
- * 
+ *
  * @author Justin Duplessis
  *
  */
@@ -23,7 +23,7 @@ public class Rectangle extends Forme {
 
 	/**
 	 * Constructeur
-	 * 
+	 *
 	 * @param sousForme
 	 *            Le type de forme
 	 * @param dims
@@ -31,8 +31,8 @@ public class Rectangle extends Forme {
 	 * @param id
 	 *            le numéro de séquence
 	 */
-	public Rectangle(SousForme sousForme, int[] dims, int id) {
-		super(sousForme, dims, id);
+	public Rectangle(SousForme sousForme, int[] dims, int id, int ordreArrivee) {
+		super(sousForme, dims, id, ordreArrivee);
 		largeur = dims[2] - dims[0];
 		hauteur = dims[3] - dims[1];
 		coinX = dims[0];
