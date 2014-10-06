@@ -27,7 +27,6 @@ public class FormeFactory {
 
 	public final static String ERREUR_FORME = "La ligne n'est pas reconnue comme étant une forme.";
 
-
 	/**
 	 * Le compte des formes produites.
 	 */

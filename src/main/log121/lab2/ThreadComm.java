@@ -54,10 +54,9 @@ public class ThreadComm extends SwingWorker<Forme, Object> {
 		this.adresse = adresse;
 		this.nbFormes = nbFormes;
 
-		if (bulk){
+		if (bulk) {
 			DELAI_MSEC = 20;
-		}
-		else{
+		} else {
 			DELAI_MSEC = 1000;
 		}
 

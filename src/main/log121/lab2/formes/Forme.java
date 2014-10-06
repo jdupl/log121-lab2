@@ -58,7 +58,6 @@ public abstract class Forme {
 	 */
 	private int ordreArrivee;
 
-
 	/**
 	 * Constructeur
 	 *
@@ -88,7 +87,7 @@ public abstract class Forme {
 		dessinerForme((Graphics) g);
 
 		g.setColor(Color.GRAY);
-		g.setStroke(new BasicStroke(1f, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_MITER, 1f, new float[] {2f}, 0f));
+		g.setStroke(new BasicStroke(1f, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_MITER, 1f, new float[] { 2f }, 0f));
 		g.drawRect(coinX, coinY, largeur, hauteur);
 	}
 
@@ -123,7 +122,7 @@ public abstract class Forme {
 	 *
 	 * @return La largeur
 	 */
-	public int getLargeur(){
+	public int getLargeur() {
 		return largeur;
 	}
 
@@ -132,7 +131,7 @@ public abstract class Forme {
 	 *
 	 * @return La hauteur
 	 */
-	public int getHauteur(){
+	public int getHauteur() {
 		return hauteur;
 	}
 

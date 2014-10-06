@@ -40,8 +40,8 @@ public class MenuFenetre extends JMenuBar {
 	private static final String MENU_FICHIER_TITRE = "app.frame.menus.file.title",
 			MENU_FICHIER_QUITTER = "app.frame.menus.file.exit", MENU_DESSIN_TITRE = "app.frame.menus.draw.title",
 			MENU_DESSIN_DEMARRER = "app.frame.menus.draw.start", MENU_DESSIN_ARRETER = "app.frame.menus.draw.stop",
-			MENU_DESSIN_OBTENIR_FORMES = "app.frame.menus.getshapes",
-			MENU_AIDE_TITRE = "app.frame.menus.help.title", MENU_AIDE_PROPOS = "app.frame.menus.help.about";
+			MENU_DESSIN_OBTENIR_FORMES = "app.frame.menus.getshapes", MENU_AIDE_TITRE = "app.frame.menus.help.title",
+			MENU_AIDE_PROPOS = "app.frame.menus.help.about";
 	private static final String MESSAGE_DIALOGUE_A_PROPOS = "app.frame.dialog.about";
 
 	private JMenuItem arreterMenuItem, demarrerMenuItem, obtenirFormesMenuItem;
@@ -65,7 +65,8 @@ public class MenuFenetre extends JMenuBar {
 	 * Créer le menu "Draw".
 	 */
 	protected void addMenuDessiner() {
-		JMenu menu = creerMenu(MENU_DESSIN_TITRE, new String[] { MENU_DESSIN_DEMARRER, MENU_DESSIN_ARRETER, MENU_DESSIN_OBTENIR_FORMES });
+		JMenu menu = creerMenu(MENU_DESSIN_TITRE, new String[] { MENU_DESSIN_DEMARRER, MENU_DESSIN_ARRETER,
+				MENU_DESSIN_OBTENIR_FORMES });
 
 		demarrerMenuItem = menu.getItem(0);
 		demarrerMenuItem.addActionListener(new ActionListener() {
@@ -88,7 +89,7 @@ public class MenuFenetre extends JMenuBar {
 				MENU_DESSIN_ARRETER_TOUCHE_MASK));
 
 		obtenirFormesMenuItem = menu.getItem(2);
-		obtenirFormesMenuItem.addActionListener(new ActionListener(){
+		obtenirFormesMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				demarrerComm(10, true);
 			}
@@ -157,7 +158,7 @@ public class MenuFenetre extends JMenuBar {
 		return menu;
 	}
 
-	private void demarrerComm(int nbFormes, boolean bulk){
+	private void demarrerComm(int nbFormes, boolean bulk) {
 		String entreeUtilisateur = JOptionPane.showInputDialog(MESSAGE_CONNECTION, "localhost:10000");
 		try {
 			InetSocketAddress adresse = DecortiqueurAdresse.decortiquerAdresseReseau(entreeUtilisateur);

@@ -49,9 +49,9 @@ public class CommBase {
 	 *
 	 * @param adresse
 	 * @param nbFormes
-	 *     Le nombre de formes a obtenir. -1 pour aucune limite.
-	 *@param bulk
-	 *     Faux pas défaut. Permet de récupérer toutes les formes d'un coup.
+	 *            Le nombre de formes a obtenir. -1 pour aucune limite.
+	 * @param bulk
+	 *            Faux pas défaut. Permet de récupérer toutes les formes d'un coup.
 	 */
 	public void start(InetSocketAddress adresse, int nbFormes, boolean bulk) {
 		isActif = true;
