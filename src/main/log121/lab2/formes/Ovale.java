@@ -15,7 +15,7 @@ import java.awt.Graphics;
 
 /**
  * Classe qui étend Forme afin de dessiner un ovale ou un rond
- * 
+ *
  * @author Justin Duplessis
  *
  */
@@ -23,7 +23,7 @@ public class Ovale extends Forme {
 
 	/**
 	 * Constructeur
-	 * 
+	 *
 	 * @param sousForme
 	 *            Le type de forme
 	 * @param dims
@@ -31,8 +31,8 @@ public class Ovale extends Forme {
 	 * @param id
 	 *            le numéro de séquence
 	 */
-	public Ovale(SousForme sousForme, int[] dims, int id) {
-		super(sousForme, dims, id);
+	public Ovale(SousForme sousForme, int[] dims, int id, int ordreArrivee) {
+		super(sousForme, dims, id, ordreArrivee);
 		largeur = dims[2] * 2;
 		hauteur = dims[3] * 2;
 		coinX = dims[0] - dims[2];
@@ -43,5 +43,5 @@ public class Ovale extends Forme {
 	public void dessinerForme(Graphics g) {
 		g.fillOval(coinX, coinY, largeur, hauteur);
 	}
-	
+
 }

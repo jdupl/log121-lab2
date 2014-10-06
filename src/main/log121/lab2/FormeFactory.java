@@ -19,13 +19,19 @@ import main.log121.lab2.formes.Rectangle;
 
 /**
  * Instancie une forme selon une chaîne de caractères en appelant la classe Decortiqueur.
- * 
+ *
  * @author Justin Duplessis
  *
  */
 public class FormeFactory {
 
 	public final static String ERREUR_FORME = "La ligne n'est pas reconnue comme étant une forme.";
+
+
+	/**
+	 * Le compte des formes produites.
+	 */
+	private static int compte = 0;
 
 	/**
 	 * Crée une nouvelle forme. Cette méthode reçoit la chaîne de caractères provenant du serveur de formes, elle
@@ -47,11 +53,11 @@ public class FormeFactory {
 
 		switch (decortiqueur.getForme()) {
 		case LIGNE:
-			f = new Ligne(decortiqueur.getDimensions(), decortiqueur.getNoSeq());
+			f = new Ligne(decortiqueur.getDimensions(), decortiqueur.getNoSeq(), compte);
 			break;
 		case CARRE:
 		case RECTANGLE:
-			f = new Rectangle(decortiqueur.getForme(), decortiqueur.getDimensions(), decortiqueur.getNoSeq());
+			f = new Rectangle(decortiqueur.getForme(), decortiqueur.getDimensions(), decortiqueur.getNoSeq(), compte);
 			break;
 		case CERCLE:
 			// Logique qui permet d'attribuer le rayon d'un cercle aux rayons d'un ovale
@@ -63,15 +69,16 @@ public class FormeFactory {
 				fix[i] = decortiqueur.getDimensions()[i];
 			}
 			fix[3] = fix[2]; // rayonV = rayonH
-			f = new Ovale(decortiqueur.getForme(), fix, decortiqueur.getNoSeq());
+			f = new Ovale(decortiqueur.getForme(), fix, decortiqueur.getNoSeq(), compte);
 			break;
 		case OVALE:
-			f = new Ovale(decortiqueur.getForme(), decortiqueur.getDimensions(), decortiqueur.getNoSeq());
+			f = new Ovale(decortiqueur.getForme(), decortiqueur.getDimensions(), decortiqueur.getNoSeq(), compte);
 			break;
 		default:
 			// Cas où la sousforme n'est pas dans les cas plus hauts
 			throw new IllegalArgumentException(ERREUR_FORME);
 		}
+		compte++;
 		return f;
 	}
 }
