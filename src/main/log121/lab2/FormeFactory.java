@@ -26,7 +26,12 @@ import main.log121.lab2.formes.Rectangle;
 public class FormeFactory {
 
 	public final static String ERREUR_FORME = "La ligne n'est pas reconnue comme étant une forme.";
-	public static int compte = 0;
+
+
+	/**
+	 * Le compte des formes produites.
+	 */
+	private static int compte = 0;
 
 	/**
 	 * Crée une nouvelle forme. Cette méthode reçoit la chaîne de caractères provenant du serveur de formes, elle
