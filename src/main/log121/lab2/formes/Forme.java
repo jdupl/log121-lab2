@@ -135,4 +135,13 @@ public abstract class Forme {
 		return hauteur;
 	}
 
+	/**
+	 * Accesseur qui permet d'obtenir la position d'arrivée de la forme.
+	 * 
+	 * @return Le position (à partir de 0)
+	 */
+	public int getOrdreArrivee() {
+		return ordreArrivee;
+	}
+
 }
