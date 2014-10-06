@@ -21,18 +21,29 @@ import java.awt.Color;
  */
 public enum SousForme {
 
-	CARRE(Color.GREEN), RECTANGLE(Color.MAGENTA), CERCLE(Color.PINK), LIGNE(Color.ORANGE), OVALE(Color.BLUE);
+	CARRE(Color.GREEN, 0), RECTANGLE(Color.MAGENTA, 1), CERCLE(Color.PINK, 2), LIGNE(Color.ORANGE, 3), OVALE(
+			Color.BLUE, 4);
 
+	/**
+	 * Couleur de la sous forme au dessin.
+	 */
 	public Color couleur;
+	/**
+	 * Ordre de tri de la sous forme.
+	 */
+	public int importance;
 
 	/**
 	 * Constructeur privé qui permet d'instancier des Enum.
 	 * 
 	 * @param couleur
 	 *            La couleur associée à la sous forme.
+	 * @param importance
+	 *            Ordre de tri de la sous forme.
 	 */
-	private SousForme(Color couleur) {
+	private SousForme(Color couleur, int importance) {
 		this.couleur = couleur;
+		this.importance = importance;
 	}
 
 	/***
