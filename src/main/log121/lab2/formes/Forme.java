@@ -148,6 +148,6 @@ public abstract class Forme {
 	 *
 	 * @return L'aire
 	 */
-	protected abstract double getAire();
+	public abstract double getAire();
 
 }
