@@ -92,6 +92,7 @@ public class MenuFenetre extends JMenuBar {
 		obtenirFormesMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				demarrerComm(10, true);
+
 			}
 		});
 
