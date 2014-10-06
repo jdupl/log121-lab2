@@ -44,4 +44,8 @@ public class Rectangle extends Forme {
 		g.fillRect(coinX, coinY, largeur, hauteur);
 	}
 
+	public double getAire(){
+		return this.getLargeur() * this.getHauteur();
+	}
+
 }

@@ -44,4 +44,8 @@ public class Ovale extends Forme {
 		g.fillOval(coinX, coinY, largeur, hauteur);
 	}
 
+	public double getAire(){
+		return Math.PI*(largeur/2)*(largeur/2);
+	}
+
 }
