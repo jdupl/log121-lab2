@@ -40,10 +40,11 @@ public class MenuFenetre extends JMenuBar {
 	private static final String MENU_FICHIER_TITRE = "app.frame.menus.file.title",
 			MENU_FICHIER_QUITTER = "app.frame.menus.file.exit", MENU_DESSIN_TITRE = "app.frame.menus.draw.title",
 			MENU_DESSIN_DEMARRER = "app.frame.menus.draw.start", MENU_DESSIN_ARRETER = "app.frame.menus.draw.stop",
+			MENU_DESSIN_OBTENIR_FORMES = "app.frame.menus.getshapes",
 			MENU_AIDE_TITRE = "app.frame.menus.help.title", MENU_AIDE_PROPOS = "app.frame.menus.help.about";
 	private static final String MESSAGE_DIALOGUE_A_PROPOS = "app.frame.dialog.about";
 
-	private JMenuItem arreterMenuItem, demarrerMenuItem;
+	private JMenuItem arreterMenuItem, demarrerMenuItem, obtenirFormesMenuItem;
 	private static final int DELAI_QUITTER_MSEC = 200;
 
 	private static final String MESSAGE_CONNECTION = "Quel est le nom d'hôte et le port du serveur de formes.";
@@ -64,19 +65,12 @@ public class MenuFenetre extends JMenuBar {
 	 * Créer le menu "Draw".
 	 */
 	protected void addMenuDessiner() {
-		JMenu menu = creerMenu(MENU_DESSIN_TITRE, new String[] { MENU_DESSIN_DEMARRER, MENU_DESSIN_ARRETER });
+		JMenu menu = creerMenu(MENU_DESSIN_TITRE, new String[] { MENU_DESSIN_DEMARRER, MENU_DESSIN_ARRETER, MENU_DESSIN_OBTENIR_FORMES });
 
 		demarrerMenuItem = menu.getItem(0);
 		demarrerMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				String entreeUtilisateur = JOptionPane.showInputDialog(MESSAGE_CONNECTION, "localhost:10000");
-				try {
-					InetSocketAddress adresse = DecortiqueurAdresse.decortiquerAdresseReseau(entreeUtilisateur);
-					comm.start(adresse);
-				} catch (IllegalArgumentException e) {
-					JOptionPane.showMessageDialog(null, e.getMessage(), "Adresse invalide", JOptionPane.ERROR_MESSAGE);
-				}
-				rafraichirMenus();
+				demarrerComm(-1, false);
 			}
 		});
 		demarrerMenuItem.setAccelerator(KeyStroke.getKeyStroke(MENU_DESSIN_DEMARRER_TOUCHE_RACC,
@@ -92,6 +86,14 @@ public class MenuFenetre extends JMenuBar {
 
 		arreterMenuItem.setAccelerator(KeyStroke.getKeyStroke(MENU_DESSIN_ARRETER_TOUCHE_RACC,
 				MENU_DESSIN_ARRETER_TOUCHE_MASK));
+
+		obtenirFormesMenuItem = menu.getItem(2);
+		obtenirFormesMenuItem.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				demarrerComm(10, true);
+			}
+		});
+
 		add(menu);
 	}
 
@@ -140,7 +142,7 @@ public class MenuFenetre extends JMenuBar {
 
 	/**
 	 * Créer un élément de menu à partir d'un champs principal et ses éléments
-	 * 
+	 *
 	 * @param titleKey
 	 *            champs principal
 	 * @param itemKeys
@@ -154,4 +156,16 @@ public class MenuFenetre extends JMenuBar {
 		}
 		return menu;
 	}
+
+	private void demarrerComm(int nbFormes, boolean bulk){
+		String entreeUtilisateur = JOptionPane.showInputDialog(MESSAGE_CONNECTION, "localhost:10000");
+		try {
+			InetSocketAddress adresse = DecortiqueurAdresse.decortiquerAdresseReseau(entreeUtilisateur);
+			comm.start(adresse, nbFormes, bulk);
+		} catch (IllegalArgumentException e) {
+			JOptionPane.showMessageDialog(null, e.getMessage(), "Adresse invalide", JOptionPane.ERROR_MESSAGE);
+		}
+		rafraichirMenus();
+	}
+
 }

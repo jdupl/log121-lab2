@@ -36,7 +36,7 @@ public class CommBase {
 
 	/**
 	 * Définir le récepteur de l'information reçue dans la communication avec le serveur
-	 * 
+	 *
 	 * @param listener
 	 *            sera alerté lors de l'appel de "firePropertyChanger" par le SwingWorker
 	 */
@@ -46,12 +46,16 @@ public class CommBase {
 
 	/**
 	 * Démarre la communication
-	 * 
+	 *
 	 * @param adresse
+	 * @param nbFormes
+	 *     Le nombre de formes a obtenir. -1 pour aucune limite.
+	 *@param bulk
+	 *     Faux pas défaut. Permet de récupérer toutes les formes d'un coup.
 	 */
-	public void start(InetSocketAddress adresse) {
+	public void start(InetSocketAddress adresse, int nbFormes, boolean bulk) {
 		isActif = true;
-		creerCommunication(adresse);
+		creerCommunication(adresse, nbFormes, bulk);
 	}
 
 	/**
@@ -67,9 +71,9 @@ public class CommBase {
 	/**
 	 * Créer le nécessaire pour la communication avec le serveur
 	 */
-	protected void creerCommunication(InetSocketAddress adresse) {
+	protected void creerCommunication(InetSocketAddress adresse, int nbFormes, boolean bulk) {
 		// Crée un fil d'exécusion parallèle au fil courant,
-		threadComm = new ThreadComm(adresse);
+		threadComm = new ThreadComm(adresse, nbFormes, bulk);
 		isActif = true;
 		if (listener != null) {
 			// La méthode "propertyChange" de ApplicationFormes sera
