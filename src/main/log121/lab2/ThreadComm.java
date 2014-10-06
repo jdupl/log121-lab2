@@ -93,10 +93,10 @@ public class ThreadComm extends SwingWorker<Forme, Object> {
 					Thread.sleep(DELAI_MSEC);
 				} catch (InterruptedException e) {
 					// Gérer l'interrpution du listener de l'arrêt
-					out.write("END\n");
-					out.flush();
+					this.fermerConnection(out);
 				}
 			}
+			fermerConnection(out);
 		} catch (UnknownHostException e) {
 			firePropertyChange("ERREUR", null,
 					String.format("L'hôte '%s' n'est pas trouvé sur le réseau.", adresse.getHostName()));
@@ -115,6 +115,18 @@ public class ThreadComm extends SwingWorker<Forme, Object> {
 		}
 		this.cancel(false);
 		return null;
+	}
+
+	/*
+	 * Envoie un END dans le bufferedWriter
+	 */
+	private void fermerConnection(BufferedWriter out){
+		try {
+			out.write("END\n");
+			out.flush();
+		} catch (IOException e) {
+			firePropertyChange("ERREUR", null, String.format("Problème io"));
+		}
 	}
 
 }
