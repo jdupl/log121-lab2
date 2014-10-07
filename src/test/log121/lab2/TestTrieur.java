@@ -43,7 +43,7 @@ public class TestTrieur {
 		expected.ajouter(new Double(7));
 		expected.ajouter(new Double(8));
 
-		Assert.assertEquals(actual, expected);
+		Assert.assertEquals(expected, actual);
 	}
 
 	@Test
@@ -80,7 +80,7 @@ public class TestTrieur {
 		expected.ajouter(new Double(0));
 		expected.ajouter(new Double(0));
 
-		Assert.assertEquals(actual, expected);
+		Assert.assertEquals(expected, actual);
 	}
 
 }

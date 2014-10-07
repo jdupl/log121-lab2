@@ -41,10 +41,8 @@ public class ListeChainee<T> implements Liste<T> {
 		return echanger(element1, indexElement1, element2, indexElement2);
 	}
 
-	private boolean echanger(T element1, int indexElement1, T element2,
-			int indexElement2) {
-		return remplacer(indexElement1, element2)
-				&& remplacer(indexElement2, element1);
+	private boolean echanger(T element1, int indexElement1, T element2, int indexElement2) {
+		return remplacer(indexElement1, element2) && remplacer(indexElement2, element1);
 	}
 
 	@Override
@@ -136,8 +134,7 @@ public class ListeChainee<T> implements Liste<T> {
 
 			@Override
 			public void remove() {
-				throw new UnsupportedOperationException(
-						"Cette fonctionnalité n'est pas implémentée.");
+				throw new UnsupportedOperationException("Cette fonctionnalité n'est pas implémentée.");
 			}
 		};
 		return it;
