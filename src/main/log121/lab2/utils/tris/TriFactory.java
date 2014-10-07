@@ -5,6 +5,7 @@ import main.log121.lab2.formes.comparateurs.ComparateurFormeParAire;
 import main.log121.lab2.formes.comparateurs.ComparateurHauteur;
 import main.log121.lab2.formes.comparateurs.ComparateurLargeur;
 import main.log121.lab2.formes.comparateurs.ComparateurOrdreArrivee;
+import main.log121.lab2.formes.comparateurs.ComparateurParDistanceMax;
 import main.log121.lab2.formes.comparateurs.ComparateurSequence;
 import main.log121.lab2.formes.comparateurs.ComparateurTypeForme;
 
@@ -17,6 +18,7 @@ public class TriFactory {
 			comparateur = new ComparateurFormeParAire(decroissant);
 			break;
 		case DISTANCE_MAX:
+			comparateur = new ComparateurParDistanceMax();
 			break;
 		case HAUTEUR:
 			comparateur = new ComparateurHauteur(decroissant);
