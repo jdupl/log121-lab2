@@ -132,5 +132,12 @@ public abstract class Forme {
 	 * @return L'aire
 	 */
 	public abstract double getAire();
+	
+	/**
+	 * Accesseur qui permet d'obtenir la distance maximal de la forme.
+	 *
+	 * @return L'aire
+	 */
+	public abstract double getDistanceMaximale();
 
 }

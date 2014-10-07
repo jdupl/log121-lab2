@@ -43,4 +43,10 @@ public class Ovale extends Forme {
 		return Math.PI * (largeur / 2) * (largeur / 2);
 	}
 
+	@Override
+	public double getDistanceMaximale() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

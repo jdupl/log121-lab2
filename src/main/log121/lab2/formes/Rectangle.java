@@ -42,4 +42,10 @@ public class Rectangle extends Forme {
 		return this.getLargeur() * this.getHauteur();
 	}
 
+	@Override
+	public double getDistanceMaximale() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

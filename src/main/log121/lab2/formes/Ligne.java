@@ -42,4 +42,10 @@ public class Ligne extends Forme {
 		return 0;
 	}
 
+	@Override
+	public double getDistanceMaximale() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }
