@@ -37,12 +37,30 @@ public class MenuFenetre extends JMenuBar {
 	private static final char MENU_DESSIN_DEMARRER_TOUCHE_RACC = KeyEvent.VK_D;
 	private static final int MENU_FICHIER_QUITTER_TOUCHE_MASK = ActionEvent.CTRL_MASK;
 	private static final char MENU_FICHIER_QUITTER_TOUCHE_RACC = KeyEvent.VK_Q;
-	private static final String MENU_FICHIER_TITRE = "app.frame.menus.file.title",
-			MENU_FICHIER_QUITTER = "app.frame.menus.file.exit", MENU_DESSIN_TITRE = "app.frame.menus.draw.title",
-			MENU_DESSIN_DEMARRER = "app.frame.menus.draw.start", MENU_DESSIN_ARRETER = "app.frame.menus.draw.stop",
-			MENU_DESSIN_OBTENIR_FORMES = "app.frame.menus.getshapes", MENU_AIDE_TITRE = "app.frame.menus.help.title",
-			MENU_AIDE_PROPOS = "app.frame.menus.help.about";
-	private static final String MESSAGE_DIALOGUE_A_PROPOS = "app.frame.dialog.about";
+
+	private static final String
+	MENU_FICHIER_TITRE = "app.frame.menus.file.title",
+	MENU_FICHIER_QUITTER = "app.frame.menus.file.exit",
+	MENU_DESSIN_TITRE = "app.frame.menus.draw.title",
+	MENU_DESSIN_DEMARRER = "app.frame.menus.draw.start",
+	MENU_DESSIN_ARRETER = "app.frame.menus.draw.stop",
+	MENU_DESSIN_OBTENIR_FORMES = "app.frame.menus.getshapes",
+	MENU_AIDE_TITRE = "app.frame.menus.help.title",
+	MENU_TRIER_TITRE="app.frame.menus.sort.title",
+	MENU_TRIER_AIRE_CROISSANTE="app.frame.menus.sort.ascendingarea",
+	MENU_TRIER_AIRE_DECROISSANTE="app.frame.menus.sort.descendingarea",
+	MENU_TRIER_TYPE_CROISSANT="app.frame.menus.sort.ascendingshapetype",
+	MENU_TRIER_TYPE_DECROISSANT="app.frame.menus.sort.descendingshapetype",
+	MENU_TRIER_DISTANCE_MAX_CROISSANTE="app.frame.menus.sort.ascendingmaxdistance",
+	MENU_TRIER_DISTANCE_MAX_DECROISSANTE="app.frame.menus.sort.descendingmaxdistance",
+	MENU_TRIER_LARGEUR_CROISSANTE="app.frame.menus.sort.ascendingwidth",
+	MENU_TRIER_LARGEUR_DECROISSANTE="app.frame.menus.sort.descendingwidth",
+	MENU_TRIER_HAUTEUR_CROISSANTE="app.frame.menus.sort.ascendingheight",
+	MENU_TRIER_HAUTEUR_DECROISSANTE="app.frame.menus.sort.descendingheight",
+	MENU_TRIER_ORDRE_ARRIVEE="app.frame.menus.sort.arrivalorder",
+	MENU_TRIER_ORDRE_ORIGINAL="app.frame.menus.sort.originalorder",
+	MENU_AIDE_PROPOS = "app.frame.menus.help.about",
+	MESSAGE_DIALOGUE_A_PROPOS = "app.frame.dialog.about";
 
 	private JMenuItem arreterMenuItem, demarrerMenuItem, obtenirFormesMenuItem;
 	private static final int DELAI_QUITTER_MSEC = 200;
@@ -58,6 +76,7 @@ public class MenuFenetre extends JMenuBar {
 		this.comm = comm;
 		addMenuDessiner();
 		addMenuFichier();
+		addMenuTrier();
 		addMenuAide();
 	}
 
@@ -117,6 +136,104 @@ public class MenuFenetre extends JMenuBar {
 		});
 		menu.getItem(0).setAccelerator(
 				KeyStroke.getKeyStroke(MENU_FICHIER_QUITTER_TOUCHE_RACC, MENU_FICHIER_QUITTER_TOUCHE_MASK));
+		add(menu);
+	}
+
+	/**
+	 * Créer le menu "Trier".
+	 */
+	private void  addMenuTrier() {
+		JMenu menu = creerMenu(
+				MENU_TRIER_TITRE,
+				new String[] {
+						MENU_TRIER_AIRE_CROISSANTE,
+						MENU_TRIER_AIRE_DECROISSANTE,
+						MENU_TRIER_DISTANCE_MAX_CROISSANTE,
+						MENU_TRIER_DISTANCE_MAX_DECROISSANTE,
+						MENU_TRIER_TYPE_CROISSANT,
+						MENU_TRIER_TYPE_DECROISSANT,
+						MENU_TRIER_HAUTEUR_CROISSANTE,
+						MENU_TRIER_HAUTEUR_DECROISSANTE,
+						MENU_TRIER_LARGEUR_CROISSANTE,
+						MENU_TRIER_LARGEUR_DECROISSANTE,
+						MENU_TRIER_ORDRE_ARRIVEE,
+						MENU_TRIER_ORDRE_ORIGINAL,
+				});
+
+		//MENU_TRIER_AIRE_CROISSANTE
+		menu.getItem(0).addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				// ACTION ICI
+			}
+		});
+
+		//MENU_TRIER_AIRE_DECROISSANTE
+		menu.getItem(1).addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				// ACTION ICI
+			}
+		});
+		//MENU_TRIER_DISTANCE_MAX_CROISSANTE
+		menu.getItem(2).addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				// ACTION ICI
+			}
+		});
+		//MENU_TRIER_DISTANCE_MAX_DECROISSANTE
+		menu.getItem(3).addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				// ACTION ICI
+			}
+		});
+		//MENU_TRIER_TYPE_CROISSANT
+		menu.getItem(4).addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				// ACTION ICI
+			}
+		});
+		//MENU_TRIER_TYPE_DECROISSANT
+		menu.getItem(5).addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				// ACTION ICI
+			}
+		});
+		//MENU_TRIER_HAUTEUR_CROISSANTE
+		menu.getItem(6).addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				// ACTION ICI
+			}
+		});
+		//MENU_TRIER_HAUTEUR_DECROISSANTE
+		menu.getItem(7).addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				// ACTION ICI
+			}
+		});
+		//MENU_TRIER_LARGEUR_CROISSANTE
+		menu.getItem(8).addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				// ACTION ICI
+			}
+		});
+		//MENU_TRIER_LARGEUR_DECROISSANTE
+		menu.getItem(9).addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				// ACTION ICI
+			}
+		});
+		//MENU_TRIER_ORDRE_ARRIVEE
+		menu.getItem(10).addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				// ACTION ICI
+			}
+		});
+		//MENU_TRIER_ORDRE_ORIGINAL
+		menu.getItem(11).addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				// ACTION ICI
+			}
+		});
+
 		add(menu);
 	}
 

@@ -1,48 +1,47 @@
 package main.log121.lab2.utils;
 
+import main.log121.lab2.formes.Forme;
+import main.log121.lab2.formes.comparateurs.Comparateur;
+
 public class Trieur {
 
-	public static final int ORDRE_CROISSANT = 1;
-	public static final int ORDRE_DECROISSANT = 2;
+	private Comparateur comparateur;
 
 	/**
 	 * Constructeur
 	 */
-	public Trieur() {
-
+	public Trieur(Comparateur comparateur) {
+		this.comparateur = comparateur;
 	}
 
-	public int[] Sort(int[] liste, int ordre) {
-		Quicksort(liste, 0, liste.length, ordre);
+	public ListeChainee<Forme> Sort(ListeChainee<Forme> liste) {
+		Quicksort(liste, 0, liste.getTaille());
 		return liste;
 	}
 
-	private int[] Quicksort(int[] liste, int bas, int haut, int ordre) {
+	private void Quicksort(ListeChainee<Forme> liste, int bas, int haut) {
 		if (bas < haut) {
-			int pivotLocation = Partition(liste, bas, haut, ordre);
-			Quicksort(liste, bas, pivotLocation, ordre);
-			Quicksort(liste, pivotLocation + 1, haut, ordre);
+			int pivotLocation = Partition(liste, bas, haut);
+			Quicksort(liste, bas, pivotLocation);
+			Quicksort(liste, pivotLocation + 1, haut);
 		}
-		return liste.clone();
 	}
 
-	private int Partition(int[] liste, int bas, int haut, int ordre) {
-		int pivot = liste[bas];
+	private int Partition(ListeChainee<Forme> liste, int bas, int haut) {
+		//int pivot = liste[bas];
+		Forme pivot = liste.obtenirElement(bas);
 		int murGauche = bas;
 
 		for (int i = bas + 1; i < haut; i++) {
 			// TODO Ameliorer les IF
-			if (liste[i] < pivot && ordre == ORDRE_CROISSANT) {
+			//if (liste[i] < pivot) {
+			if (comparateur.compare(liste.obtenirElement(i), pivot) < 0) {
 				murGauche++;
-				swap(liste, i, murGauche);
-			}
-			if (liste[i] > pivot && ordre == ORDRE_DECROISSANT) {
-				murGauche++;
-				swap(liste, i, murGauche);
+				liste.echanger(i, murGauche);
 			}
 		}
 
-		swap(liste, bas, murGauche);
+		liste.echanger(bas, murGauche);
 
 		return murGauche;
 	}
