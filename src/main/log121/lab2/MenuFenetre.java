@@ -157,6 +157,75 @@ public class MenuFenetre extends JMenuBar {
 						MENU_TRIER_LARGEUR_DECROISSANTE,
 						MENU_TRIER_ORDRE_ARRIVEE
 				});
+
+		//MENU_TRIER_AIRE_CROISSANTE
+		menu.getItem(0).addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				// ACTION ICI
+			}
+		});
+
+		//MENU_TRIER_AIRE_DECROISSANTE
+		menu.getItem(1).addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				// ACTION ICI
+			}
+		});
+		//MENU_TRIER_DISTANCE_MAX_CROISSANTE
+		menu.getItem(2).addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				// ACTION ICI
+			}
+		});
+		//MENU_TRIER_DISTANCE_MAX_DECROISSANTE
+		menu.getItem(3).addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				// ACTION ICI
+			}
+		});
+		//MENU_TRIER_TYPE_CROISSANT
+		menu.getItem(4).addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				// ACTION ICI
+			}
+		});
+		//MENU_TRIER_TYPE_DECROISSANT
+		menu.getItem(5).addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				// ACTION ICI
+			}
+		});
+		//MENU_TRIER_HAUTEUR_CROISSANTE
+		menu.getItem(6).addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				// ACTION ICI
+			}
+		});
+		//MENU_TRIER_HAUTEUR_DECROISSANTE
+		menu.getItem(7).addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				// ACTION ICI
+			}
+		});
+		//MENU_TRIER_LARGEUR_CROISSANTE
+		menu.getItem(8).addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				// ACTION ICI
+			}
+		});
+		//MENU_TRIER_LARGEUR_DECROISSANTE
+		menu.getItem(9).addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				// ACTION ICI
+			}
+		});
+		//MENU_TRIER_ORDRE_ARRIVEE
+		menu.getItem(10).addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				// ACTION ICI
+			}
+		});
+
 		add(menu);
 	}
 
