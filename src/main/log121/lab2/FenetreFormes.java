@@ -87,4 +87,8 @@ public class FenetreFormes extends JComponent {
 	public Dimension getPreferredSize() {
 		return dimension;
 	}
+
+	public ListeChainee<Forme> getListeForme() {
+		return listeDeFormes;
+	}
 }
