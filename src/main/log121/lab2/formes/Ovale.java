@@ -45,8 +45,7 @@ public class Ovale extends Forme {
 
 	@Override
 	public double getDistanceMaximale() {
-		// TODO Auto-generated method stub
-		return 0;
+		return Math.max(largeur, hauteur);
 	}
 
 }
