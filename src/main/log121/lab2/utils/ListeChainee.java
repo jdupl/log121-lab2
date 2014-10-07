@@ -8,6 +8,15 @@ public class ListeChainee<T> implements Liste<T> {
 	private Element<T> debut;
 	private Element<T> fin;
 	private int taille;
+	private int tailleMaximum;
+
+	public ListeChainee() {
+		this.tailleMaximum = 10;
+	}
+
+	public ListeChainee(int tailleMaximum) {
+		this.tailleMaximum = tailleMaximum;
+	}
 
 	@Override
 	public boolean ajouter(T element) {
@@ -18,7 +27,11 @@ public class ListeChainee<T> implements Liste<T> {
 			debut = e;
 		}
 		fin = e;
-		this.taille++;
+		if (taille > tailleMaximum) {
+			enleverPremier();
+		} else {
+			this.taille++;
+		}
 		return false;
 	}
 
