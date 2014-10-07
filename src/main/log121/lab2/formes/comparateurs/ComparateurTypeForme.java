@@ -24,6 +24,6 @@ public class ComparateurTypeForme extends Comparateur {
 	 */
 	@Override
 	public int compare(Forme forme1, Forme forme2) {
-		return forme1.getImportance() - forme2.getImportance();
+		return inverserSiNecessaire(forme1.getImportance() - forme2.getImportance());
 	}
 }

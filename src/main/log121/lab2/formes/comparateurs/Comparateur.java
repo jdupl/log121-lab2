@@ -24,4 +24,8 @@ public abstract class Comparateur implements Comparator<Forme> {
 		return !decroissant;
 	}
 
+	protected int inverserSiNecessaire(int diff) {
+		return this.estDecroissant() ? -1 * diff : diff;
+	}
+
 }
