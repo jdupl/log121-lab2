@@ -98,4 +98,20 @@ public class TestListeChainee {
 
 		Assert.assertFalse(liste.echanger("-1", "3"));
 	}
+
+	@Test
+	public void testEnleverPremier() {
+		ListeChainee<String> expected = new ListeChainee<>();
+		expected.ajouter("1");
+		expected.ajouter("2");
+		expected.ajouter("3");
+
+		ListeChainee<String> liste = new ListeChainee<>();
+		liste.ajouter("0");
+		liste.ajouter("1");
+		liste.ajouter("2");
+		liste.ajouter("3");
+
+		liste.enleverPremier();
+	}
 }
