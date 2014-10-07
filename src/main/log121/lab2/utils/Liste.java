@@ -19,7 +19,7 @@ public interface Liste<T> extends Iterable<T> {
 	public int obtenirIndex(T element);
 
 	public boolean remplacer(int index, T nouvelElement);
-	
+
 	public void trier(Comparator<T> comparateur);
 
 }

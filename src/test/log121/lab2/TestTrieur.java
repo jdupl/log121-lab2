@@ -22,15 +22,15 @@ public class TestTrieur {
 		actual.ajouter(new Double(7));
 		actual.ajouter(new Double(8));
 		actual.ajouter(new Double(0));
-		
+
 		actual.trier(new Comparator<Double>() {
-			
+
 			@Override
 			public int compare(Double o1, Double o2) {
 				return (int) (o1 - o2);
 			}
 		});
-		
+
 		ListeChainee<Double> expected = new ListeChainee<>();
 		expected.ajouter(new Double(0));
 		expected.ajouter(new Double(0));
@@ -59,15 +59,15 @@ public class TestTrieur {
 		actual.ajouter(new Double(7));
 		actual.ajouter(new Double(8));
 		actual.ajouter(new Double(0));
-		
+
 		actual.trier(new Comparator<Double>() {
-			
+
 			@Override
 			public int compare(Double o1, Double o2) {
 				return (int) (o2 - o1);
 			}
 		});
-		
+
 		ListeChainee<Double> expected = new ListeChainee<>();
 		expected.ajouter(new Double(8));
 		expected.ajouter(new Double(7));
@@ -82,5 +82,5 @@ public class TestTrieur {
 
 		Assert.assertEquals(actual, expected);
 	}
-	
+
 }
