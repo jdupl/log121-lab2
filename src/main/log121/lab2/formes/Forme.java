@@ -12,7 +12,6 @@ package main.log121.lab2.formes;
  2014-09-09 Version initiale
  *******************************************************/
 import java.awt.Color;
-import java.awt.Graphics2D;
 
 /**
  * Représentation abstraite d'une forme. La forme peut être dessinée.
@@ -72,14 +71,6 @@ public abstract class Forme {
 		this.id = id;
 		this.ordreArrivee = ordreArrivee;
 	}
-
-	/**
-	 * Méthode abstraite qui devra être implémentée par la forme afin d'appeler la bonne méthode de l'API standard.
-	 *
-	 * @param g
-	 *            Le composant sur lequel dessiner
-	 */
-	protected abstract void dessinerForme(Graphics2D g);
 
 	/**
 	 * Accesseur qui permet d'obtenir la couleur de la sous forme associée à la forme.
