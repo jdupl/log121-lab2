@@ -11,7 +11,7 @@ public class TriFactory {
 		Comparateur comparateur = null;
 		switch (tri) {
 		case AIRE:
-			comparateur = new ComparateurFormeParAire();
+			comparateur = new ComparateurFormeParAire(decroissant);
 			break;
 		case DISTANCE_MAX:
 			break;
@@ -22,10 +22,10 @@ public class TriFactory {
 		case NO_SEQ:
 			break;
 		case ORIGINAL:
-			comparateur = new ComparateurOrdreArrivee();
+			comparateur = new ComparateurOrdreArrivee(decroissant);
 			break;
 		case TYPE:
-			comparateur = new ComparateurTypeForme();
+			comparateur = new ComparateurTypeForme(decroissant);
 			break;
 		default:
 			break;
