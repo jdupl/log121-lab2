@@ -4,14 +4,14 @@ package main.log121.lab2;
  Cours:  LOG121
  Projet: Lab01
  Nom du fichier: MenuFenetre.java
- Date créé: 2013-05-03
+ Date crÃ©Ã©: 2013-05-03
  *******************************************************
  Historique des modifications
  *******************************************************
  *@author Patrice Boucher
  2013-05-03 Version initiale
  *@author Justin Duplessis
- 2014-09-09 Ajout fenêtre connection
+ 2014-09-09 Ajout fenÃ©tre connection
  *******************************************************/
 
 import java.awt.event.ActionEvent;
@@ -30,7 +30,7 @@ import main.log121.lab2.utils.tris.TriFactory;
 import main.log121.lab2.utils.tris.Tris;
 
 /**
- * Crée le menu de la fenêtre de l'applicationé
+ * CrÃ©e le menu de la fenÃªtre de l'application
  */
 public class MenuFenetre extends JMenuBar {
 
@@ -69,9 +69,9 @@ public class MenuFenetre extends JMenuBar {
 	private JMenuItem arreterMenuItem, demarrerMenuItem, obtenirFormesMenuItem;
 	private static final int DELAI_QUITTER_MSEC = 200;
 
-	private static final String MESSAGE_CONNECTION = "Quel est le nom d'hôte et le port du serveur de formes.";
+	private static final String MESSAGE_CONNECTION = "Quel est le nom d'hÃ´te et le port du serveur de formes.";
 
-	CommBase comm; // Pour activer/désactiver la communication avec le serveur
+	CommBase comm; // Pour activer/dÃ©sactiver la communication avec le serveur
 	FenetreFormes f;
 
 	/**
@@ -87,7 +87,7 @@ public class MenuFenetre extends JMenuBar {
 	}
 
 	/**
-	 * Créer le menu "Draw".
+	 * CrÃ©er le menu "Draw".
 	 */
 	protected void addMenuDessiner() {
 		JMenu menu = creerMenu(MENU_DESSIN_TITRE, new String[] { MENU_DESSIN_DEMARRER, MENU_DESSIN_ARRETER,
@@ -125,7 +125,7 @@ public class MenuFenetre extends JMenuBar {
 	}
 
 	/**
-	 * Créer le menu "File".
+	 * CrÃ©er le menu "File".
 	 */
 	protected void addMenuFichier() {
 		JMenu menu = creerMenu(MENU_FICHIER_TITRE, new String[] { MENU_FICHIER_QUITTER });
@@ -146,7 +146,7 @@ public class MenuFenetre extends JMenuBar {
 	}
 
 	/**
-	 * Créer le menu "Trier".
+	 * CrÃ©er le menu "Trier".
 	 */
 	private void  addMenuTrier() {
 		JMenu menu = creerMenu(
@@ -250,7 +250,7 @@ public class MenuFenetre extends JMenuBar {
 	}
 	
 	/**
-	 * Créer le menu "Help".
+	 * CrÃ©er le menu "Help".
 	 */
 	private void addMenuAide() {
 		JMenu menu = creerMenu(MENU_AIDE_TITRE, new String[] { MENU_AIDE_PROPOS });
@@ -264,7 +264,7 @@ public class MenuFenetre extends JMenuBar {
 	}
 
 	/**
-	 * Activer ou désactiver les items du menu selon la sélection.
+	 * Activer ou dÃ©sactiver les items du menu selon la sÃ©lection.
 	 */
 	private void rafraichirMenus() {
 		//demarrerMenuItem.setEnabled(!comm.isActif());
@@ -272,12 +272,12 @@ public class MenuFenetre extends JMenuBar {
 	}
 
 	/**
-	 * Créer un élément de menu à partir d'un champs principal et ses éléments
+	 * CrÃ©er un Ã©lÃ©ment de menu Ã  partir d'un champs principal et ses Ã©lÃ©ments
 	 *
 	 * @param titleKey
 	 *            champs principal
 	 * @param itemKeys
-	 *            éléments
+	 *            Ã©lÃ©ments
 	 * @return le menu
 	 */
 	private static JMenu creerMenu(String titleKey, String[] itemKeys) {
