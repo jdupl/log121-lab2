@@ -1,10 +1,8 @@
 package main.log121.lab2.formes.comparateurs;
 
-import java.util.Comparator;
-
 import main.log121.lab2.formes.Forme;
 
-public class ComparateurSequence implements Comparator<Forme>{
+public class ComparateurSequence extends Comparateur {
 
 	@Override
 	public int compare(Forme forme1, Forme forme2) {
