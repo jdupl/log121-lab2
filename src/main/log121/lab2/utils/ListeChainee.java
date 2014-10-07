@@ -29,9 +29,8 @@ public class ListeChainee<T> implements Liste<T> {
 		fin = e;
 		if (taille > tailleMaximum) {
 			enleverPremier();
-		} else {
-			this.taille++;
 		}
+		this.taille++;
 		return false;
 	}
 
