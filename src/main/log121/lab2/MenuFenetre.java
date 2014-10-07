@@ -138,8 +138,8 @@ public class MenuFenetre extends JMenuBar {
 	 * Activer ou désactiver les items du menu selon la sélection.
 	 */
 	private void rafraichirMenus() {
-		demarrerMenuItem.setEnabled(!comm.isActif());
-		arreterMenuItem.setEnabled(comm.isActif());
+		//demarrerMenuItem.setEnabled(!comm.isActif());
+		//arreterMenuItem.setEnabled(comm.isActif());
 	}
 
 	/**
