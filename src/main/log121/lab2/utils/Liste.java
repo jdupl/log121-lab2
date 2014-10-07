@@ -22,4 +22,6 @@ public interface Liste<T> extends Iterable<T> {
 
 	public void trier(Comparator<T> comparateur);
 
+	public void enleverPremier();
+
 }

@@ -8,6 +8,15 @@ public class ListeChainee<T> implements Liste<T> {
 	private Element<T> debut;
 	private Element<T> fin;
 	private int taille;
+	private int tailleMaximum;
+
+	public ListeChainee() {
+		this.tailleMaximum = 10;
+	}
+
+	public ListeChainee(int tailleMaximum) {
+		this.tailleMaximum = tailleMaximum;
+	}
 
 	@Override
 	public boolean ajouter(T element) {
@@ -19,6 +28,9 @@ public class ListeChainee<T> implements Liste<T> {
 		}
 		fin = e;
 		this.taille++;
+		if (taille > tailleMaximum) {
+			enleverPremier();
+		}
 		return false;
 	}
 
@@ -148,25 +160,7 @@ public class ListeChainee<T> implements Liste<T> {
 		quicksort(0, getTaille(), comparateur);
 	}
 
-	//https://www.cs.duke.edu/~reif/courses/alglectures/skiena.lectures/lecture5.pdf page:5
-	//Quicksort(A as array, low as int, high as int)
-	// 	if (low < high)
-	//      pivot_location = Partition(A,low,high)
-	//    	Quicksort(A,low, pivot_location - 1)
-	//    	Quicksort(A, pivot_location + 1, high)
-	//
-	//Partition(A as array, low as int, high as int)
-	//    pivot = A[low]
-	//    leftwall = low
-	//
-	//    for i = low + 1 to high
-	//        if (A[i] < pivot) then
-	//            leftwall = leftwall + 1
-	//            swap(A[i], A[leftwall])
-	//
-	//    swap(A[low],A[leftwall])
-	//
-	//    return (leftwall)
+	// https://www.cs.duke.edu/~reif/courses/alglectures/skiena.lectures/lecture5.pdf page:5
 	private void quicksort(int bas, int haut, Comparator<T> comparateur) {
 		if (bas < haut) {
 			int pivotLocation = Partition(bas, haut, comparateur);
@@ -210,4 +204,11 @@ public class ListeChainee<T> implements Liste<T> {
 		return false;
 	}
 
+	@Override
+	public void enleverPremier() {
+		if (this.debut != null) {
+			this.debut = debut.getSuivant();
+			taille--;
+		}
+	}
 }
