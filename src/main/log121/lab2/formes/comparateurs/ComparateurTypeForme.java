@@ -4,6 +4,14 @@ import main.log121.lab2.formes.Forme;
 
 public class ComparateurTypeForme extends Comparateur {
 
+	public ComparateurTypeForme() {
+		super(false);
+	}
+
+	public ComparateurTypeForme(boolean decroissant) {
+		super(decroissant);
+	}
+
 	/**
 	 * Compare 2 formes selon le type de sous forme.
 	 * 
@@ -16,6 +24,6 @@ public class ComparateurTypeForme extends Comparateur {
 	 */
 	@Override
 	public int compare(Forme forme1, Forme forme2) {
-		return forme1.getImportance() - forme2.getImportance();
+		return inverserSiNecessaire(forme1.getImportance() - forme2.getImportance());
 	}
 }

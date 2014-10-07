@@ -1,5 +1,7 @@
 package main.log121.lab2.formes;
 
+import java.awt.Graphics2D;
+
 /******************************************************
  Cours:  LOG121
  Projet: Lab01
@@ -38,8 +40,13 @@ public class Ovale extends Forme {
 		coinY = dims[1] - dims[3];
 	}
 
-	public double getAire(){
-		return Math.PI*(largeur/2)*(largeur/2);
+	@Override
+	public void dessinerForme(Graphics2D g) {
+		g.fillOval(coinX, coinY, largeur, hauteur);
+	}
+
+	public double getAire() {
+		return Math.PI * (largeur / 2) * (largeur / 2);
 	}
 
 }
