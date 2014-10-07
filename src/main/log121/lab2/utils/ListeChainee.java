@@ -27,10 +27,10 @@ public class ListeChainee<T> implements Liste<T> {
 			debut = e;
 		}
 		fin = e;
+		this.taille++;
 		if (taille > tailleMaximum) {
 			enleverPremier();
 		}
-		this.taille++;
 		return false;
 	}
 
