@@ -4,14 +4,14 @@ package main.log121.lab2;
  Cours:  LOG121
  Projet: Lab01
  Nom du fichier: MenuFenetre.java
- Date crÃ©Ã©: 2013-05-03
+ Date créé: 2013-05-03
  *******************************************************
  Historique des modifications
  *******************************************************
  *@author Patrice Boucher
  2013-05-03 Version initiale
  *@author Justin Duplessis
- 2014-09-09 Ajout fenÃªtre connection
+ 2014-09-09 Ajout fenêtre connection
  *******************************************************/
 
 import java.awt.event.ActionEvent;
@@ -25,8 +25,12 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 
+import main.log121.lab2.formes.comparateurs.Comparateur;
+import main.log121.lab2.utils.tris.TriFactory;
+import main.log121.lab2.utils.tris.Tris;
+
 /**
- * CrÃ©e le menu de la fenÃªtre de l'applicationÃ©
+ * Crée le menu de la fenêtre de l'applicationé
  */
 public class MenuFenetre extends JMenuBar {
 
@@ -65,15 +69,17 @@ public class MenuFenetre extends JMenuBar {
 	private JMenuItem arreterMenuItem, demarrerMenuItem, obtenirFormesMenuItem;
 	private static final int DELAI_QUITTER_MSEC = 200;
 
-	private static final String MESSAGE_CONNECTION = "Quel est le nom d'hÃ´te et le port du serveur de formes.";
+	private static final String MESSAGE_CONNECTION = "Quel est le nom d'hôte et le port du serveur de formes.";
 
-	CommBase comm; // Pour activer/dÃ©sactiver la communication avec le serveur
+	CommBase comm; // Pour activer/désactiver la communication avec le serveur
+	FenetreFormes f;
 
 	/**
 	 * Constructeur
 	 */
-	public MenuFenetre(CommBase comm) {
+	public MenuFenetre(CommBase comm, FenetreFormes f) {
 		this.comm = comm;
+		this.f = f;
 		addMenuDessiner();
 		addMenuFichier();
 		addMenuTrier();
@@ -81,7 +87,7 @@ public class MenuFenetre extends JMenuBar {
 	}
 
 	/**
-	 * CrÃ©er le menu "Draw".
+	 * Créer le menu "Draw".
 	 */
 	protected void addMenuDessiner() {
 		JMenu menu = creerMenu(MENU_DESSIN_TITRE, new String[] { MENU_DESSIN_DEMARRER, MENU_DESSIN_ARRETER,
@@ -119,7 +125,7 @@ public class MenuFenetre extends JMenuBar {
 	}
 
 	/**
-	 * CrÃ©er le menu "File".
+	 * Créer le menu "File".
 	 */
 	protected void addMenuFichier() {
 		JMenu menu = creerMenu(MENU_FICHIER_TITRE, new String[] { MENU_FICHIER_QUITTER });
@@ -140,7 +146,7 @@ public class MenuFenetre extends JMenuBar {
 	}
 
 	/**
-	 * CrÃ©er le menu "Trier".
+	 * Créer le menu "Trier".
 	 */
 	private void  addMenuTrier() {
 		JMenu menu = creerMenu(
@@ -163,82 +169,88 @@ public class MenuFenetre extends JMenuBar {
 		//MENU_TRIER_AIRE_CROISSANTE
 		menu.getItem(0).addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				// ACTION ICI
+				trier(Tris.AIRE, false);
 			}
 		});
 
 		//MENU_TRIER_AIRE_DECROISSANTE
 		menu.getItem(1).addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				// ACTION ICI
+				trier(Tris.AIRE, true);
 			}
 		});
 		//MENU_TRIER_DISTANCE_MAX_CROISSANTE
 		menu.getItem(2).addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				// ACTION ICI
+				trier(Tris.DISTANCE_MAX, false);
 			}
 		});
 		//MENU_TRIER_DISTANCE_MAX_DECROISSANTE
 		menu.getItem(3).addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				// ACTION ICI
+				trier(Tris.DISTANCE_MAX, true);
 			}
 		});
 		//MENU_TRIER_TYPE_CROISSANT
 		menu.getItem(4).addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				// ACTION ICI
+				trier(Tris.TYPE, false);
 			}
 		});
 		//MENU_TRIER_TYPE_DECROISSANT
 		menu.getItem(5).addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				// ACTION ICI
+				trier(Tris.TYPE, true);
 			}
 		});
 		//MENU_TRIER_HAUTEUR_CROISSANTE
 		menu.getItem(6).addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				// ACTION ICI
+				trier(Tris.HAUTEUR, false);
 			}
 		});
 		//MENU_TRIER_HAUTEUR_DECROISSANTE
 		menu.getItem(7).addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				// ACTION ICI
+				trier(Tris.HAUTEUR, true);
 			}
 		});
 		//MENU_TRIER_LARGEUR_CROISSANTE
 		menu.getItem(8).addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				// ACTION ICI
+				trier(Tris.LARGEUR, false);
 			}
 		});
 		//MENU_TRIER_LARGEUR_DECROISSANTE
 		menu.getItem(9).addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				// ACTION ICI
+				trier(Tris.LARGEUR, true);
 			}
 		});
 		//MENU_TRIER_ORDRE_ARRIVEE
 		menu.getItem(10).addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				// ACTION ICI
+				trier(Tris.ORIGINAL, false);
 			}
 		});
 		//MENU_TRIER_ORDRE_ORIGINAL
 		menu.getItem(11).addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				// ACTION ICI
+				trier(Tris.ORIGINAL, false);
 			}
 		});
 
 		add(menu);
 	}
 
+	private void trier(Tris t, boolean b) {
+		Comparateur comparateur = TriFactory.creerComparateur(t, b);
+		f.getListeForme().trier(comparateur);
+		f.repaint();
+	}
+	
 	/**
-	 * CrÃ©er le menu "Help".
+	 * Créer le menu "Help".
 	 */
 	private void addMenuAide() {
 		JMenu menu = creerMenu(MENU_AIDE_TITRE, new String[] { MENU_AIDE_PROPOS });
@@ -252,7 +264,7 @@ public class MenuFenetre extends JMenuBar {
 	}
 
 	/**
-	 * Activer ou dÃ©sactiver les items du menu selon la sÃ©lection.
+	 * Activer ou désactiver les items du menu selon la sélection.
 	 */
 	private void rafraichirMenus() {
 		//demarrerMenuItem.setEnabled(!comm.isActif());
@@ -260,12 +272,12 @@ public class MenuFenetre extends JMenuBar {
 	}
 
 	/**
-	 * CrÃ©er un Ã©lÃ©ment de menu Ã  partir d'un champs principal et ses Ã©lÃ©ments
+	 * Créer un élément de menu à partir d'un champs principal et ses éléments
 	 *
 	 * @param titleKey
 	 *            champs principal
 	 * @param itemKeys
-	 *            Ã©lÃ©ments
+	 *            éléments
 	 * @return le menu
 	 */
 	private static JMenu creerMenu(String titleKey, String[] itemKeys) {
