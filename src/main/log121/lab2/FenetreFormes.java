@@ -17,15 +17,19 @@ package main.log121.lab2;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
 import javax.swing.JComponent;
 
+import main.log121.lab2.formes.Dessinateur;
 import main.log121.lab2.formes.Forme;
 import ca.etsmtl.log.util.IDLogger;
 
 /**
  * Cette fenêtre gère l'affichage des formes
- * 
+ *
  */
 public class FenetreFormes extends JComponent {
 
@@ -39,10 +43,16 @@ public class FenetreFormes extends JComponent {
 	 * Instance du logger qui permet de conserver les numéros de séquences dans un fichier.
 	 */
 	IDLogger logger = IDLogger.getInstance();
+
 	/**
 	 * Liste des formes à afficher
 	 */
 	FormeListe listeDeFormes = null;
+
+	/**
+	 * Instance du dessinateur qui permet de dessiner les formes a l'écran
+	 */
+	Dessinateur dessinateur = new Dessinateur();
 
 	/**
 	 * Constructeur
@@ -56,18 +66,17 @@ public class FenetreFormes extends JComponent {
 	 */
 	@Override
 	public void paint(Graphics g) {
-		for (int i = 0; i < listeDeFormes.getListeDeFormes().length; i++) {
-			Forme f = listeDeFormes.getListeDeFormes()[i];
-			if (f != null) {
-				f.dessiner((Graphics2D) g);
-			}
+		if (Arrays.asList(listeDeFormes.getListeDeFormes()).size() > 0){
+			ArrayList<Forme> iterableFormes = new ArrayList<Forme>(Arrays.asList(listeDeFormes.getListeDeFormes()));
+			iterableFormes.removeAll(Collections.singleton(null));
+			dessinateur.dessiner(iterableFormes, (Graphics2D) g);
 		}
 	};
 
 	/**
 	 * Ajoute une forme à la liste et libère le plus ancien élément. Va appeler repaint() pour tout redessiner le
 	 * composant. S'occupe aussi d'envoyer le numéro de séquence à la classe de logging.
-	 * 
+	 *
 	 * @param forme
 	 *            La nouvelle forme à insérer
 	 */

@@ -11,7 +11,6 @@ package main.log121.lab2.formes;
  *@author Justin Duplessis
  2014-09-09 Version initiale
  *******************************************************/
-import java.awt.Graphics2D;
 
 /**
  * Classe qui étend Forme afin de dessiner une ligne.
@@ -37,11 +36,6 @@ public class Ligne extends Forme {
 		super.hauteur = Math.abs(dims[3] - dims[1]);
 		super.coinX = Math.min(dims[0], dims[2]);
 		super.coinY = Math.min(dims[1], dims[3]);
-	}
-
-	@Override
-	public void dessinerForme(Graphics2D g) {
-		g.drawLine(dims[0], dims[1], dims[2], dims[3]);
 	}
 
 	public double getAire(){

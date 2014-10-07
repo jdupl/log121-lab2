@@ -11,7 +11,6 @@ package main.log121.lab2.formes;
  *@author Justin Duplessis
  2014-09-09 Version initiale
  *******************************************************/
-import java.awt.Graphics2D;
 
 /**
  * Classe qui étend Forme afin de dessiner un rectangle ou un carré.
@@ -37,11 +36,6 @@ public class Rectangle extends Forme {
 		hauteur = dims[3] - dims[1];
 		coinX = dims[0];
 		coinY = dims[1];
-	}
-
-	@Override
-	public void dessinerForme(Graphics2D g) {
-		g.fillRect(coinX, coinY, largeur, hauteur);
 	}
 
 	public double getAire(){

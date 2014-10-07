@@ -11,7 +11,6 @@ package main.log121.lab2.formes;
  *@author Justin Duplessis
  2014-09-09 Version initiale
  *******************************************************/
-import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
@@ -75,22 +74,6 @@ public abstract class Forme {
 	}
 
 	/**
-	 * Méthode qui permet à une classe externe de dessiner la forme.
-	 *
-	 * @param g
-	 *            Le composant sur lequel dessiner
-	 */
-	public void dessiner(Graphics2D g) {
-		g.setColor(getCouleur());
-		g.setStroke(new BasicStroke());
-		dessinerForme(g);
-
-		g.setColor(Color.GRAY);
-		g.setStroke(new BasicStroke(1f, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_MITER, 1f, new float[] { 2f }, 0f));
-		g.drawRect(coinX, coinY, largeur, hauteur);
-	}
-
-	/**
 	 * Méthode abstraite qui devra être implémentée par la forme afin d'appeler la bonne méthode de l'API standard.
 	 *
 	 * @param g
@@ -106,7 +89,7 @@ public abstract class Forme {
 	protected Color getCouleur() {
 		return sousForme.couleur;
 	}
-	
+
 	/**
 	 * Accesseur qui permet d'obtenir l'importance de la sous forme pour le tri.
 	 *
