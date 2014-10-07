@@ -1,5 +1,7 @@
 package main.log121.lab2.utils;
 
+import java.util.Comparator;
+
 public interface Liste<T> extends Iterable<T> {
 
 	public boolean ajouter(T element);
@@ -17,5 +19,7 @@ public interface Liste<T> extends Iterable<T> {
 	public int obtenirIndex(T element);
 
 	public boolean remplacer(int index, T nouvelElement);
+	
+	public void trier(Comparator<T> comparateur);
 
 }

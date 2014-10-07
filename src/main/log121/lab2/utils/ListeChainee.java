@@ -1,5 +1,6 @@
 package main.log121.lab2.utils;
 
+import java.util.Comparator;
 import java.util.Iterator;
 
 public class ListeChainee<T> implements Liste<T> {
@@ -40,8 +41,10 @@ public class ListeChainee<T> implements Liste<T> {
 		return echanger(element1, indexElement1, element2, indexElement2);
 	}
 
-	private boolean echanger(T element1, int indexElement1, T element2, int indexElement2) {
-		return remplacer(indexElement1, element2) && remplacer(indexElement2, element1);
+	private boolean echanger(T element1, int indexElement1, T element2,
+			int indexElement2) {
+		return remplacer(indexElement1, element2)
+				&& remplacer(indexElement2, element1);
 	}
 
 	@Override
@@ -133,7 +136,8 @@ public class ListeChainee<T> implements Liste<T> {
 
 			@Override
 			public void remove() {
-				throw new UnsupportedOperationException("Cette fonctionnalité n'est pas implémentée.");
+				throw new UnsupportedOperationException(
+						"Cette fonctionnalité n'est pas implémentée.");
 			}
 		};
 		return it;
@@ -141,6 +145,72 @@ public class ListeChainee<T> implements Liste<T> {
 
 	private boolean indexValide(int index) {
 		return index < this.getTaille() && index > -1;
+	}
+
+	public void trier(Comparator<T> comparateur) {
+		quicksort(0, getTaille(), comparateur);
+	}
+
+	//https://www.cs.duke.edu/~reif/courses/alglectures/skiena.lectures/lecture5.pdf page:5
+	//Quicksort(A as array, low as int, high as int)
+	// 	if (low < high)
+	//      pivot_location = Partition(A,low,high)
+	//    	Quicksort(A,low, pivot_location - 1)
+	//    	Quicksort(A, pivot_location + 1, high)
+	//
+	//Partition(A as array, low as int, high as int)
+	//    pivot = A[low]
+	//    leftwall = low
+	//
+	//    for i = low + 1 to high
+	//        if (A[i] < pivot) then
+	//            leftwall = leftwall + 1
+	//            swap(A[i], A[leftwall])
+	//
+	//    swap(A[low],A[leftwall])
+	//
+	//    return (leftwall)
+	private void quicksort(int bas, int haut, Comparator<T> comparateur) {
+		if (bas < haut) {
+			int pivotLocation = Partition(bas, haut, comparateur);
+			quicksort(bas, pivotLocation, comparateur);
+			quicksort(pivotLocation + 1, haut, comparateur);
+		}
+	}
+
+	private int Partition(int bas, int haut, Comparator<T> comparateur) {
+		// int pivot = liste[bas];
+		T pivot = obtenirElement(bas);
+		int murGauche = bas;
+
+		for (int i = bas + 1; i < haut; i++) {
+			// TODO Ameliorer les IF
+			// if (liste[i] < pivot) {
+			if (comparateur.compare(obtenirElement(i), pivot) < 0) {
+				murGauche++;
+				echanger(i, murGauche);
+			}
+		}
+
+		echanger(bas, murGauche);
+
+		return murGauche;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof ListeChainee) {
+			ListeChainee<T> autreListe = (ListeChainee<T>) obj;
+			for (T element : this) {
+				int index = this.obtenirIndex(element);
+				int autreIndex = autreListe.obtenirIndex(element);
+				if (index != autreIndex) {
+					return false;
+				}
+			}
+			return true;
+		}
+		return false;
 	}
 
 }
