@@ -138,6 +138,6 @@ public abstract class Forme {
 	 *
 	 * @return L'aire
 	 */
-	public abstract double getDistanceMaximal();
+	public abstract double getDistanceMaximale();
 
 }

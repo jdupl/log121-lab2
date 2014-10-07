@@ -43,7 +43,7 @@ public class Rectangle extends Forme {
 	}
 
 	@Override
-	public double getDistanceMaximal() {
+	public double getDistanceMaximale() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
