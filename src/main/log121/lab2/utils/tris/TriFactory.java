@@ -1,16 +1,14 @@
 package main.log121.lab2.utils.tris;
 
-import java.util.Comparator;
-
-import main.log121.lab2.formes.Forme;
+import main.log121.lab2.formes.comparateurs.Comparateur;
 import main.log121.lab2.formes.comparateurs.ComparateurFormeParAire;
 import main.log121.lab2.formes.comparateurs.ComparateurOrdreArrivee;
 import main.log121.lab2.formes.comparateurs.ComparateurTypeForme;
 
 public class TriFactory {
 
-	public static Comparator<Forme> creerComparateur(Tris tri, boolean decroissant) {
-		Comparator<Forme> comparateur = null;
+	public static Comparateur creerComparateur(Tris tri, boolean decroissant) {
+		Comparateur comparateur = null;
 		switch (tri) {
 		case AIRE:
 			comparateur = new ComparateurFormeParAire();
