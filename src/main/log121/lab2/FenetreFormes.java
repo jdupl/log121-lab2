@@ -17,14 +17,12 @@ package main.log121.lab2;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 
 import javax.swing.JComponent;
 
 import main.log121.lab2.formes.Dessinateur;
 import main.log121.lab2.formes.Forme;
+import main.log121.lab2.utils.ListeChainee;
 import ca.etsmtl.log.util.IDLogger;
 
 /**
@@ -47,7 +45,7 @@ public class FenetreFormes extends JComponent {
 	/**
 	 * Liste des formes à afficher
 	 */
-	FormeListe listeDeFormes = null;
+	ListeChainee<Forme> listeDeFormes = null;
 
 	/**
 	 * Instance du dessinateur qui permet de dessiner les formes a l'écran
@@ -58,7 +56,7 @@ public class FenetreFormes extends JComponent {
 	 * Constructeur
 	 */
 	public FenetreFormes() {
-		listeDeFormes = new FormeListe(NB_FORMES);
+		listeDeFormes = new ListeChainee<Forme>();
 	}
 
 	/**
@@ -66,12 +64,8 @@ public class FenetreFormes extends JComponent {
 	 */
 	@Override
 	public void paint(Graphics g) {
-		if (Arrays.asList(listeDeFormes.getListeDeFormes()).size() > 0){
-			ArrayList<Forme> iterableFormes = new ArrayList<Forme>(Arrays.asList(listeDeFormes.getListeDeFormes()));
-			iterableFormes.removeAll(Collections.singleton(null));
-			dessinateur.dessiner(iterableFormes, (Graphics2D) g);
-		}
-	};
+		dessinateur.dessiner(listeDeFormes, (Graphics2D) g);
+	}
 
 	/**
 	 * Ajoute une forme à la liste et libère le plus ancien élément. Va appeler repaint() pour tout redessiner le

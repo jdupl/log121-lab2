@@ -3,7 +3,8 @@ package main.log121.lab2.formes;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.util.ArrayList;
+
+import main.log121.lab2.utils.ListeChainee;
 
 /**
  * Permet de dessiner une liste de formes dans un Graphics.
@@ -15,7 +16,7 @@ public class Dessinateur {
 
 	public Dessinateur() {}
 
-	public void dessiner(ArrayList<Forme> formes, Graphics2D g) {
+	public void dessiner(ListeChainee<Forme> formes, Graphics2D g) {
 
 		for (Forme forme : formes) {
 			g.setColor(forme.getCouleur());
