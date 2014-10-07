@@ -58,6 +58,7 @@ public class MenuFenetre extends JMenuBar {
 	MENU_TRIER_HAUTEUR_CROISSANTE="app.frame.menus.sort.ascendingheight",
 	MENU_TRIER_HAUTEUR_DECROISSANTE="app.frame.menus.sort.descendingheight",
 	MENU_TRIER_ORDRE_ARRIVEE="app.frame.menus.sort.arrivalorder",
+	MENU_TRIER_ORDRE_ORIGINAL="app.frame.menus.sort.originalorder",
 	MENU_AIDE_PROPOS = "app.frame.menus.help.about",
 	MESSAGE_DIALOGUE_A_PROPOS = "app.frame.dialog.about";
 
@@ -155,7 +156,8 @@ public class MenuFenetre extends JMenuBar {
 						MENU_TRIER_HAUTEUR_DECROISSANTE,
 						MENU_TRIER_LARGEUR_CROISSANTE,
 						MENU_TRIER_LARGEUR_DECROISSANTE,
-						MENU_TRIER_ORDRE_ARRIVEE
+						MENU_TRIER_ORDRE_ARRIVEE,
+						MENU_TRIER_ORDRE_ORIGINAL,
 				});
 
 		//MENU_TRIER_AIRE_CROISSANTE
@@ -221,6 +223,12 @@ public class MenuFenetre extends JMenuBar {
 		});
 		//MENU_TRIER_ORDRE_ARRIVEE
 		menu.getItem(10).addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				// ACTION ICI
+			}
+		});
+		//MENU_TRIER_ORDRE_ORIGINAL
+		menu.getItem(11).addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				// ACTION ICI
 			}
