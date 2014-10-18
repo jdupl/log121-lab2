@@ -18,6 +18,9 @@ public class Dessinateur {
 
 	public void dessiner(ListeChainee<Forme> formes, Graphics2D g) {
 
+		// Le point x,y de départ
+		int point = 0;
+
 		for (Forme forme : formes) {
 			g.setColor(forme.getCouleur());
 			g.setStroke(new BasicStroke());
@@ -26,16 +29,16 @@ public class Dessinateur {
 			case CARRE:
 			case RECTANGLE:
 				Rectangle rect = (Rectangle) forme;
-				g.fillRect(rect.coinX, rect.coinY, rect.largeur, rect.hauteur);
+				g.fillRect(point, point, rect.largeur, rect.hauteur);
 				break;
 			case CERCLE:
 			case OVALE:
 				Ovale ovale = (Ovale) forme;
-				g.fillOval(ovale.coinX, ovale.coinY, ovale.getLargeur(), ovale.getHauteur());
+				g.fillOval(point, point, ovale.getLargeur(), ovale.getHauteur());
 				break;
 			case LIGNE:
 				Ligne ligne = (Ligne) forme;
-				g.drawLine(ligne.dims[0], ligne.dims[1], ligne.dims[2], ligne.dims[3]);
+				g.drawLine(point, point, (point+ ligne.getLargeur()), (point + ligne.getHauteur()));
 				break;
 			default:
 				break;
@@ -43,8 +46,8 @@ public class Dessinateur {
 
 			g.setColor(Color.GRAY);
 			g.setStroke(new BasicStroke(1f, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_MITER, 1f, new float[] { 2f }, 0f));
-			g.drawRect(forme.coinX, forme.coinY, forme.getLargeur(), forme.getHauteur());
-
+			g.drawRect(point, point, forme.getLargeur(), forme.getHauteur());
+			point += 40;
 		}
 	}
 }
