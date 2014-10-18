@@ -38,6 +38,11 @@ public class FenetreFormes extends JComponent {
 	private static final int NB_FORMES = 10;
 
 	/**
+	 * Indique si on doit faire l'affichage des formes avec un decale de 40px
+	 */
+	private boolean decale = true;
+
+	/**
 	 * Instance du logger qui permet de conserver les numéros de séquences dans un fichier.
 	 */
 	IDLogger logger = IDLogger.getInstance();
@@ -64,7 +69,7 @@ public class FenetreFormes extends JComponent {
 	 */
 	@Override
 	public void paint(Graphics g) {
-		dessinateur.dessiner(listeDeFormes, (Graphics2D) g);
+		dessinateur.dessiner(listeDeFormes, (Graphics2D) g, decale);
 	}
 
 	/**
@@ -90,5 +95,14 @@ public class FenetreFormes extends JComponent {
 
 	public ListeChainee<Forme> getListeForme() {
 		return listeDeFormes;
+	}
+
+	/**
+	 *
+	 * @param decale indique si il faut dessiner les formes avec un décalé de 40px
+	 */
+	public void dessiner(boolean decale) {
+		this.decale = decale;
+		this.repaint();
 	}
 }

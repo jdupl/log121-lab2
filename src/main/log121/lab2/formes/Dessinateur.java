@@ -16,12 +16,25 @@ public class Dessinateur {
 
 	public Dessinateur() {}
 
-	public void dessiner(ListeChainee<Forme> formes, Graphics2D g) {
+	/**
+	 *
+	 * @param formes La liste de formes a dessiner
+	 * @param g Le grapics sur leuqel dessiner
+	 * @param decale Ajoute un décalé de 40px entre chaque forme
+	 */
+	public void dessiner(ListeChainee<Forme> formes, Graphics2D g, boolean decale) {
 
 		// Le point x,y de départ
-		int point = 0;
+		int coinX = 0;
+		int coinY = 0;
 
 		for (Forme forme : formes) {
+
+			if (decale == false){
+				coinX = forme.coinX;
+				coinY = forme.coinY;
+			}
+
 			g.setColor(forme.getCouleur());
 			g.setStroke(new BasicStroke());
 
@@ -29,16 +42,16 @@ public class Dessinateur {
 			case CARRE:
 			case RECTANGLE:
 				Rectangle rect = (Rectangle) forme;
-				g.fillRect(point, point, rect.largeur, rect.hauteur);
+				g.fillRect(coinX, coinY, rect.largeur, rect.hauteur);
 				break;
 			case CERCLE:
 			case OVALE:
 				Ovale ovale = (Ovale) forme;
-				g.fillOval(point, point, ovale.getLargeur(), ovale.getHauteur());
+				g.fillOval(coinX, coinY, ovale.getLargeur(), ovale.getHauteur());
 				break;
 			case LIGNE:
 				Ligne ligne = (Ligne) forme;
-				g.drawLine(point, point, (point+ ligne.getLargeur()), (point + ligne.getHauteur()));
+				g.drawLine(coinX, coinY, (coinX+ ligne.getLargeur()), (coinY + ligne.getHauteur()));
 				break;
 			default:
 				break;
@@ -46,8 +59,11 @@ public class Dessinateur {
 
 			g.setColor(Color.GRAY);
 			g.setStroke(new BasicStroke(1f, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_MITER, 1f, new float[] { 2f }, 0f));
-			g.drawRect(point, point, forme.getLargeur(), forme.getHauteur());
-			point += 40;
+			g.drawRect(coinX, coinY, forme.getLargeur(), forme.getHauteur());
+
+			// On incrémente le point de départ
+			coinX += 40;
+			coinY += 40;
 		}
 	}
 }

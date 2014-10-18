@@ -169,86 +169,86 @@ public class MenuFenetre extends JMenuBar {
 		//MENU_TRIER_AIRE_CROISSANTE
 		menu.getItem(0).addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				trier(Tris.AIRE, false);
+				trier(Tris.AIRE, false, true);
 			}
 		});
 
 		//MENU_TRIER_AIRE_DECROISSANTE
 		menu.getItem(1).addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				trier(Tris.AIRE, true);
+				trier(Tris.AIRE, true, true);
 			}
 		});
 		//MENU_TRIER_DISTANCE_MAX_CROISSANTE
 		menu.getItem(2).addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				trier(Tris.DISTANCE_MAX, false);
+				trier(Tris.DISTANCE_MAX, false, true);
 			}
 		});
 		//MENU_TRIER_DISTANCE_MAX_DECROISSANTE
 		menu.getItem(3).addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				trier(Tris.DISTANCE_MAX, true);
+				trier(Tris.DISTANCE_MAX, true, true);
 			}
 		});
 		//MENU_TRIER_TYPE_CROISSANT
 		menu.getItem(4).addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				trier(Tris.TYPE, false);
+				trier(Tris.TYPE, false, true);
 			}
 		});
 		//MENU_TRIER_TYPE_DECROISSANT
 		menu.getItem(5).addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				trier(Tris.TYPE, true);
+				trier(Tris.TYPE, true, true);
 			}
 		});
 		//MENU_TRIER_HAUTEUR_CROISSANTE
 		menu.getItem(6).addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				trier(Tris.HAUTEUR, false);
+				trier(Tris.HAUTEUR, false, true);
 			}
 		});
 		//MENU_TRIER_HAUTEUR_DECROISSANTE
 		menu.getItem(7).addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				trier(Tris.HAUTEUR, true);
+				trier(Tris.HAUTEUR, true, true);
 			}
 		});
 		//MENU_TRIER_LARGEUR_CROISSANTE
 		menu.getItem(8).addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				trier(Tris.LARGEUR, false);
+				trier(Tris.LARGEUR, false, true);
 			}
 		});
 		//MENU_TRIER_LARGEUR_DECROISSANTE
 		menu.getItem(9).addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				trier(Tris.LARGEUR, true);
+				trier(Tris.LARGEUR, true, true);
 			}
 		});
 		//MENU_TRIER_ORDRE_ARRIVEE
 		menu.getItem(10).addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				trier(Tris.ORIGINAL, false);
+				trier(Tris.ORIGINAL, false, true);
 			}
 		});
 		//MENU_TRIER_ORDRE_ORIGINAL
 		menu.getItem(11).addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				trier(Tris.ORIGINAL, false);
+				trier(Tris.ORIGINAL, false, false);
 			}
 		});
 
 		add(menu);
 	}
 
-	private void trier(Tris t, boolean b) {
+	private void trier(Tris t, boolean b, boolean decale) {
 		Comparateur comparateur = TriFactory.creerComparateur(t, b);
 		f.getListeForme().trier(comparateur);
-		f.repaint();
+		f.dessiner(decale);
 	}
-	
+
 	/**
 	 * Créer le menu "Help".
 	 */
