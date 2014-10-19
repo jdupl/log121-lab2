@@ -243,8 +243,8 @@ public class MenuFenetre extends JMenuBar {
 		add(menu);
 	}
 
-	private void trier(Tris t, boolean b, boolean decale) {
-		Comparateur comparateur = TriFactory.creerComparateur(t, b);
+	private void trier(Tris t, boolean decroissant, boolean decale) {
+		Comparateur comparateur = TriFactory.creerComparateur(t, decroissant);
 		f.getListeForme().trier(comparateur);
 		f.dessiner(decale);
 	}
