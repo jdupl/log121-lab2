@@ -2,13 +2,13 @@ package main.log121.lab2.formes.comparateurs;
 
 import main.log121.lab2.formes.Forme;
 
-public class ComparateurFormeParAire extends Comparateur {
+public class ComparateurAire extends Comparateur {
 
-	public ComparateurFormeParAire() {
+	public ComparateurAire() {
 		super(false);
 	}
 
-	public ComparateurFormeParAire(boolean decroissant) {
+	public ComparateurAire(boolean decroissant) {
 		super(decroissant);
 	}
 
