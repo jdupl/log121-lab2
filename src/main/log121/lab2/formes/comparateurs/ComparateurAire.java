@@ -1,8 +1,8 @@
 package main.log121.lab2.formes.comparateurs;
 
-import main.log121.lab2.formes.Forme;
+import main.log121.lab2.formes.AbstractForme;
 
-public class ComparateurAire extends Comparateur {
+public class ComparateurAire extends AbstractComparateur {
 
 	public ComparateurAire() {
 		super(false);
@@ -13,8 +13,8 @@ public class ComparateurAire extends Comparateur {
 	}
 
 	@Override
-	public int compare(Forme f1, Forme f2) {
-		return inverserSiNecessaire((int) (f1.getAire() - f2.getAire()));
+	public int compare(AbstractForme fo1, AbstractForme fo2) {
+		return inverserSiNecessaire((int) (fo1.getAire() - fo2.getAire()));
 	}
 
 }

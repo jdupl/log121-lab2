@@ -49,13 +49,13 @@ public enum SousForme {
 	/***
 	 * Retrouver la "sous-forme" qui détermine la couleur. Recherche par constante Enum.
 	 * 
-	 * @param s
+	 * @param str
 	 *            Le nom de la sous-couleur
 	 * @return La constante Enum SousForme associée ou null si invalide
 	 */
-	public static SousForme getFromString(String s) {
+	public static SousForme getFromString(String str) {
 		for (SousForme f : SousForme.values()) {
-			if (f.name().equals(s)) {
+			if (f.name().equals(str)) {
 				return f;
 			}
 		}

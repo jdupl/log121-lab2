@@ -2,17 +2,17 @@ package main.log121.lab2.formes.comparateurs;
 
 import java.util.Comparator;
 
-import main.log121.lab2.formes.Forme;
+import main.log121.lab2.formes.AbstractForme;
 
-public abstract class Comparateur implements Comparator<Forme> {
+public abstract class AbstractComparateur implements Comparator<AbstractForme> {
 
 	private boolean decroissant;
 
-	public Comparateur() {
+	public AbstractComparateur() {
 		this.decroissant = false;
 	}
 
-	public Comparateur(boolean decroissant) {
+	public AbstractComparateur(boolean decroissant) {
 		this.decroissant = decroissant;
 	}
 

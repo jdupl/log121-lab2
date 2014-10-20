@@ -1,6 +1,6 @@
 package main.log121.lab2.utils.tris;
 
-import main.log121.lab2.formes.comparateurs.Comparateur;
+import main.log121.lab2.formes.comparateurs.AbstractComparateur;
 import main.log121.lab2.formes.comparateurs.ComparateurAire;
 import main.log121.lab2.formes.comparateurs.ComparateurHauteur;
 import main.log121.lab2.formes.comparateurs.ComparateurLargeur;
@@ -11,8 +11,8 @@ import main.log121.lab2.formes.comparateurs.ComparateurTypeForme;
 
 public class TriFactory {
 
-	public static Comparateur creerComparateur(Tris tri, boolean decroissant) {
-		Comparateur comparateur = null;
+	public static AbstractComparateur creerComparateur(Tris tri, boolean decroissant) {
+		AbstractComparateur comparateur = null;
 		switch (tri) {
 		case AIRE:
 			comparateur = new ComparateurAire(decroissant);

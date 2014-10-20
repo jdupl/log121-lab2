@@ -25,7 +25,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 
-import main.log121.lab2.formes.comparateurs.Comparateur;
+import main.log121.lab2.formes.comparateurs.AbstractComparateur;
 import main.log121.lab2.utils.tris.TriFactory;
 import main.log121.lab2.utils.tris.Tris;
 
@@ -35,51 +35,51 @@ import main.log121.lab2.utils.tris.Tris;
 public class MenuFenetre extends JMenuBar {
 
 	private static final long serialVersionUID = 1536336192561843187L;
-	private static final int MENU_DESSIN_ARRETER_TOUCHE_MASK = ActionEvent.CTRL_MASK;
-	private static final char MENU_DESSIN_ARRETER_TOUCHE_RACC = KeyEvent.VK_A;
-	private static final int MENU_DESSIN_DEMARRER_TOUCHE_MASK = ActionEvent.CTRL_MASK;
-	private static final char MENU_DESSIN_DEMARRER_TOUCHE_RACC = KeyEvent.VK_D;
-	private static final int MENU_FICHIER_QUITTER_TOUCHE_MASK = ActionEvent.CTRL_MASK;
-	private static final char MENU_FICHIER_QUITTER_TOUCHE_RACC = KeyEvent.VK_Q;
+	private static final int ARRET_TOUCHE_MASK = ActionEvent.CTRL_MASK;
+	private static final char ARRET_TOUCHE_RACC = KeyEvent.VK_A;
+	private static final int DEMARRE_MASK = ActionEvent.CTRL_MASK;
+	private static final char DEMARRE_RACC = KeyEvent.VK_D;
+	private static final int QUITTER_MASK = ActionEvent.CTRL_MASK;
+	private static final char QUITTER_RACC = KeyEvent.VK_Q;
 
 	private static final String
-	MENU_FICHIER_TITRE = "app.frame.menus.file.title",
-	MENU_FICHIER_QUITTER = "app.frame.menus.file.exit",
+	FICHIER_TITRE = "app.frame.menus.file.title",
+	FICHIER_QUITTER = "app.frame.menus.file.exit",
 	MENU_DESSIN_TITRE = "app.frame.menus.draw.title",
-	MENU_DESSIN_DEMARRER = "app.frame.menus.draw.start",
-	MENU_DESSIN_ARRETER = "app.frame.menus.draw.stop",
-	MENU_DESSIN_OBTENIR_FORMES = "app.frame.menus.getshapes",
+	DESSIN_DEMARRER = "app.frame.menus.draw.start",
+	DESSIN_ARRETER = "app.frame.menus.draw.stop",
+	OBTENIR_FORMES = "app.frame.menus.getshapes",
 	MENU_AIDE_TITRE = "app.frame.menus.help.title",
 	MENU_TRIER_TITRE="app.frame.menus.sort.title",
-	MENU_TRIER_AIRE_CROISSANTE="app.frame.menus.sort.ascendingarea",
-	MENU_TRIER_AIRE_DECROISSANTE="app.frame.menus.sort.descendingarea",
-	MENU_TRIER_TYPE_CROISSANT="app.frame.menus.sort.ascendingshapetype",
-	MENU_TRIER_TYPE_DECROISSANT="app.frame.menus.sort.descendingshapetype",
-	MENU_TRIER_DISTANCE_MAX_CROISSANTE="app.frame.menus.sort.ascendingmaxdistance",
-	MENU_TRIER_DISTANCE_MAX_DECROISSANTE="app.frame.menus.sort.descendingmaxdistance",
-	MENU_TRIER_LARGEUR_CROISSANTE="app.frame.menus.sort.ascendingwidth",
-	MENU_TRIER_LARGEUR_DECROISSANTE="app.frame.menus.sort.descendingwidth",
-	MENU_TRIER_HAUTEUR_CROISSANTE="app.frame.menus.sort.ascendingheight",
-	MENU_TRIER_HAUTEUR_DECROISSANTE="app.frame.menus.sort.descendingheight",
-	MENU_TRIER_ORDRE_ARRIVEE="app.frame.menus.sort.arrivalorder",
-	MENU_TRIER_ORDRE_ORIGINAL="app.frame.menus.sort.originalorder",
+	MENU_AIRE_C="app.frame.menus.sort.ascendingarea",
+	MENU_AIRE_D="app.frame.menus.sort.descendingarea",
+	MENU_TYPE_C="app.frame.menus.sort.ascendingshapetype",
+	MENU_TYPE_D="app.frame.menus.sort.descendingshapetype",
+	MENU_DISTANCE_C="app.frame.menus.sort.ascendingmaxdistance",
+	MENU_DISTANCE_D="app.frame.menus.sort.descendingmaxdistance",
+	MENU_LARGEUR_C="app.frame.menus.sort.ascendingwidth",
+	MENU_LARGEUR_D="app.frame.menus.sort.descendingwidth",
+	MENU_HAUTEUR_C="app.frame.menus.sort.ascendingheight",
+	MENU_HAUTEUR_D="app.frame.menus.sort.descendingheight",
+	ORDRE_ARRIVEE="app.frame.menus.sort.arrivalorder",
+	ORDRE_ORIGINAL="app.frame.menus.sort.originalorder",
 	MENU_AIDE_PROPOS = "app.frame.menus.help.about",
-	MESSAGE_DIALOGUE_A_PROPOS = "app.frame.dialog.about";
+	MESS_A_PROPOS = "app.frame.dialog.about";
 
-	private JMenuItem arreterMenuItem, demarrerMenuItem, obtenirFormesMenuItem;
-	private static final int DELAI_QUITTER_MSEC = 200;
+	private JMenuItem arreterMenuItem, demarrerMenuItem, obtenirFormes;
+	private static final int DELAI_QUITTER = 200;
 
-	private static final String MESSAGE_CONNECTION = "Quel est le nom d'hôte et le port du serveur de formes.";
+	private static final String MESS_CONNECTION = "Quel est le nom d'hôte et le port du serveur de formes.";
 
 	CommBase comm; // Pour activer/désactiver la communication avec le serveur
-	FenetreFormes f;
+	FenetreFormes fen;
 
 	/**
 	 * Constructeur
 	 */
-	public MenuFenetre(CommBase comm, FenetreFormes f) {
+	public MenuFenetre(CommBase comm, FenetreFormes fen) {
 		this.comm = comm;
-		this.f = f;
+		this.fen = fen;
 		addMenuDessiner();
 		addMenuFichier();
 		addMenuTrier();
@@ -90,8 +90,8 @@ public class MenuFenetre extends JMenuBar {
 	 * Créer le menu "Draw".
 	 */
 	protected void addMenuDessiner() {
-		JMenu menu = creerMenu(MENU_DESSIN_TITRE, new String[] { MENU_DESSIN_DEMARRER, MENU_DESSIN_ARRETER,
-				MENU_DESSIN_OBTENIR_FORMES });
+		JMenu menu = creerMenu(MENU_DESSIN_TITRE, new String[] { DESSIN_DEMARRER, DESSIN_ARRETER,
+				OBTENIR_FORMES });
 
 		demarrerMenuItem = menu.getItem(0);
 		demarrerMenuItem.addActionListener(new ActionListener() {
@@ -99,8 +99,8 @@ public class MenuFenetre extends JMenuBar {
 				demarrerComm(-1, false);
 			}
 		});
-		demarrerMenuItem.setAccelerator(KeyStroke.getKeyStroke(MENU_DESSIN_DEMARRER_TOUCHE_RACC,
-				MENU_DESSIN_DEMARRER_TOUCHE_MASK));
+		demarrerMenuItem.setAccelerator(KeyStroke.getKeyStroke(DEMARRE_RACC,
+				DEMARRE_MASK));
 
 		arreterMenuItem = menu.getItem(1);
 		arreterMenuItem.addActionListener(new ActionListener() {
@@ -110,12 +110,12 @@ public class MenuFenetre extends JMenuBar {
 			}
 		});
 
-		arreterMenuItem.setAccelerator(KeyStroke.getKeyStroke(MENU_DESSIN_ARRETER_TOUCHE_RACC,
-				MENU_DESSIN_ARRETER_TOUCHE_MASK));
+		arreterMenuItem.setAccelerator(KeyStroke.getKeyStroke(ARRET_TOUCHE_RACC,
+				ARRET_TOUCHE_MASK));
 
-		obtenirFormesMenuItem = menu.getItem(2);
-		obtenirFormesMenuItem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		obtenirFormes = menu.getItem(2);
+		obtenirFormes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
 				demarrerComm(10, true);
 
 			}
@@ -128,12 +128,12 @@ public class MenuFenetre extends JMenuBar {
 	 * Créer le menu "File".
 	 */
 	protected void addMenuFichier() {
-		JMenu menu = creerMenu(MENU_FICHIER_TITRE, new String[] { MENU_FICHIER_QUITTER });
+		JMenu menu = creerMenu(FICHIER_TITRE, new String[] { FICHIER_QUITTER });
 		menu.getItem(0).addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				comm.stop();
 				try {
-					Thread.sleep(DELAI_QUITTER_MSEC);
+					Thread.sleep(DELAI_QUITTER);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
@@ -141,7 +141,7 @@ public class MenuFenetre extends JMenuBar {
 			}
 		});
 		menu.getItem(0).setAccelerator(
-				KeyStroke.getKeyStroke(MENU_FICHIER_QUITTER_TOUCHE_RACC, MENU_FICHIER_QUITTER_TOUCHE_MASK));
+				KeyStroke.getKeyStroke(QUITTER_RACC, QUITTER_MASK));
 		add(menu);
 	}
 
@@ -152,18 +152,18 @@ public class MenuFenetre extends JMenuBar {
 		JMenu menu = creerMenu(
 				MENU_TRIER_TITRE,
 				new String[] {
-						MENU_TRIER_AIRE_CROISSANTE,
-						MENU_TRIER_AIRE_DECROISSANTE,
-						MENU_TRIER_DISTANCE_MAX_CROISSANTE,
-						MENU_TRIER_DISTANCE_MAX_DECROISSANTE,
-						MENU_TRIER_TYPE_CROISSANT,
-						MENU_TRIER_TYPE_DECROISSANT,
-						MENU_TRIER_HAUTEUR_CROISSANTE,
-						MENU_TRIER_HAUTEUR_DECROISSANTE,
-						MENU_TRIER_LARGEUR_CROISSANTE,
-						MENU_TRIER_LARGEUR_DECROISSANTE,
-						MENU_TRIER_ORDRE_ARRIVEE,
-						MENU_TRIER_ORDRE_ORIGINAL,
+						MENU_AIRE_C,
+						MENU_AIRE_D,
+						MENU_DISTANCE_C,
+						MENU_DISTANCE_D,
+						MENU_TYPE_C,
+						MENU_TYPE_D,
+						MENU_HAUTEUR_C,
+						MENU_HAUTEUR_D,
+						MENU_LARGEUR_C,
+						MENU_LARGEUR_D,
+						ORDRE_ARRIVEE,
+						ORDRE_ORIGINAL,
 				});
 
 		//MENU_TRIER_AIRE_CROISSANTE
@@ -243,10 +243,10 @@ public class MenuFenetre extends JMenuBar {
 		add(menu);
 	}
 
-	private void trier(Tris t, boolean decroissant, boolean decale) {
-		Comparateur comparateur = TriFactory.creerComparateur(t, decroissant);
-		f.getListeForme().trier(comparateur);
-		f.dessiner(decale);
+	private void trier(Tris tri, boolean decroissant, boolean decale) {
+		AbstractComparateur comparateur = TriFactory.creerComparateur(tri, decroissant);
+		fen.getListeForme().trier(comparateur);
+		fen.dessiner(decale);
 	}
 
 	/**
@@ -256,7 +256,7 @@ public class MenuFenetre extends JMenuBar {
 		JMenu menu = creerMenu(MENU_AIDE_TITRE, new String[] { MENU_AIDE_PROPOS });
 		menu.getItem(0).addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				JOptionPane.showMessageDialog(null, LangueConfig.getResource(MESSAGE_DIALOGUE_A_PROPOS),
+				JOptionPane.showMessageDialog(null, LangueConfig.getResource(MESS_A_PROPOS),
 						LangueConfig.getResource(MENU_AIDE_PROPOS), JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
@@ -289,7 +289,7 @@ public class MenuFenetre extends JMenuBar {
 	}
 
 	private void demarrerComm(int nbFormes, boolean bulk) {
-		String entreeUtilisateur = JOptionPane.showInputDialog(MESSAGE_CONNECTION, "localhost:10000");
+		String entreeUtilisateur = JOptionPane.showInputDialog(MESS_CONNECTION, "localhost:10000");
 		try {
 			InetSocketAddress adresse = DecortiqueurAdresse.decortiquerAdresseReseau(entreeUtilisateur);
 			comm.start(adresse, nbFormes, bulk);

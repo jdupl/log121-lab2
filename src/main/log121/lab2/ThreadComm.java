@@ -24,7 +24,7 @@ import java.net.UnknownHostException;
 
 import javax.swing.SwingWorker;
 
-import main.log121.lab2.formes.Forme;
+import main.log121.lab2.formes.AbstractForme;
 
 /**
  * SwingWorker qui demande au serveur de formes de nouvelles formes.
@@ -32,12 +32,12 @@ import main.log121.lab2.formes.Forme;
  * @author Justin Duplessis
  *
  */
-public class ThreadComm extends SwingWorker<Forme, Object> {
+public class ThreadComm extends SwingWorker<AbstractForme, Object> {
 
 	/**
 	 * Délai entre les demandes en millisecondes
 	 */
-	private int DELAI_MSEC = 1000;
+	private int delaiMSec = 1000;
 
 	private InetSocketAddress adresse;
 	private int nbFormes;
@@ -55,9 +55,9 @@ public class ThreadComm extends SwingWorker<Forme, Object> {
 		this.nbFormes = nbFormes;
 
 		if (bulk) {
-			DELAI_MSEC = 20;
+			delaiMSec = 20;
 		} else {
-			DELAI_MSEC = 1000;
+			delaiMSec = 1000;
 		}
 
 	}
@@ -67,29 +67,29 @@ public class ThreadComm extends SwingWorker<Forme, Object> {
 	 * d'aviser le listener.
 	 */
 	@Override
-	protected Forme doInBackground() {
-		try (Socket s = new Socket()) {
-			s.setSoTimeout(1000);
-			s.connect(adresse);
-			BufferedWriter out = new BufferedWriter(new OutputStreamWriter(s.getOutputStream()));
-			BufferedReader in = new BufferedReader(new InputStreamReader(s.getInputStream()));
+	protected AbstractForme doInBackground() {
+		try (Socket socket = new Socket()) {
+			socket.setSoTimeout(1000);
+			socket.connect(adresse);
+			BufferedWriter out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+			BufferedReader ine = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
 			int compte = 0;
 			while (!this.isCancelled() && compte != this.nbFormes) {
 				try {
 					// Lire prompt ( 'commande>' )
-					in.readLine();
+					ine.readLine();
 					// TODO ? regarder si la bonne ligne
 					out.write("GET\n");
 					out.flush();
 					// Lire la forme en tant que String
-					String strForme = in.readLine();
-					Forme forme = FormeFactory.lireString(strForme);
+					String strForme = ine.readLine();
+					AbstractForme forme = FormeFactory.lireString(strForme);
 					compte++;
 					// Alerter l'autre classe d'une nouvelle forme
 					firePropertyChange("FORME", null, forme);
 					// Attente avant la prochaine requête au serveur
-					Thread.sleep(DELAI_MSEC);
+					Thread.sleep(delaiMSec);
 				} catch (InterruptedException e) {
 					// Gérer l'interrpution du listener de l'arrêt
 					this.fermerConnection(out);

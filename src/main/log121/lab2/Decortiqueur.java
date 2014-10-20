@@ -39,14 +39,14 @@ public class Decortiqueur {
 	 */
 	public Decortiqueur(String chaineServeur) throws IllegalArgumentException {
 		// Regex pour trouver les informations relatives à la forme
-		Pattern p = Pattern.compile("^([0-9]+)\\s+<([A-Z]+)>\\s*(([0-9]+\\s*){3,4})</[A-Z]+>$");
-		Matcher m = p.matcher(chaineServeur);
-		if (!m.find()) {
+		Pattern pattern = Pattern.compile("^([0-9]+)\\s+<([A-Z]+)>\\s*(([0-9]+\\s*){3,4})</[A-Z]+>$");
+		Matcher matcher = pattern.matcher(chaineServeur);
+		if (!matcher.find()) {
 			throw new IllegalArgumentException(FormeFactory.ERREUR_FORME);
 		}
-		String noStr = m.group(1);
-		String typeStr = m.group(2);
-		String dimensionsStr = m.group(3);
+		String noStr = matcher.group(1);
+		String typeStr = matcher.group(2);
+		String dimensionsStr = matcher.group(3);
 		// Convertir les arguements de String en leur bon types
 		noSeq = Integer.parseInt(noStr);
 		// Retrouver la sous-forme en tant qu'enum

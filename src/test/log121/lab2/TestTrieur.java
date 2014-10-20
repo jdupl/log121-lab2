@@ -26,8 +26,8 @@ public class TestTrieur {
 		actual.trier(new Comparator<Double>() {
 
 			@Override
-			public int compare(Double o1, Double o2) {
-				return (int) (o1 - o2);
+			public int compare(Double oe1, Double oe2) {
+				return (int) (oe1 - oe2);
 			}
 		});
 
@@ -63,8 +63,8 @@ public class TestTrieur {
 		actual.trier(new Comparator<Double>() {
 
 			@Override
-			public int compare(Double o1, Double o2) {
-				return (int) (o2 - o1);
+			public int compare(Double oe1, Double oe2) {
+				return (int) (oe2 - oe1);
 			}
 		});
 

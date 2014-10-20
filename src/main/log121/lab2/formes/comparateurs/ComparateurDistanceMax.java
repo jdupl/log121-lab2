@@ -1,11 +1,11 @@
 package main.log121.lab2.formes.comparateurs;
 
-import main.log121.lab2.formes.Forme;
+import main.log121.lab2.formes.AbstractForme;
 
-public class ComparateurDistanceMax extends Comparateur {
+public class ComparateurDistanceMax extends AbstractComparateur {
 
 	@Override
-	public int compare(Forme forme1, Forme forme2) {
+	public int compare(AbstractForme forme1, AbstractForme forme2) {
 		return inverserSiNecessaire((int) (forme1.getDistanceMaximale() - forme2.getDistanceMaximale()));
 	}
 

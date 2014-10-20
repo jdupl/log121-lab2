@@ -19,7 +19,7 @@ package main.log121.lab2.formes;
  * @author Justin Duplessis
  *
  */
-public class Ovale extends Forme {
+public class Ovale extends AbstractForme {
 
 	/**
 	 * Constructeur
@@ -28,11 +28,11 @@ public class Ovale extends Forme {
 	 *            Le type de forme
 	 * @param dims
 	 *            Les dimensions de la forme centreX centreY rayonH rayonV
-	 * @param id
+	 * @param noSeq
 	 *            le numéro de séquence
 	 */
-	public Ovale(SousForme sousForme, int[] dims, int id, int ordreArrivee) {
-		super(sousForme, dims, id, ordreArrivee);
+	public Ovale(SousForme sousForme, int[] dims, int noSeq, int ordreArrivee) {
+		super(sousForme, dims, noSeq, ordreArrivee);
 		largeur = dims[2] * 2;
 		hauteur = dims[3] * 2;
 		coinX = dims[0] - dims[2];

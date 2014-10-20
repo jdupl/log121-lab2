@@ -21,15 +21,15 @@ import java.util.ResourceBundle;
  */
 public class LangueConfig {
 
-	static private final String PREFS_BUNDLE_BASENAME = "prefs";
-	static private final String BUNDLE_BASENAME = "app", PREFERRED_LOCALE_KEY = "locale";
+	static private final String PREFS_BASENAME = "prefs";
+	static private final String BUNDLE_BASENAME = "app", LOCALE_KEY = "locale";
 	private static ResourceBundle preferences, resources;
 	static private Locale locale;
 
 	static {
 		try {
-			preferences = ResourceBundle.getBundle(PREFS_BUNDLE_BASENAME);
-			locale = new Locale(preferences.getString(PREFERRED_LOCALE_KEY));
+			preferences = ResourceBundle.getBundle(PREFS_BASENAME);
+			locale = new Locale(preferences.getString(LOCALE_KEY));
 		} catch (java.util.MissingResourceException ex) {
 			System.err.println("ERROR: cannot find preferences properties file " + BUNDLE_BASENAME);
 		}

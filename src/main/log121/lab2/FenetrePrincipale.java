@@ -21,7 +21,7 @@ import java.beans.PropertyChangeListener;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import main.log121.lab2.formes.Forme;
+import main.log121.lab2.formes.AbstractForme;
 
 /**
  * Cette classe représente la fenêtre principale de l'application
@@ -32,17 +32,17 @@ import main.log121.lab2.formes.Forme;
 public class FenetrePrincipale extends JFrame implements PropertyChangeListener {
 
 	private static final long serialVersionUID = -1210804336046370508L;
-	private final static FenetreFormes fenetreFormes = new FenetreFormes();
+	private final static FenetreFormes FENETRE_FORME = new FenetreFormes();
 
 	/**
 	 * Constructeur
 	 */
 	public FenetrePrincipale(CommBase comm) {
-		MenuFenetre menu = new MenuFenetre(comm, fenetreFormes);
+		MenuFenetre menu = new MenuFenetre(comm, FENETRE_FORME);
 		this.setLayout(new BorderLayout());
 		this.add(menu, BorderLayout.NORTH);
 
-		this.add(fenetreFormes, BorderLayout.CENTER); // Ajoute la fenêtre de forme à la fenètre principale
+		this.add(FENETRE_FORME, BorderLayout.CENTER); // Ajoute la fenêtre de forme à la fenètre principale
 		this.pack(); // Ajuste la dimension de la fenêtre principale selon celle de ses composants
 		this.setVisible(true); // Rend la fenêtre principale visible.
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // à réviser selon le comportement que vous désirez TODO
@@ -54,7 +54,7 @@ public class FenetrePrincipale extends JFrame implements PropertyChangeListener 
 		String propriete = event.getPropertyName();
 		switch (propriete) {
 		case "FORME":
-			fenetreFormes.ajouterForme((Forme) event.getNewValue());
+			FENETRE_FORME.ajouterForme((AbstractForme) event.getNewValue());
 			break;
 		case "ERREUR":
 			JOptionPane.showMessageDialog(null, event.getNewValue());

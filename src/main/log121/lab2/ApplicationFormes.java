@@ -31,7 +31,7 @@ public class ApplicationFormes {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		ApplicationFormes application = new ApplicationFormes();
+		new ApplicationFormes();
 	}
 
 	/**
@@ -43,7 +43,7 @@ public class ApplicationFormes {
 		// Implémente un listener qui va toujours fermer la communication lorsque la fenêtre principale ferme.
 		fenetre.addWindowListener(new WindowAdapter() {
 			@Override
-			public void windowClosing(WindowEvent e) {
+			public void windowClosing(WindowEvent event) {
 				if (comm.isActif()) {
 					comm.stop();
 				}

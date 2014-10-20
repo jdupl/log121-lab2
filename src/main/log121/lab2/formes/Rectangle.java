@@ -18,7 +18,7 @@ package main.log121.lab2.formes;
  * @author Justin Duplessis
  *
  */
-public class Rectangle extends Forme {
+public class Rectangle extends AbstractForme {
 
 	/**
 	 * Constructeur
@@ -27,11 +27,11 @@ public class Rectangle extends Forme {
 	 *            Le type de forme
 	 * @param dims
 	 *            Les dimensions de la forme x1 y1 x2 y2
-	 * @param id
+	 * @param noSeq
 	 *            le numéro de séquence
 	 */
-	public Rectangle(SousForme sousForme, int[] dims, int id, int ordreArrivee) {
-		super(sousForme, dims, id, ordreArrivee);
+	public Rectangle(SousForme sousForme, int[] dims, int noSeq, int ordreArrivee) {
+		super(sousForme, dims, noSeq, ordreArrivee);
 		largeur = dims[2] - dims[0];
 		hauteur = dims[3] - dims[1];
 		coinX = dims[0];

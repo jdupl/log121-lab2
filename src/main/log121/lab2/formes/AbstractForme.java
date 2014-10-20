@@ -19,12 +19,12 @@ import java.awt.Color;
  * @author Justin Duplessis
  *
  */
-public abstract class Forme {
+public abstract class AbstractForme {
 
 	/**
 	 * Numéro de séquence
 	 */
-	protected int id;
+	protected int noSeq;
 	/**
 	 * La sous forme
 	 */
@@ -62,13 +62,13 @@ public abstract class Forme {
 	 *            Le type de forme
 	 * @param dims
 	 *            Les dimensions de la forme
-	 * @param id
+	 * @param noSeq
 	 *            le numéro de séquence
 	 */
-	public Forme(SousForme sousForme, int[] dims, int id, int ordreArrivee) {
+	public AbstractForme(SousForme sousForme, int[] dims, int noSeq, int ordreArrivee) {
 		this.sousForme = sousForme;
 		this.dims = dims;
-		this.id = id;
+		this.noSeq = noSeq;
 		this.ordreArrivee = ordreArrivee;
 	}
 
@@ -96,7 +96,7 @@ public abstract class Forme {
 	 * @return Le numéro de séquence
 	 */
 	public int getId() {
-		return id;
+		return noSeq;
 	}
 
 	/**

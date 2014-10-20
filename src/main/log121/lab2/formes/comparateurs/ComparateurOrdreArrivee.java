@@ -1,8 +1,8 @@
 package main.log121.lab2.formes.comparateurs;
 
-import main.log121.lab2.formes.Forme;
+import main.log121.lab2.formes.AbstractForme;
 
-public class ComparateurOrdreArrivee extends Comparateur {
+public class ComparateurOrdreArrivee extends AbstractComparateur {
 
 	public ComparateurOrdreArrivee() {
 		super(false);
@@ -13,7 +13,7 @@ public class ComparateurOrdreArrivee extends Comparateur {
 	}
 
 	@Override
-	public int compare(Forme forme1, Forme forme2) {
+	public int compare(AbstractForme forme1, AbstractForme forme2) {
 		return inverserSiNecessaire(forme1.getOrdreArrivee() - forme2.getOrdreArrivee());
 	}
 

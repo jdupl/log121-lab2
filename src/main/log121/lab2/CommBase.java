@@ -26,7 +26,7 @@ public class CommBase {
 
 	private SwingWorker threadComm = null;
 	private PropertyChangeListener listener = null;
-	private boolean isActif = false;
+	private boolean actif = false;
 
 	/**
 	 * Constructeur
@@ -54,7 +54,7 @@ public class CommBase {
 	 *            Faux pas défaut. Permet de récupérer toutes les formes d'un coup.
 	 */
 	public void start(InetSocketAddress adresse, int nbFormes, boolean bulk) {
-		isActif = true;
+		actif = true;
 		creerCommunication(adresse, nbFormes, bulk);
 	}
 
@@ -65,7 +65,7 @@ public class CommBase {
 		if (threadComm != null) {
 			threadComm.cancel(true);
 		}
-		isActif = false;
+		actif = false;
 	}
 
 	/**
@@ -74,7 +74,7 @@ public class CommBase {
 	protected void creerCommunication(InetSocketAddress adresse, int nbFormes, boolean bulk) {
 		// Crée un fil d'exécusion parallèle au fil courant,
 		threadComm = new ThreadComm(adresse, nbFormes, bulk);
-		isActif = true;
+		actif = true;
 		if (listener != null) {
 			// La méthode "propertyChange" de ApplicationFormes sera
 			// donc appelée lorsque le SwinkWorker invoquera la méthode
@@ -88,6 +88,6 @@ public class CommBase {
 	 * @return si le fil d'exécution parallèle est actif
 	 */
 	public boolean isActif() {
-		return isActif;
+		return actif;
 	}
 }

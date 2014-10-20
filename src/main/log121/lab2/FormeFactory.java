@@ -12,7 +12,7 @@ package main.log121.lab2;
  2014-09-09 Version initiale
  *******************************************************/
 
-import main.log121.lab2.formes.Forme;
+import main.log121.lab2.formes.AbstractForme;
 import main.log121.lab2.formes.Ligne;
 import main.log121.lab2.formes.Ovale;
 import main.log121.lab2.formes.Rectangle;
@@ -45,18 +45,18 @@ public class FormeFactory {
 	 * @throws IllegalArgumentException
 	 *             Exception lancée si la ligne reçue n'est pas conforme avec les formes disponibles.
 	 */
-	public static Forme lireString(String formeStr) throws IllegalArgumentException {
-		Forme f = null;
+	public static AbstractForme lireString(String formeStr) throws IllegalArgumentException {
+		AbstractForme forme = null;
 		// Créer un décortiqueur afin de retrouver les champs de la forme
 		Decortiqueur decortiqueur = new Decortiqueur(formeStr);
 
 		switch (decortiqueur.getForme()) {
 		case LIGNE:
-			f = new Ligne(decortiqueur.getDimensions(), decortiqueur.getNoSeq(), compte);
+			forme = new Ligne(decortiqueur.getDimensions(), decortiqueur.getNoSeq(), compte);
 			break;
 		case CARRE:
 		case RECTANGLE:
-			f = new Rectangle(decortiqueur.getForme(), decortiqueur.getDimensions(), decortiqueur.getNoSeq(), compte);
+			forme = new Rectangle(decortiqueur.getForme(), decortiqueur.getDimensions(), decortiqueur.getNoSeq(), compte);
 			break;
 		case CERCLE:
 			// Logique qui permet d'attribuer le rayon d'un cercle aux rayons d'un ovale
@@ -68,16 +68,16 @@ public class FormeFactory {
 				fix[i] = decortiqueur.getDimensions()[i];
 			}
 			fix[3] = fix[2]; // rayonV = rayonH
-			f = new Ovale(decortiqueur.getForme(), fix, decortiqueur.getNoSeq(), compte);
+			forme = new Ovale(decortiqueur.getForme(), fix, decortiqueur.getNoSeq(), compte);
 			break;
 		case OVALE:
-			f = new Ovale(decortiqueur.getForme(), decortiqueur.getDimensions(), decortiqueur.getNoSeq(), compte);
+			forme = new Ovale(decortiqueur.getForme(), decortiqueur.getDimensions(), decortiqueur.getNoSeq(), compte);
 			break;
 		default:
 			// Cas où la sousforme n'est pas dans les cas plus hauts
 			throw new IllegalArgumentException(ERREUR_FORME);
 		}
 		compte++;
-		return f;
+		return forme;
 	}
 }

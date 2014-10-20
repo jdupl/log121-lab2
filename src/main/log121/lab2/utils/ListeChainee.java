@@ -20,13 +20,13 @@ public class ListeChainee<T> implements Liste<T> {
 
 	@Override
 	public boolean ajouter(T element) {
-		Element<T> e = new Element<T>(element);
+		Element<T> ajout = new Element<T>(element);
 		if (debut != null) {
-			fin.setSuivant(e);
+			fin.setSuivant(ajout);
 		} else {
-			debut = e;
+			debut = ajout;
 		}
-		fin = e;
+		fin = ajout;
 		this.taille++;
 		if (taille > tailleMaximum) {
 			enleverPremier();
@@ -72,11 +72,11 @@ public class ListeChainee<T> implements Liste<T> {
 		T obj = null;
 		if (this.debut != null && indexValide(index)) {
 			boolean trouve = false;
-			int i = 0;
-			Iterator<T> it = this.iterator();
-			while (!trouve && it.hasNext()) {
-				obj = it.next();
-				trouve = index == i++;
+			int courant = 0;
+			Iterator<T> ite = this.iterator();
+			while (!trouve && ite.hasNext()) {
+				obj = ite.next();
+				trouve = index == courant++;
 			}
 		}
 		return obj;
@@ -87,10 +87,10 @@ public class ListeChainee<T> implements Liste<T> {
 		int index = -1;
 		boolean trouve = false;
 		if (!this.estVide()) {
-			Iterator<T> it = this.iterator();
-			while (!trouve && it.hasNext()) {
-				T e = it.next();
-				trouve = e.equals(element);
+			Iterator<T> ite = this.iterator();
+			while (!trouve && ite.hasNext()) {
+				T ele = ite.next();
+				trouve = ele.equals(element);
 				index++;
 			}
 		}
@@ -101,10 +101,10 @@ public class ListeChainee<T> implements Liste<T> {
 	public boolean remplacer(int index, T nouvelElement) {
 		boolean trouve = false;
 		if (this.debut != null && indexValide(index)) {
-			int i = 0;
+			int courant = 0;
 			Element<T> elementCourant = debut;
 			while (!trouve && elementCourant != null) {
-				trouve = index == i++;
+				trouve = index == courant++;
 				if (trouve) {
 					elementCourant.setCourant(nouvelElement);
 				} else {
@@ -117,7 +117,7 @@ public class ListeChainee<T> implements Liste<T> {
 
 	@Override
 	public Iterator<T> iterator() {
-		Iterator<T> it = new Iterator<T>() {
+		Iterator<T> ite = new Iterator<T>() {
 			/**
 			 * Le dernier élément visité
 			 */
@@ -149,7 +149,7 @@ public class ListeChainee<T> implements Liste<T> {
 				throw new UnsupportedOperationException("Cette fonctionnalité n'est pas implémentée.");
 			}
 		};
-		return it;
+		return ite;
 	}
 
 	private boolean indexValide(int index) {
@@ -163,13 +163,13 @@ public class ListeChainee<T> implements Liste<T> {
 	// https://www.cs.duke.edu/~reif/courses/alglectures/skiena.lectures/lecture5.pdf page:5
 	private void quicksort(int bas, int haut, Comparator<T> comparateur) {
 		if (bas < haut) {
-			int pivotLocation = Partition(bas, haut, comparateur);
+			int pivotLocation = partition(bas, haut, comparateur);
 			quicksort(bas, pivotLocation, comparateur);
 			quicksort(pivotLocation + 1, haut, comparateur);
 		}
 	}
 
-	private int Partition(int bas, int haut, Comparator<T> comparateur) {
+	private int partition(int bas, int haut, Comparator<T> comparateur) {
 		// int pivot = liste[bas];
 		T pivot = obtenirElement(bas);
 		int murGauche = bas;

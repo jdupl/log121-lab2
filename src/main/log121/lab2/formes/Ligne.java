@@ -18,7 +18,7 @@ package main.log121.lab2.formes;
  * @author Justin Duplessis
  *
  */
-public class Ligne extends Forme {
+public class Ligne extends AbstractForme {
 
 	/**
 	 * Constructeur
@@ -27,11 +27,11 @@ public class Ligne extends Forme {
 	 *            Le type de forme
 	 * @param dims
 	 *            Les dimensions de la forme x1 y1 x2 y2
-	 * @param id
+	 * @param noSeq
 	 *            le numéro de séquence
 	 */
-	public Ligne(int[] dims, int id, int ordreArrivee) {
-		super(SousForme.LIGNE, dims, id, ordreArrivee);
+	public Ligne(int[] dims, int noSeq, int ordreArrivee) {
+		super(SousForme.LIGNE, dims, noSeq, ordreArrivee);
 		super.largeur = Math.abs(dims[2] - dims[0]);
 		super.hauteur = Math.abs(dims[3] - dims[1]);
 		super.coinX = Math.min(dims[0], dims[2]);
