@@ -18,6 +18,14 @@ import main.log121.lab2.formes.AbstractForme;
 
 public class ComparateurDistanceMax extends AbstractComparateur {
 
+	public ComparateurDistanceMax() {
+		super(false);
+	}
+
+	public ComparateurDistanceMax(boolean decroissant) {
+		super(decroissant);
+	}
+
 	@Override
 	public int compare(AbstractForme forme1, AbstractForme forme2) {
 		return inverserSiNecessaire((int) (forme1.getDistanceMaximale() - forme2.getDistanceMaximale()));
