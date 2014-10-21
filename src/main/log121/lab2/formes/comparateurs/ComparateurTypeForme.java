@@ -1,3 +1,17 @@
+/******************************************************
+ Cours:  LOG121
+ Projet: Lab02
+ Nom du fichier: ComparateurTypeForme.java
+ Date créé: 2014-10-20
+ *******************************************************
+ Historique des modifications
+ *******************************************************
+ *@author Justin Duplessis
+ *@author Alexandre Viau
+ *@author Samuel Lague
+ 2014-10-20 Version initiale
+ *******************************************************/
+
 package main.log121.lab2.formes.comparateurs;
 
 import main.log121.lab2.formes.AbstractForme;
@@ -14,7 +28,7 @@ public class ComparateurTypeForme extends AbstractComparateur {
 
 	/**
 	 * Compare 2 formes selon le type de sous forme.
-	 * 
+	 *
 	 * @param forme1
 	 *            La première forme à comparer
 	 * @param forme2
